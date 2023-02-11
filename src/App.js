@@ -2,6 +2,7 @@ import './App.css';
 
 import React, {useEffect, useState } from "react";
 import { usePalette } from 'react-palette';
+import DomToImage from 'dom-to-image';
 import Test from './test';
 
 const getData = async (artist, album) => {
@@ -25,10 +26,12 @@ const clearUserInput = () => {
 // getData("Drake", "Views");
 
 const App = () => {
+  const [year, setYear] = useState("");
   const [album, setAlbum] = useState("");
   const [image, setImage] = useState("");
   const [artist, setArtist] = useState("");
   const {data, loading, error} = usePalette(image);
+
 
   const handleUserInput = async () => {
     let artistInput = document.getElementById("artist-input").value;
@@ -47,21 +50,37 @@ const App = () => {
     setArtist(response.album.artist);
     setAlbum(response.album.name);
     setImage(response.album.image[5]["#text"].replace("/300x300", ""));
+
   }
+
+  const saveJPEG = () => {
+    DomToImage.toJpeg(document.getElementById('my-node'), { quality: 0.95 })
+    .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'my-image-name.jpeg';
+        link.href = dataUrl;
+        link.click();
+    });
+
+  }
+  
   return (
     <div className="App">
         <input type="text" id="artist-input" required></input>
         <input type="text" id="album-input" required></input>
         <button onClick={handleUserInput}>SUBMIT</button>
       {/* <Test/> */}
-      <div>{album}</div>
-      <img src={image}></img>
-      <div>{artist}</div>
-            <div style={{ color: data.vibrant }}><p>Text with the vibrant color</p></div>
-            <div style={{ color: data.lightVibrant }}><p>Text with the vibrant color</p></div>
-            <div style={{ color: data.darkVibrant }}><p>Text with the vibrant color</p></div>
-            <div style={{ color: data.muted }}><p>Text with the vibrant color</p></div>
-            <div style={{ color: data.lightMuted }}><p>Text with the vibrant color</p></div>
+        <div id="my-node">
+          <div>{album}</div>
+          <img src={image}></img>
+          <div>{artist}</div>
+          <div style={{ color: data.vibrant }}><p>Text with the vibrant color</p></div>
+          <div style={{ color: data.lightVibrant }}><p>Text with the vibrant color</p></div>
+          <div style={{ color: data.darkVibrant }}><p>Text with the vibrant color</p></div>
+          <div style={{ color: data.muted }}><p>Text with the vibrant color</p></div>
+          <div style={{ color: data.lightMuted }}><p>Text with the vibrant color</p></div>
+        </div>
+        <button onClick={saveJPEG}>Save</button>
       </div>
   );
 }
