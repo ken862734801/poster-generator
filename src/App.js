@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 
 import React, {useEffect, useState } from "react";
 import { usePalette } from 'react-palette';
 import DomToImage from 'dom-to-image';
-import Test from './test';
+import TemplateOne from './components/template_one';
 
 const getData = async (artist, album) => {
   try{
@@ -12,7 +12,7 @@ const getData = async (artist, album) => {
       console.log(data);
       return data
   } catch (err){
-    console.error(err)
+    console.error(err);
   }
 };
 
@@ -47,6 +47,7 @@ const App = () => {
   
 
   const createPoster = (response) => {
+    setYear(response.album.wiki.published.split(",")[0].split(" ")[2])
     setArtist(response.album.artist);
     setAlbum(response.album.name);
     setImage(response.album.image[5]["#text"].replace("/300x300", ""));
@@ -54,7 +55,7 @@ const App = () => {
   }
 
   const saveJPEG = () => {
-    DomToImage.toJpeg(document.getElementById('my-node'), { quality: 0.95 })
+    DomToImage.toJpeg(document.getElementById('poster-wrapper'), { quality: 0.95 })
     .then(function (dataUrl) {
         var link = document.createElement('a');
         link.download = 'my-image-name.jpeg';
@@ -63,25 +64,21 @@ const App = () => {
     });
 
   }
-  
+
   return (
     <div className="App">
         <input type="text" id="artist-input" required></input>
         <input type="text" id="album-input" required></input>
         <button onClick={handleUserInput}>SUBMIT</button>
-      {/* <Test/> */}
-        <div id="my-node">
-          <div>{album}</div>
-          <img src={image}></img>
-          <div>{artist}</div>
-          <div style={{ color: data.vibrant }}><p>Text with the vibrant color</p></div>
-          <div style={{ color: data.lightVibrant }}><p>Text with the vibrant color</p></div>
-          <div style={{ color: data.darkVibrant }}><p>Text with the vibrant color</p></div>
-          <div style={{ color: data.muted }}><p>Text with the vibrant color</p></div>
-          <div style={{ color: data.lightMuted }}><p>Text with the vibrant color</p></div>
-        </div>
         <button onClick={saveJPEG}>Save</button>
-      </div>
+        <button>Template #1</button>
+        <button>Template #2</button>
+        <TemplateOne
+         year={year} album={album} image={image} artist={artist}
+         vibrant={data.vibrant} lightVibrant={data.lightVibrant} 
+         darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted}
+         />
+    </div>
   );
 }
 

@@ -1,17 +1,9 @@
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-}
-body{
-    min-height:100vh;
-   background-color: rgb(250, 250, 250);
-}
 .poster-wrapper{
     text-transform: uppercase;
     width:960px;
     height:1280px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border:1px solid red;
+    font-family: $font;
     background-color: white;
 }
 .poster-container{
@@ -42,21 +34,4 @@ hr{
 .poster-palette-color{
     height:15px;
     width:20%;
-}
-.poster-body-container{
-    display:flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-.poster-artist-name{
-    font-size:2.5em;
-}
-.poster-tracklist-container{
-    display:flex;
-}
-ul{
-    max-width: 235px;
-}
-li{
-    list-style-type: none;
 }
