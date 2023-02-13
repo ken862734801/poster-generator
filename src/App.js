@@ -93,16 +93,30 @@ const App = () => {
   const poster = new Poster(album, artist, image, year, date, tracklist, genre);
   console.log(poster);
 
+  const [zoomLevel, setZoomLevel] = useState(100);
+
+  const handleZoomChange = (event) => {
+    const newZoomLevel = parseInt(event.target.value);
+    setZoomLevel(newZoomLevel)
+  }
+
   return (
     <div className="App">
-        /* <input type="text" id="artist-input" required></input>
+      <input type="text" id="artist-input" required></input>
         <input type="text" id="album-input" required></input>
         <button onClick={handleUserInput}>SUBMIT</button>
         <button onClick={saveJpeg}>Save</button>
         <button>Template #1</button>
         <button>Template #2</button>
+        <select id="zoom-select" value={zoomLevel} onChange={handleZoomChange}>
+          <option value="25">25%</option>
+          <option value="50">50%</option>
+          <option value="75">75%</option>
+          <option value="100">100%</option>
+        </select>
         <div className="poster-editor-canvas">
           <TemplateOne
+          zoom={zoomLevel}
           year={year} album={album} image={image} artist={artist}
           vibrant={data.vibrant} lightVibrant={data.lightVibrant} 
           darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted} 

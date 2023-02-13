@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const TemplateOne = (props) => {
 
     return (
-        <div className='poster-wrapper' id='poster-wrapper'>
-            <div className='poster-container' id='poster-container'>
+        <div style={{ transform: `scale(${props.zoom / 100})` }} className='poster-wrapper' id='poster-wrapper'>
+            <div  className='poster-container' id='poster-container'>
                 <div className='poster-header'>
                     <hr></hr>
                     <h2 className='poster-release-year'>{props.year}</h2>
