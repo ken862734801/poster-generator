@@ -9,10 +9,14 @@ body{
 }
 .poster-wrapper{
     text-transform: uppercase;
-    width:960px;
-    height:1280px;
+    /* width:960px;
+    height:1280px; */
+    width:780px;
+    height:960px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Helvetica, sans-serif; */
     background-color: white;
+    margin: 0 auto;
 }
 .poster-container{
     padding:15px 30px;
@@ -38,17 +42,24 @@ hr{
 }
 .poster-palette-container{
     display:flex;
+    margin-bottom:8px;
 }
 .poster-palette-color{
     height:15px;
     width:20%;
+}
+.poster-body{
+    padding-top:10px;
 }
 .poster-body-container{
     display:flex;
     justify-content: space-between;
     align-items: flex-start;
 }
-.poster-artist-name{
+.poster-artist-container{
+    text-align: right;
+}
+.poster-artist{
     font-size:2.5em;
 }
 .poster-tracklist-container{
@@ -59,4 +70,72 @@ ul{
 }
 li{
     list-style-type: none;
+}
+/* .poster-information-container{
+    border:1px solid red;
+} */
+
+
+/* Template Two */
+/* .poster-wrapper.template-two{
+    border:1px solid red;
+} */
+.poster-container.template-two{
+    padding:100px 30px;
+}
+.poster-image-container.template-two{
+    width:85%;
+    height:40%;
+}
+.poster-album-name.template-two{
+    text-align: center;
+    font-size:2.5em;
+    max-width:585px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+.poster-artist.template-two{
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+.poster-palette-container.template-two{
+    width:70%;
+    margin: 0 auto;
+    padding-top:10px;
+}
+.poster-palette-color.template-two{
+    height:7.5px;
+}
+.poster-tracklist-container.template-two{
+    width:75%;
+    margin: 0 auto;
+    padding:10px 0px;
+}
+.poster-tracklist.template-two{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.poster-track{
+    margin:10px 10px;
+}
+.poster-information-container.template-two{
+    width:50%;
+    display:flex;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+.poster-waveform-container{
+    width:70%;
+    display:flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+.poster-waveform{
+    width:225px;
+}
+span{
+    font-weight: 100;
 }

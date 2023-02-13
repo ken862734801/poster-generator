@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
 const TemplateOne = (props) => {
+
     return (
-        <div className="poster-wrapper" id="poster-wrapper">
-            <div className="poster-container">
-                <div className="poster-header">
+        <div className='poster-wrapper' id='poster-wrapper'>
+            <div className='poster-container' id='poster-container'>
+                <div className='poster-header'>
                     <hr></hr>
-                    <h2 className="poster-release-year">{props.year}</h2>
-                    <h1 className="poster-album-name">{props.album}</h1>
+                    <h2 className='poster-release-year'>{props.year}</h2>
+                    <h1 className='poster-album-name'>{props.album}</h1>
                 </div>
-                <div className="poster-image-container">
-                    <img className="poster-image" src={props.image} crossOrigin=""></img>
+                <div className='poster-image-container'>
+                    <img className='poster-image' src={props.image} crossOrigin=''></img>
                 </div>
                 <div className="poster-body">
                     <div className="poster-palette-container">
@@ -22,28 +23,38 @@ const TemplateOne = (props) => {
                     </div>
                     <div className="poster-body-container">
                         <div className="poster-tracklist-container">
-                            <ul className="poster-tracklist">
-                                <li>1. TRACK NAME</li>
-                                <li>2. TRACK NAME</li>
-                                <li>3. TRACK NAME</li>
-                                <li>4. TRACK NAME</li>
-                                <li>5. TRACK NAME</li>
-                                <li>6. TRACK NAME</li>
-                                <li>7. TRACK NAME</li>
-                                <li>8. TRACK NAME</li>
-                                <li>9. TRACK NAME</li>
+                        {/* {props.tracklist.map((data, index) => (
+                            <ul key={index} className="list">
+                                {data.map((value, innerIndex) => (
+                                    <li className="track" key={innerIndex}>{value}</li>
+                                ))}
                             </ul>
+                        ))} */}
+                         {Array.from(props.tracklist).map((subArray, index) => {
+                            if (Array.isArray(subArray)) {
+                                return (
+                                  <ul key={index}>
+                                    {subArray.map((item, innerIndex) => (
+                                      <li key={innerIndex}>{item}</li>
+                                    ))}
+                                  </ul>
+                                );
+                              } else {
+                                return null;
+                              }
+                         })}
+                                
                         </div>
-                        <div className="poster-information-container">
+                        <div className="poster-text-container">
                             <div></div>
-                            <div>
+                            <div className='poster-information-container'>
                                 <div className="poster-artist-container">
                                     <h3 className="poster-artist">{props.artist}</h3>
                                 </div>
                                 <div>
                                     <h4>Out Now</h4>
-                                    <p></p>
-                                    <p></p>
+                                    <p>{props.date}</p>
+                                    <p>{props.duration}</p>
                                 </div>
                                 <div>
                                     <h4>Released By</h4>
@@ -62,12 +73,6 @@ const TemplateOne = (props) => {
             </div>
         </div>
     )
-};
-
-// TemplateOne.PropTypes = {
-//     year: PropTypes.number,
-//     album: PropTypes.string,
-//     image: PropTypes.string
-// }
+}
 
 export default TemplateOne;
