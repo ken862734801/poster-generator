@@ -7,8 +7,8 @@ const TemplateOne = (props) => {
             <div  className='poster-container' id='poster-container'>
                 <div className='poster-header'>
                     <hr></hr>
-                    <h2 className='poster-release-year'>{props.year}</h2>
-                    <h1 className='poster-album-name'>{props.album}</h1>
+                    <h2 className='poster-release-year' contentEditable>{props.year}</h2>
+                    <h1 className='poster-album-name' contentEditable>{props.album}</h1>
                 </div>
                 <div className='poster-image-container'>
                     <img className='poster-image' src={props.image} crossOrigin=''></img>

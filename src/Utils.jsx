@@ -30,13 +30,14 @@ const saveJpeg = () => {
 
 // Class constructer to create a poster object with the necessary fields to render the data.
 class Poster {
-    constructor(album, artist, image, year, date, tracklist, genre){
+    constructor(album, artist, image, year, date, tracklist, duration, genre){
         this.album = album;
         this.artist = artist;
         this.image = image;
         this.year = year;
         this.date = date;
         this.tracklist = tracklist;
+        this.duration = duration;
         this.genre = genre;
     }
 };
