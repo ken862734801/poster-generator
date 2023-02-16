@@ -2,13 +2,13 @@
     width:60%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-transform: uppercase;
-    margin:10px auto;
+    margin:40px auto;
     background-color: white;
     min-width:960px;
-    min-height:1280px;
+    min-height:1300px;
 }
 .poster-container{
-    padding:20px 30px 10px 30px;
+    padding:20px 30px 20px 30px;
     background-color: white;
 }
 hr{
@@ -35,7 +35,7 @@ hr{
     margin-bottom:8px;
 }
 .poster-palette-color{
-    height:12.5px;
+    height:14px;
     width:20%;
 }
 .poster-body{
@@ -50,10 +50,11 @@ hr{
     display:flex;
 }
 ul{
-    max-width:275px;
-    justify-items: center;
+    max-width:400px;
 }
-
+ul:nth-of-type(even){
+    margin-left:30px;
+}
 li{
     list-style-type:none;
     margin:2px 0px;

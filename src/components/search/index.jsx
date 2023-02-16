@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./search.css";
 
 const SearchComponent = (props) => {
     const { setAlbum, setArtist, setImage, setDate, setYear, setDuration, setTracklist, setGenreTagOne, setGenreTagTwo, setGenreTagThree} = props;
@@ -18,7 +19,7 @@ const SearchComponent = (props) => {
     };
 
     useEffect(() => {
-        getData("Tame Impala", "Currents");
+        getData("Mac Miller", "Swimming");
     }, []);
 
     const handleInputChange = (event) => {
@@ -126,13 +127,11 @@ const SearchComponent = (props) => {
     }
 
     return (
-        <div>
-            <div>
-                <input type="text" name="artist" value={inputValues.artist} onChange={handleInputChange}></input>
-                <input type="text" name="album" value={inputValues.album} onChange={handleInputChange}></input>
+            <div className="search-container">
+                <input type="text" placeholder="Artist..." name="artist" value={inputValues.artist} onChange={handleInputChange}></input>
+                <input type="text" placeholder="Album..."name="album" value={inputValues.album} onChange={handleInputChange}></input>
                 <button onClick={()=> getData(inputValues.artist, inputValues.album)}>Search</button>
             </div>
-        </div>
     )
     
 }

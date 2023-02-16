@@ -23,7 +23,7 @@ if(monthDay < 10){
 const dateString = `${monthName} ${dayNum}, ${currentYear}`;
 
 const saveJpeg = () => {
-  DomToImage.toJpeg(document.getElementById("poster-container"), {quality:0.95, height:1290, width:960})
+  DomToImage.toJpeg(document.getElementById("poster-container"), {quality:0.95})
       .then(function(dataUrl){
           let link = document.createElement("a");
           link.download = "my-image-name.jpeg";
