@@ -52,8 +52,10 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <h1>Header</h1>
-        <button onClick={saveJpeg}>Download</button>
+        <div className="header-container">
+          <h1>Header</h1>
+          <button onClick={saveJpeg}>Download</button>
+        </div>
       </header>
       <div className="container">
         <Aside setAlbum={setAlbum} setArtist={setArtist} 

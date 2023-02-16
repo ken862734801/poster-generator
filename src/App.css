@@ -4,15 +4,33 @@
     box-sizing: border-box;
 }
 body{
-    min-width:100vh;
+    min-height:100vh;
 }
+.App{
+    position: relative;
+}
+/* header{
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: white;
+    width:100%;
+    border:1px solid red;
+}
+.header-container{
+    display:flex;
+} */
 .container{
     display:flex;
 }
 main{
-    flex: 1;
+    /* flex: 1; */
     width:80%;
     background-color: rgb(245, 245, 245);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 .media-query-warning{
     display:none;

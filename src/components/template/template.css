@@ -1,11 +1,13 @@
 .poster{
-    width:60%;
+    /* width:60%; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-transform: uppercase;
     margin:40px auto;
     background-color: white;
-    min-width:960px;
-    min-height:1300px;
+    /* min-width:960px;
+    min-height:1300px; */
+    max-width:960px;
+    max-height:1300px;
 }
 .poster-container{
     padding:20px 30px 20px 30px;
@@ -16,10 +18,10 @@ hr{
 }
 .poster-release-year{
     text-align:right;
-    font-size:2.25em;
+    font-size:2.25rem;
 }
 .poster-album-name{
-    font-size:3.75em;
+    font-size:3.75rem;
 }
 .poster-image-container{
     height:50%;
@@ -72,5 +74,5 @@ li{
 } */
 
 .poster-artist{
-    font-size:2.5em;
+    font-size:2.5rem;
 }

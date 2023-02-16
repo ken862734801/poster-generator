@@ -19,7 +19,7 @@ const SearchComponent = (props) => {
     };
 
     useEffect(() => {
-        getData("Mac Miller", "Swimming");
+        getData("Tomoko Aran", "Fuyukukan");
     }, []);
 
     const handleInputChange = (event) => {
