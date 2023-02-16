@@ -14,3 +14,17 @@ main{
     width:80%;
     background-color: rgb(245, 245, 245);
 }
+.media-query-warning{
+    display:none;
+}
+@media screen and (max-width : 768px) {
+    header{
+        display:none;
+    }
+    .container{
+        display:none;
+    }
+    .media-query-warning{
+        display:block;
+    }
+}

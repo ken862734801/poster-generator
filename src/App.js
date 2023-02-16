@@ -68,6 +68,9 @@ const App = () => {
           darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted}/>
         </main>
       </div>
+      <div className="media-query-warning">
+        <span>Please use desktop version</span>
+      </div>
     </div>
   );
 }
