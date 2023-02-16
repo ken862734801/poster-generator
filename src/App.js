@@ -1,156 +1,73 @@
-// import "./App.css";
+import "./App.css";
 
 import React, {useEffect, useState } from "react";
+import Aside from "./components/aside";
+import Template from "./components/template";
 import { usePalette } from 'react-palette';
 import DomToImage from 'dom-to-image';
-// import {Poster, dateString, saveJpeg, divideTracklist} from "./Utils";
-import TemplateOne from "./components/TemplateOne";
-import "./Test.css";
-// import "./testing.css";
-import Test from "./TEST";
-import AsideComponent from "./components/AsideComponent";
 
-const getData = async (artist, album) => {
-  try{
-      const response = await fetch("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=" + process.env.REACT_APP_API_KEY + "&artist=" + artist + "&album=" + album + "&format=json");
-      if(!response.ok) throw console.log("Album was not found!");
-        const data = await response.json();
-          console.log(data)
-          return data
-  } catch(err){
-      console.error(err)
-  }
+let currentDate = Date.now();
+let dateObject = new Date(currentDate);
+
+const monthName = dateObject.toLocaleString("en-US", { month: "short" });
+const monthDay = dateObject.getDate();
+const currentYear = dateObject.getFullYear();
+
+let dayNum;
+if(monthDay < 10){
+    dayNum = "0" + monthDay
+} else{
+    dayNum = monthDay
 }
 
-// // getData("Drake", "Views");
+const dateString = `${monthName} ${dayNum}, ${currentYear}`;
+
+const saveJpeg = () => {
+  DomToImage.toJpeg(document.getElementById("poster-container"), {quality:0.95, height:1290, width:960})
+      .then(function(dataUrl){
+          let link = document.createElement("a");
+          link.download = "my-image-name.jpeg";
+          link.href = dataUrl;
+          link.click();
+      })
+};
 
 const App = () => {
-//   const [year, setYear] = useState("");
-//   const [album, setAlbum] = useState("Album");
-//   const [image, setImage] = useState("");
-//   const [artist, setArtist] = useState("Artist");
-//   const [date, setDate] = useState(dateString);
-//   const [genreTag1, setGenreTag1] = useState("");
-//   const [genreTag2, setGenreTag2] = useState("");
-//   const [genreTag3, setGenreTag3] = useState("");
-//   const [tracklist, setTracklist] = useState([""])
-//   const {data, loading, error} = usePalette(image);
-//   const [genre, setGenre] = useState([""]);
-//   const [duration, setDuration] = useState("00:00:00");
+  const [album, setAlbum] = useState("Album");
+  const [artist, setArtist] = useState("Artist");
+  const [image, setImage] = useState("");
+  const [date, setDate] = useState(dateString);
+  const [duration, setDuration] = useState("00:00:00");
+  const [label, setLabel] = useState("Label");
+  const [year, setYear] = useState(currentYear);
+  const [tracklist, setTracklist] = useState([["1. Track Name", "2. Track Name","3. Track Name",
+                                              "4. Track Name", "5. Track Name", "6. Track Name",
+                                              "7. Track Name", "8. Track Name", "9. Track Name"]]);
+  const [genreTagOne, setGenreTagOne] = useState("Genre");
+  const [genreTagTwo, setGenreTagTwo] = useState("Genre");
+  const [genreTagThree, setGenreTagThree] = useState("Genre");
+  const {data, loading, error} = usePalette(image);
 
-//   const clearUserInput = () => {
-//     let artistInput = document.getElementById("artist-input");
-//     let albumInput = document.getElementById("album-input");
-//         artistInput.value = "";
-//         albumInput.value = "";
-// }
-
-
-//   const handleUserInput = async () => {
-//     let artistInput = document.getElementById("artist-input").value;
-//     let albumInput = document.getElementById("album-input").value;
-//     if(artistInput === "" || albumInput === ""){
-//       return
-//     }else{
-//       console.log(artistInput, albumInput);
-//       createPoster(await getData(artistInput, albumInput));
-//       clearUserInput();
-//     }
-//   };
-
-//   const createPoster = (response) => {
-
-//     let dateArr = response.album.wiki.published.split(",")[0].split(" ");
-//     let releaseDate = `${dateArr[1]} ${dateArr[0]}, ${dateArr[2]}`;
-//     let albumGenre = response.album.tags.tag;
-//     let genreArr = [];
-//      for(let i = 1; i < albumGenre.length; i++){
-//       let tag = albumGenre[i].name;
-//       genreArr.push(tag);
-//     }
-
-//     let durationArr = [];
-//     let total = 0;
-//     if(response.album.tracks){
-//       for(let i =0; i < response.album.tracks.track.length; i++){
-//         let trackDuration = response.album.tracks.track[i].duration;
-//         durationArr.push(trackDuration);
-//       }
-//       for(let i = 0; i< durationArr.length; i++){
-//         total+=durationArr[i];
-//       }
-//     }else if(!response.album.tracks){
-//       total = 0;
-//     }
-
-//     let albumDuration = new Date(total * 1000).toISOString().substr(11,8);
-
-//     let tracklistArr = [];
-//         for(let i = 0; i < response.album.tracks.track.length; i++){
-//             let tracks = response.album.tracks.track[i].name;
-//             tracklistArr.push(`${i + 1}. ${tracks}`);
-//             setTracklist(tracklistArr);
-//         };
-//         console.log(tracklistArr);
-
-//     let arr = [];
-//     let list = divideTracklist(tracklistArr, arr);
-
-//     setYear(response.album.wiki.published.split(",")[0].split(" ")[2])
-//     setArtist(response.album.artist);
-//     setAlbum(response.album.name);
-//     setImage(response.album.image[5]["#text"].replace("/300x300", ""));
-//     setDate(releaseDate)
-//     setGenre(genreArr);
-//     setGenreTag1(genreArr[0]);
-//     setGenreTag2(genreArr[1]);
-//     setGenreTag3(genreArr[2]);
-//     setTracklist(list);
-//     setDuration(albumDuration)
-
-//   }
-
-//   const poster = new Poster(album, artist, image, year, date, tracklist, duration, genre);
-
-//   const [zoomLevel, setZoomLevel] = useState(100);
-
-//   const handleZoomChange = (event) => {
-//     const newZoomLevel = parseInt(event.target.value);
-//     setZoomLevel(newZoomLevel)
-//   }
 
   return (
     <div className="App">
-      {/* <input type="text" id="artist-input" required></input>
-        <input type="text" id="album-input" required></input>
-        <button onClick={handleUserInput}>SUBMIT</button>
-        <button onClick={saveJpeg}>Save</button>
-        <button>Template #1</button>
-        <button>Template #2</button>
-        <select id="zoom-select" value={zoomLevel} onChange={handleZoomChange}>
-          <option value="25">25%</option>
-          <option value="50">50%</option>
-          <option value="75">75%</option>
-          <option value="100">100%</option>
-        </select> */}
-        {/* <div className="content">
-          <div className="poster-editor-canvas">
-            <TemplateOne
-            zoom={zoomLevel}
-            year={year} album={album} image={image} artist={artist}
-            vibrant={data.vibrant} lightVibrant={data.lightVibrant} 
-            darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted} 
-            duration={duration} date={date} genreTag1={genreTag1}  genreTag2={genreTag2} genreTag3={genreTag3}
-            tracklist={tracklist}
-            />
-            <TemplateTwo  album={album} image={image} artist={artist}
-            vibrant={data.vibrant} lightVibrant={data.lightVibrant} 
-            darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted}
-            date={date} tracklist={poster.tracklist}/>
-          </div> 
-        </div> */}
-        {/* <AsideComponent></AsideComponent> */}
-        <Test/>
+      <header>
+        <h1>Header</h1>
+        <button onClick={saveJpeg}>Download</button>
+      </header>
+      <div className="container">
+        <Aside setAlbum={setAlbum} setArtist={setArtist} 
+               setImage={setImage} setDate={setDate} setYear={setYear}
+               setDuration={setDuration} setTracklist={setTracklist} setGenreTagOne={setGenreTagOne}
+               setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}/>
+        <main>
+          <Template year={year} album={album} artist={artist} 
+          image={image} date={date} duration={duration} tracklist={tracklist}
+          label={label} genreTagOne={genreTagOne} genreTagTwo={genreTagTwo}
+          genreTagThree={genreTagThree} vibrant={data.vibrant} lightVibrant={data.lightVibrant} 
+          darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted}/>
+        </main>
+      </div>
     </div>
   );
 }
