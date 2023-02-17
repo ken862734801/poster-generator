@@ -1,13 +1,12 @@
 .poster{
-    /* width:60%; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-transform: uppercase;
-    margin:40px auto;
     background-color: white;
     /* min-width:960px;
     min-height:1300px; */
-    max-width:960px;
-    max-height:1300px;
+    width:960px;
+    max-height:1400px;
+    margin:10px;
 }
 .poster-container{
     padding:20px 30px 20px 30px;
@@ -52,15 +51,17 @@ hr{
     display:flex;
 }
 ul{
-    max-width:400px;
+    max-width:350px;
+    /* border:1px solid red; */
 }
 ul:nth-of-type(even){
-    margin-left:30px;
+    margin-left:10px;
+    margin-right:10px;
 }
 li{
     list-style-type:none;
     margin:2px 0px;
-    /* font-size:0.95rem; */
+    /* font-size:0.85rem; */
 }
 .poster-text-container{
     margin-top:-12px;

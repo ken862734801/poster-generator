@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./search.css";
+import { Close } from "@material-ui/icons";
 
 const SearchComponent = (props) => {
     const { setAlbum, setArtist, setImage, setDate, setYear, setDuration, setTracklist, setGenreTagOne, setGenreTagTwo, setGenreTagThree} = props;
@@ -19,7 +20,7 @@ const SearchComponent = (props) => {
     };
 
     useEffect(() => {
-        getData("Tomoko Aran", "Fuyukukan");
+        getData("Tame Impala", "Currents");
     }, []);
 
     const handleInputChange = (event) => {
@@ -127,10 +128,16 @@ const SearchComponent = (props) => {
     }
 
     return (
-            <div className="search-container">
-                <input type="text" placeholder="Artist..." name="artist" value={inputValues.artist} onChange={handleInputChange}></input>
-                <input type="text" placeholder="Album..."name="album" value={inputValues.album} onChange={handleInputChange}></input>
-                <button onClick={()=> getData(inputValues.artist, inputValues.album)}>Search</button>
+            <div className="nav-content-container">
+                <div className="nav-content-header">
+                    <h5>Search</h5>
+                    <Close className="close-btn"/>
+                </div>
+                <div className="search-container">
+                    <input type="text" placeholder="Search artist..." name="artist" value={inputValues.artist} onChange={handleInputChange}></input>
+                    <input type="text" placeholder="Search album..."name="album" value={inputValues.album} onChange={handleInputChange}></input>
+                    <button onClick={()=> getData(inputValues.artist, inputValues.album)}>Search</button>
+                </div>
             </div>
     )
     

@@ -1,4 +1,30 @@
 aside{
-    max-width:300px;
-    border:1px solid red;
+    display:flex;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.aside-btn-container{
+    width:85px;
+    padding:5px;
+    border:1px solid rgb(231, 231, 231);
+    border-right:none;
+}
+.aside-btn{
+    padding:15px 5px;
+    border-radius:16px;
+    cursor: pointer;
+    text-align: center;
+    color:rgb(92, 92, 92);
+}
+.aside-btn:hover{
+    background-color: rgb(231, 231, 231);
+}
+.aside-btn > p{
+    font-size:0.75em;
+    font-weight: bold;
+    margin-top:5px;
+}
+.side-nav{
+    border:1px solid rgb(231, 231, 231);
+    border-right:none;
+    width:300px;
 }

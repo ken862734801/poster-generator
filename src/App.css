@@ -6,9 +6,7 @@
 body{
     min-height:100vh;
 }
-.App{
-    position: relative;
-}
+
 /* header{
     position: fixed;
     top:0;
@@ -24,18 +22,19 @@ body{
     display:flex;
 }
 main{
-    /* flex: 1; */
+    flex:1;
     width:80%;
     background-color: rgb(245, 245, 245);
     display:flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    padding: 80px 80px 100px 80px;
 }
 .media-query-warning{
     display:none;
 }
-@media screen and (max-width : 768px) {
+@media screen and (max-width : 1028px) {
     header{
         display:none;
     }
