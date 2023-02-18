@@ -1,4 +1,5 @@
-import "./template.css";
+// import "./template.css";
+import "./test.css";
 import React from "react";
 
 const Template = (props) =>{

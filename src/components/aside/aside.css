@@ -1,12 +1,17 @@
 aside{
     display:flex;
     font-family: Arial, Helvetica, sans-serif;
+    position:relative;
+    height:inherit;
 }
 .aside-btn-container{
     width:85px;
     padding:5px;
     border:1px solid rgb(231, 231, 231);
     border-right:none;
+    border-top:none;
+    position:fixed;
+    height:inherit;
 }
 .aside-btn{
     padding:15px 5px;
@@ -26,5 +31,29 @@ aside{
 .side-nav{
     border:1px solid rgb(231, 231, 231);
     border-right:none;
-    width:300px;
+    border-top:none;
+    width:325px;
+    position:absolute;
+    left:85px;
+    height:inherit;
+    padding:15px;
+}
+.side-nav-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:6px auto;
+    width:90%;
+}
+.side-nav-header  > p:nth-of-type(1){
+    color:rgb(92, 92, 92);
+    font-size: 1.1rem;
+    /* font-weight: bold; */
+}
+.close-btn{
+    color:rgb(228, 228, 228);
+    cursor: pointer;
+}
+.close-btn:hover{
+    color:rgb(66, 66, 66);
 }

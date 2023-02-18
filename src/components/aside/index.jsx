@@ -1,58 +1,182 @@
 import "./aside.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchComponent from "../search";
+import { Close } from "@material-ui/icons";
 import { Search, PaletteOutlined, ImageOutlined, TextFields, AddPhotoAlternateOutlined } from "@material-ui/icons";
 
 
 const Aside = (props) => {
-    const {setAlbum, setArtist, setImage, setDate, setYear, setTracklist ,setDuration, setGenreTagOne, setGenreTagTwo, setGenreTagThree } = props;
+    const {setMargin, setAlbum, setArtist, setImage, setDate, setYear, setTracklist ,setDuration, setGenreTagOne, setGenreTagTwo, setGenreTagThree } = props;
 
     const [showNav, setShowNav] = useState(true);
-    const [navContent, setNavContent] = useState("search");
+    const [navContent, setNavContent] = useState("Search");
+    const [contentHeader, setContentHeader] = useState("Search")
+
+    const getData = async (artist, album) => {
+        try{
+            const response = await fetch("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=" + process.env.REACT_APP_API_KEY + "&artist=" + artist + "&album=" + album + "&format=json");
+            if(!response.ok) throw console.log("Error!");
+                const data = await response.json();
+                    createPoster(data);
+        } catch (err){
+            console.error(err)
+        }
+    };
+
+    useEffect(() => {
+        getData("Tame Impala", "Currents");
+    }, []);
+    
+    const createPoster = (response) => {
+        setAlbum(response.album.name);
+        setArtist(response.album.artist);
+        setImage(response.album.image[5]["#text"].replace("/300x300", ""));
+
+        if(response.album.tracks){
+            let total = 0;
+            let durationArr = [];
+            for(let i = 0;  i < response.album.tracks.track.length; i++){
+                let duration = response.album.tracks.track[i].duration;
+                    durationArr.push(duration);
+            }
+            for(let i = 0; i < durationArr.length; i++){
+                total+=durationArr[i];
+                setDuration(new Date(total * 1000).toISOString().substr(11, 8));
+            }
+        } else{
+            console.log("The album duration was not found!");
+        };
+
+        let genreArr = [];
+        if(response.album.tags){
+            for(let i = 1; i < response.album.tags.tag.length; i++){
+                let tag = response.album.tags.tag[i].name;
+                genreArr.push(tag);
+                setGenreTagOne(genreArr[0]);
+                setGenreTagTwo(genreArr[1]);
+                setGenreTagThree(genreArr[2]);
+            }
+        }else{
+            console.log("The genre was not be found!")
+        };
+
+        if(response.album.wiki){
+            if(response.album.wiki.content){
+                console.log("Content is there!");
+                const dateRegex = /released on (\w+ \d{1,2} \w+ \d{4})/;
+                const match = (response.album.wiki.content).match(dateRegex);
+
+                if(match){
+                    const releaseDateStr = match[1];
+                    const newReleaseDate = new Date(releaseDateStr);
+                    const options = {year: "numeric", month: "short", day: "numeric" };
+                    const formattedDate = newReleaseDate.toLocaleDateString('en-US', options);
+                        console.log("Released on " + formattedDate);
+                        setDate(formattedDate);
+                        setYear(newReleaseDate.getFullYear())
+                } else {
+                    console.log("Released date was not found in content!")
+                }
+            }else if(!response.album.wiki.content){
+                if(response.album.wiki){
+                    let dateArr = response.album.wiki.published.split(",")[0].split(" ");
+                    let dateStr = `${dateArr[1]} ${dateArr[0]}, ${dateArr[2]}`;
+                        setDate(dateStr);
+                        setYear(dateArr[2]);
+                } else {
+                    console.log("Release date was not found in wiki!");
+                };
+            }
+        }else if(!response.album.wiki){
+            console.log("The wiki was not found!");
+        };
+
+        const divideTracklist = (arr, newArr) => {
+            if(arr.length <= 10){
+                newArr.push(arr)
+                    return newArr
+            }else if(arr.length > 10){
+                let left = arr.slice(0,9);
+                let right = arr.slice(9);
+                    newArr.push(left);
+                        return divideTracklist(right, newArr)
+            }
+        };
+
+        let tracklistArr = [];
+        if(response.album.tracks){
+            for(let i = 0; i < response.album.tracks.track.length; i++){
+                let tracks = response.album.tracks.track[i].name;
+                tracklistArr.push(`${i + 1}. ${tracks}`);
+                setTracklist(tracklistArr);
+            };
+            console.log(tracklistArr);
+    
+            let arr = [];
+            let newTracklist = divideTracklist(tracklistArr, arr);
+            console.log(newTracklist);
+            setTracklist(newTracklist);
+
+        }else if(!response.album.tracks){
+            console.log("Tracklist was not found!");
+        }
+    }
 
     const handleClick = (content) => {
         setShowNav(true);
+        setMargin(410);
         setNavContent(content);
+        setContentHeader(content);
     };
 
     const hideNav = () => {
         setShowNav(false);
-    }
+        setMargin(85);
+    };
+
+    useEffect(() => {
+        function handleResize() {
+          if (window.innerWidth < 1000) {
+            setShowNav(false);
+            setMargin(85);
+          }
+        }
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+    
 
     return (
         <aside>
             <div className="aside-btn-container">
-                <div className="aside-btn" onClick={() => handleClick("search")}>
+                <div className="aside-btn" onClick={() => handleClick("Search")}>
                     <Search/>
                     <p>Search</p>
                 </div>
-                <div className="aside-btn" onClick={() => handleClick("color")}>
-                    <PaletteOutlined/>
-                    <p>Color</p>
-                </div>
-                <div className="aside-btn" onClick={() => handleClick("image")}>
-                    <AddPhotoAlternateOutlined/>
-                    <p>Image</p>
-                </div>
-                <div className="aside-btn" onClick={() => handleClick("text")}>
+                <div className="aside-btn" onClick={() => handleClick("Text")}>
                     <TextFields/>
                     <p>Text</p>
                 </div>
+                <div className="aside-btn" onClick={() => handleClick("Image")}>
+                    <AddPhotoAlternateOutlined/>
+                    <p>Image</p>
+                </div>
+                <div className="aside-btn" onClick={() => handleClick("Color")}>
+                    <PaletteOutlined/>
+                    <p>Color</p>
+                </div>
             </div>
-            {/* <SearchComponent setAlbum={setAlbum} setArtist={setArtist} setImage={setImage} 
-            setDate={setDate} setYear={setYear} setDuration = {setDuration} setTracklist={setTracklist}
-            setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}>
-            </SearchComponent> */}
             {showNav && (
                 <div className="side-nav">
                     <div className="side-nav-header">
-                        <p onClick={() => hideNav()}>&#10006;</p>
+                        <p>{contentHeader}</p>
+                        <Close className="close-btn" fontSize="small"  onClick={() => hideNav()}/>
                     </div>
-                    {navContent === "search" && <SearchComponent setAlbum={setAlbum} setArtist={setArtist} setImage={setImage} 
+                    {navContent === "Search" && <SearchComponent setAlbum={setAlbum} setArtist={setArtist} setImage={setImage} 
                     setDate={setDate} setYear={setYear} setDuration = {setDuration} setTracklist={setTracklist}
                     setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}>
                     </SearchComponent>} 
-                    {navContent === "color" && <div>colors</div>}
+                    {/* {navContent === "Color" && <div></div>} */}
                 </div>
             )}
         </aside>

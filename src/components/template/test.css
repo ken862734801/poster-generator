@@ -1,0 +1,75 @@
+.poster{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    width:1000px;
+    min-height:1280px;
+    /* max-height:1400px; */
+    background-color: white;
+    margin: 180px 20px 100px 20px;
+}
+.poster-container{
+    padding:20px 30px 20px 30px;
+    background-color: white;
+}
+hr{
+    border:1px solid black !important;
+}
+.poster-release-year{
+    text-align:right;
+    font-size:2.5rem;
+}
+.poster-album-name{
+    font-size:4rem;
+}
+.poster-image-container{
+    height:50%;
+    width:100%;
+    margin: 0 auto;
+}
+.poster-image{
+    width:100%;
+    height:100%;
+}
+.poster-palette-container{
+    display:flex;
+    margin-bottom:8px;
+}
+.poster-palette-color{
+    height:14px;
+    width:20%;
+}
+.poster-body{
+    padding-top:10px;
+}
+.poster-body-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.poster-tracklist-container{
+    display:flex;
+}
+/* ul{
+    max-width:350px;
+} */
+ul:nth-of-type(2){
+    margin-left:10px;
+}
+ul:nth-of-type(3){
+    margin-left:-10px;
+}
+li{
+    list-style-type:none;
+    margin:2px 0px;
+    /* font-size:0.85rem; */
+}
+.poster-text-container{
+    margin-top:-12px;
+}
+.poster-information-container > div{
+    text-align:right;
+    margin:5px 0px;
+}
+.poster-artist{
+    font-size:2.5rem;
+}

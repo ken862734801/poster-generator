@@ -23,7 +23,7 @@ if(monthDay < 10){
 const dateString = `${monthName} ${dayNum}, ${currentYear}`;
 
 const saveJpeg = () => {
-  DomToImage.toJpeg(document.getElementById("poster-container"), {quality:0.95})
+  DomToImage.toJpeg(document.getElementById("poster-container"), {quality:1})
       .then(function(dataUrl){
           let link = document.createElement("a");
           link.download = "my-image-name.jpeg";
@@ -33,6 +33,7 @@ const saveJpeg = () => {
 };
 
 const App = () => {
+  const [margin, setMargin] = useState(410);
   const [album, setAlbum] = useState("Album");
   const [artist, setArtist] = useState("Artist");
   const [image, setImage] = useState("");
@@ -61,8 +62,8 @@ const App = () => {
         <Aside setAlbum={setAlbum} setArtist={setArtist} 
                setImage={setImage} setDate={setDate} setYear={setYear}
                setDuration={setDuration} setTracklist={setTracklist} setGenreTagOne={setGenreTagOne}
-               setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}/>
-        <main>
+               setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree} setMargin={setMargin}/>
+        <main style={{marginLeft: `${margin}px`}}>
           <Template year={year} album={album} artist={artist} 
           image={image} date={date} duration={duration} tracklist={tracklist}
           label={label} genreTagOne={genreTagOne} genreTagTwo={genreTagTwo}
@@ -71,7 +72,7 @@ const App = () => {
         </main>
       </div>
       <div className="media-query-warning">
-        <span>Please use desktop version</span>
+        <span>Please use a larger screen</span>
       </div>
     </div>
   );
