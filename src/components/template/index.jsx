@@ -16,7 +16,7 @@ const Template = (props) =>{
                 </div>
                 <div className="poster-body">
                     <div className="poster-palette-container">
-                    <div className="poster-palette-color" style={{backgroundColor: `${props.vibrant}`}}></div>
+                        <div className="poster-palette-color" style={{backgroundColor: `${props.vibrant}`}}></div>
                         <div className="poster-palette-color" style={{backgroundColor: `${props.lightVibrant}`}}></div>
                         <div className="poster-palette-color" style={{backgroundColor: `${props.darkVibrant}`}}></div>
                         <div className="poster-palette-color" style={{backgroundColor: `${props.muted}`}}></div>

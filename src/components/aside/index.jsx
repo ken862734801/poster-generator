@@ -1,6 +1,7 @@
 import "./aside.css";
 import { useEffect, useState } from "react";
 import SearchComponent from "../search";
+import ColorComponent from "../color";
 import { Close } from "@material-ui/icons";
 import { Search, PaletteOutlined, ImageOutlined, TextFields, AddPhotoAlternateOutlined } from "@material-ui/icons";
 
@@ -136,7 +137,7 @@ const Aside = (props) => {
 
     useEffect(() => {
         function handleResize() {
-          if (window.innerWidth < 1000) {
+          if (window.innerWidth < 1100) {
             setShowNav(false);
             setMargin(85);
           }
@@ -176,7 +177,7 @@ const Aside = (props) => {
                     setDate={setDate} setYear={setYear} setDuration = {setDuration} setTracklist={setTracklist}
                     setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}>
                     </SearchComponent>} 
-                    {/* {navContent === "Color" && <div></div>} */}
+                    {navContent === "Color" && <ColorComponent></ColorComponent>}
                 </div>
             )}
         </aside>

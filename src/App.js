@@ -23,10 +23,10 @@ if(monthDay < 10){
 const dateString = `${monthName} ${dayNum}, ${currentYear}`;
 
 const saveJpeg = () => {
-  DomToImage.toJpeg(document.getElementById("poster-container"), {quality:1})
+  DomToImage.toPng(document.getElementById("poster-container"), {quality:1})
       .then(function(dataUrl){
           let link = document.createElement("a");
-          link.download = "my-image-name.jpeg";
+          link.download = "my-image-name.png";
           link.href = dataUrl;
           link.click();
       })
@@ -54,7 +54,7 @@ const App = () => {
     <div className="App">
       <header>
         <div className="header-container">
-          <h1>Header</h1>
+          <h1>poster.fm</h1>
           <button onClick={saveJpeg}>Download</button>
         </div>
       </header>

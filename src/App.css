@@ -28,7 +28,26 @@ header{
     display:flex;
     align-items: center;
     justify-content: space-between;
-    border:1px solid red;
+    font-family: Arial, Helvetica, sans-serif;
+    padding:10px;
+    /* border:1px solid red; */
+}
+.header-container > h1{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color:rgb(66, 66, 66);
+}
+.header-container > button{
+    padding:12px 5px;
+    width:125px;
+    border-radius:16px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+    color:rgb(66, 66, 66);
+}
+.header-container > button:hover{
+    background-color: rgb(230, 230, 230);
 }
 /* header{
     position: fixed;
@@ -56,9 +75,12 @@ main{
     display:flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
     overflow-y: auto;
+    /* 100 @.75 */
+    /* padding-top:200px; */
+    /* 400 @ 1 */
     padding-top:400px;
+    /* zoom:0.60; */
 }
 .media-query-warning{
     display:none;

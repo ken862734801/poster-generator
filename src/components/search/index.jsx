@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./search.css";
-import { Close } from "@material-ui/icons";
+import SearchBar from "../searchbar";
+import { Close, Search } from "@material-ui/icons";
 
 const SearchComponent = (props) => {
     const { setShowNav, setAlbum, setArtist, setImage, setDate, setYear, setDuration, setTracklist, setGenreTagOne, setGenreTagTwo, setGenreTagThree} = props;
@@ -19,11 +20,12 @@ const SearchComponent = (props) => {
         }
     };
 
-    const handleInputChange = (event) => {
+    const handleInputChange = (e) => {
         setInputValues({
             ...inputValues,
-            [event.target.name]: event.target.value,
-        })
+            [e.target.name]: e.target.value,
+        });
+        console.log(inputValues);
     };
 
     // getData("Tame Impala", "Currents");
@@ -127,9 +129,11 @@ const SearchComponent = (props) => {
         
             <div className="nav-content-container">
                 <div className="search-container">
-                    <input type="text" placeholder="Search artist..." name="artist" value={inputValues.artist} onChange={handleInputChange}></input>
-                    <input type="text" placeholder="Search album..."name="album" value={inputValues.album} onChange={handleInputChange}></input>
-                    <button onClick={()=> getData(inputValues.artist, inputValues.album)}>Search</button>
+                    <SearchBar nameText = "artist" placeholderText = "Search Artist"/>
+                    <SearchBar nameText = "album" placeholderText = "Search Album"/>
+                    {/* <input className="searchbar" type="text" placeholder="" name="artist" value={inputValues.artist} onChange={handleInputChange}></input>
+                    <input className="searchbar" type="text" placeholder=""name="album" value={inputValues.album} onChange={handleInputChange}></input> */}
+                    <button onClick={()=> getData(inputValues.artist, inputValues.album)}>Submit</button>
                 </div>
             </div>
     )

@@ -19,14 +19,24 @@
     align-items: center;
     flex-direction: column;
 }
-input[type=text]{
+.searchbar{
     width:100%;
-    border:2px solid rgb(212, 212, 212);
-    border-radius:32px;
-    padding:8px 10px;
-    margin:5px 0px;
+    border:none;
+    background-color: rgb(240, 240, 240);
+    border-radius:8px;
+    padding:10px 10px;
+    margin:5px 10px;
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 ::placeholder{
-    color:rgb(199, 199, 199);
+    color:rgb(150, 150, 150);
+}
+.search-container > button{
+    border: none;
+    border-radius: 8px;
+    padding:12px;
+    margin:10px 0px;
+    width:125px;
+    cursor:pointer;
 }
