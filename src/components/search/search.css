@@ -19,6 +19,12 @@
     align-items: center;
     flex-direction: column;
 }
+.search-container > p{
+    width:95%;
+    color:rgb(150, 150, 150);
+    font-size:0.95em;
+    margin-bottom:10px;
+}
 .searchbar{
     width:100%;
     border:none;
@@ -32,11 +38,17 @@
 ::placeholder{
     color:rgb(150, 150, 150);
 }
+
 .search-container > button{
-    border: none;
-    border-radius: 8px;
-    padding:12px;
-    margin:10px 0px;
+    padding:12px 5px;
     width:125px;
-    cursor:pointer;
+    border-radius:12px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+    color:rgb(66, 66, 66);
+    margin:10px 0px;
+}
+.search-container > button:hover{
+    background-color: rgb(230, 230, 230);
 }

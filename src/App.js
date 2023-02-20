@@ -55,7 +55,7 @@ const App = () => {
       <header>
         <div className="header-container">
           <h1>poster.fm</h1>
-          <button onClick={saveJpeg}>Download</button>
+          <button onClick={saveJpeg}>DOWNLOAD</button>
         </div>
       </header>
       <div className="container">
@@ -72,7 +72,10 @@ const App = () => {
         </main>
       </div>
       <div className="media-query-warning">
+        <h1>poster.fm</h1>
         <span>Please use a larger screen</span>
+        <p>Poster.fm is currently only supported on notebooks, desktops, and tablets.</p>
+        <p>Switch to a device with a larger screen to view this page.</p>
       </div>
     </div>
   );

@@ -129,11 +129,12 @@ const SearchComponent = (props) => {
         
             <div className="nav-content-container">
                 <div className="search-container">
-                    <SearchBar nameText = "artist" placeholderText = "Search Artist"/>
-                    <SearchBar nameText = "album" placeholderText = "Search Album"/>
+                <p>Enter the artist and album name for the poster you wish to create.</p>
+                    <SearchBar inputValues={inputValues} setInputValues={setInputValues} nameText = "artist" placeholderText = "Search Artist"/>
+                    <SearchBar inputValues={inputValues} setInputValues={setInputValues}  nameText = "album" placeholderText = "Search Album"/>
                     {/* <input className="searchbar" type="text" placeholder="" name="artist" value={inputValues.artist} onChange={handleInputChange}></input>
                     <input className="searchbar" type="text" placeholder=""name="album" value={inputValues.album} onChange={handleInputChange}></input> */}
-                    <button onClick={()=> getData(inputValues.artist, inputValues.album)}>Submit</button>
+                    <button onClick={()=> getData(inputValues.artist, inputValues.album)}>SUBMIT</button>
                 </div>
             </div>
     )
