@@ -28,3 +28,9 @@
     visibility:visible;
     font-size: 1rem !important;
 }
+.hidden{
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
+}

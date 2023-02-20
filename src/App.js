@@ -22,7 +22,7 @@ if(monthDay < 10){
 
 const dateString = `${monthName} ${dayNum}, ${currentYear}`;
 
-const saveJpeg = () => {
+const savePng = () => {
   DomToImage.toPng(document.getElementById("poster-container"), {quality:1})
       .then(function(dataUrl){
           let link = document.createElement("a");
@@ -47,7 +47,18 @@ const App = () => {
   const [genreTagOne, setGenreTagOne] = useState("Genre");
   const [genreTagTwo, setGenreTagTwo] = useState("Genre");
   const [genreTagThree, setGenreTagThree] = useState("Genre");
+
+  const [colorOne, setColorOne] = useState("");
+  const [colorTwo, setColorTwo] = useState("");
+  const [colorThree, setColorThree] = useState("");
+  const [colorFour, setColorFour] = useState("");
+  const [colorFive, setColorFive] = useState("");
   const {data, loading, error} = usePalette(image);
+
+  useEffect(()=> {
+    setColorOne(data.vibrant);
+  }, [image])
+
 
 
   return (
@@ -55,7 +66,7 @@ const App = () => {
       <header>
         <div className="header-container">
           <h1>poster.fm</h1>
-          <button onClick={saveJpeg}>DOWNLOAD</button>
+          <button onClick={savePng}>DOWNLOAD</button>
         </div>
       </header>
       <div className="container">

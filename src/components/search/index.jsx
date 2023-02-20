@@ -20,14 +20,6 @@ const SearchComponent = (props) => {
         }
     };
 
-    const handleInputChange = (e) => {
-        setInputValues({
-            ...inputValues,
-            [e.target.name]: e.target.value,
-        });
-        console.log(inputValues);
-    };
-
     // getData("Tame Impala", "Currents");
     
     const createPoster = (response) => {
@@ -125,17 +117,28 @@ const SearchComponent = (props) => {
         }
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        getData(inputValues.artist, inputValues.album);
+        resetForm();
+    };
+
+    const resetForm = () => {
+        inputValues.artist = "";
+        inputValues.album = "";
+    };
+
     return (
         
             <div className="nav-content-container">
-                <div className="search-container">
+                <form className="search-container" onSubmit={handleSubmit}>
                 <p>Enter the artist and album name for the poster you wish to create.</p>
                     <SearchBar inputValues={inputValues} setInputValues={setInputValues} nameText = "artist" placeholderText = "Search Artist"/>
                     <SearchBar inputValues={inputValues} setInputValues={setInputValues}  nameText = "album" placeholderText = "Search Album"/>
                     {/* <input className="searchbar" type="text" placeholder="" name="artist" value={inputValues.artist} onChange={handleInputChange}></input>
                     <input className="searchbar" type="text" placeholder=""name="album" value={inputValues.album} onChange={handleInputChange}></input> */}
-                    <button onClick={()=> getData(inputValues.artist, inputValues.album)}>SUBMIT</button>
-                </div>
+                    <button type="submit">SUBMIT</button>
+                </form>
             </div>
     )
     

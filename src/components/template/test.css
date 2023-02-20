@@ -13,7 +13,8 @@
     background-color: white;
 }
 hr{
-    border:1px solid black !important;
+    border:1px solid black;
+    background-color: black;
 }
 .poster-release-year{
     text-align:right;
