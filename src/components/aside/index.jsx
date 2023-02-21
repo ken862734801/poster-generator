@@ -8,7 +8,7 @@ import { Search, PaletteOutlined, ImageOutlined, TextFields, AddPhotoAlternateOu
 
 
 const Aside = (props) => {
-    const {setMargin, album, setAlbum, setArtist, setImage, setDate, year, setYear, setTracklist ,duration, setDuration, setGenreTagOne, setGenreTagTwo, setGenreTagThree } = props;
+    const {setMargin, album, setAlbum, artist, setArtist, setImage, date, setDate, year, setYear, setTracklist ,duration, setDuration, label, setLabel, genreTagOne,setGenreTagOne, genreTagTwo, setGenreTagTwo, genreTagThree, setGenreTagThree } = props;
 
     const [showNav, setShowNav] = useState(true);
     const [navContent, setNavContent] = useState("Search");
@@ -26,7 +26,7 @@ const Aside = (props) => {
     };
 
     useEffect(() => {
-        getData("Tame Impala", "Currents");
+        getData("Tomoko Aran", "Fuyukukan");
     }, []);
     
     const createPoster = (response) => {
@@ -179,7 +179,9 @@ const Aside = (props) => {
                     setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}>
                     </SearchComponent>} 
                     {navContent === "Color" && <ColorComponent></ColorComponent>}
-                    {navContent === "Text" && <TextComponent year={year} setYear={setYear} album={album} setAlbum={setAlbum} duration={duration} setDuration={setDuration}></TextComponent>}
+                    {navContent === "Text" && <TextComponent year={year} setYear={setYear} album={album} setAlbum={setAlbum} artist={artist}
+                    setArtist={setArtist} date={date} setDate={setDate} duration={duration} label={label} setLabel={setLabel} setDuration={setDuration}
+                    genreTagOne={genreTagOne} genreTagTwo={genreTagTwo} genreTagThree={genreTagThree}></TextComponent>}
                 </div>
             )}
         </aside>

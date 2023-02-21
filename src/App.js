@@ -65,15 +65,15 @@ const App = () => {
     <div className="App">
       <header>
         <div className="header-container">
-          <a href=""><h1>poster.fm</h1></a>
+          <a href=""><h1>Poster Generator</h1></a>
           <button onClick={savePng}>DOWNLOAD</button>
         </div>
       </header>
       <div className="container">
-        <Aside album = {album} setAlbum={setAlbum} setArtist={setArtist} 
-               setImage={setImage} setDate={setDate} year={year} setYear={setYear} duration={duration}
-               setDuration={setDuration} setTracklist={setTracklist} setGenreTagOne={setGenreTagOne}
-               setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree} setMargin={setMargin}/>
+        <Aside album = {album} setAlbum={setAlbum} artist={artist} setArtist={setArtist} 
+               setImage={setImage} date={date} setDate={setDate} year={year} setYear={setYear} duration={duration}
+               setDuration={setDuration} label={label} setLabel = {setLabel} setTracklist={setTracklist} genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne}
+              genreTagTwo={genreTagTwo} setGenreTagTwo={setGenreTagTwo} genreTagThree={genreTagThree} setGenreTagThree={setGenreTagThree} setMargin={setMargin}/>
         <main style={{marginLeft: `${margin}px`}}>
           <Template year={year} album={album} artist={artist} 
           image={image} date={date} duration={duration} tracklist={tracklist}
