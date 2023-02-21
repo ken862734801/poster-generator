@@ -13,6 +13,16 @@ const ColorComponent = () => {
 
     return (
         <div className="nav-content-container">
+            <div className="background-color-container">
+                    <input type="color"></input>
+                    <label htmlFor=""></label>
+                    <input type="text"></input>
+            </div>
+            <div className="font-color-container">
+                    <input type="color"></input>
+                    <label htmlFor=""></label>
+                    <input type="text"></input>
+            </div>
             <div className="palette-input-container">
                 <div className="palette-input">
                     <input type="color"></input>

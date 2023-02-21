@@ -132,7 +132,6 @@ const SearchComponent = (props) => {
         
             <div className="nav-content-container">
                 <form className="search-container" onSubmit={handleSubmit}>
-                <p>Enter the artist and album name for the poster you wish to create.</p>
                     <SearchBar inputValues={inputValues} setInputValues={setInputValues} nameText = "artist" placeholderText = "Search Artist"/>
                     <SearchBar inputValues={inputValues} setInputValues={setInputValues}  nameText = "album" placeholderText = "Search Album"/>
                     {/* <input className="searchbar" type="text" placeholder="" name="artist" value={inputValues.artist} onChange={handleInputChange}></input>

@@ -50,7 +50,7 @@ aside{
 .side-nav-header  > p:nth-of-type(1){
     color:rgb(100, 100, 100);
     font-size: 1.1rem;
-    /* font-weight: bold; */
+    font-weight: bold;
 }
 .close-btn{
     color:rgb(228, 228, 228);

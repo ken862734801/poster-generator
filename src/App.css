@@ -32,10 +32,12 @@ header{
     padding:10px;
     /* border:1px solid red; */
 }
-.header-container > h1{
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    color:rgb(66, 66, 66);
+.header-container > a{
+    text-decoration: none;
+    color:rgb(88, 88, 88);
+}
+.header-container > a > h1{
+    font-size: 1.75rem;
 }
 .header-container > button{
     padding:12px 5px;

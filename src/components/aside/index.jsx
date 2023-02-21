@@ -2,12 +2,13 @@ import "./aside.css";
 import { useEffect, useState } from "react";
 import SearchComponent from "../search";
 import ColorComponent from "../color";
+import TextComponent from "../text";
 import { Close } from "@material-ui/icons";
 import { Search, PaletteOutlined, ImageOutlined, TextFields, AddPhotoAlternateOutlined } from "@material-ui/icons";
 
 
 const Aside = (props) => {
-    const {setMargin, setAlbum, setArtist, setImage, setDate, setYear, setTracklist ,setDuration, setGenreTagOne, setGenreTagTwo, setGenreTagThree } = props;
+    const {setMargin, album, setAlbum, setArtist, setImage, setDate, year, setYear, setTracklist ,duration, setDuration, setGenreTagOne, setGenreTagTwo, setGenreTagThree } = props;
 
     const [showNav, setShowNav] = useState(true);
     const [navContent, setNavContent] = useState("Search");
@@ -178,6 +179,7 @@ const Aside = (props) => {
                     setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}>
                     </SearchComponent>} 
                     {navContent === "Color" && <ColorComponent></ColorComponent>}
+                    {navContent === "Text" && <TextComponent year={year} setYear={setYear} album={album} setAlbum={setAlbum} duration={duration} setDuration={setDuration}></TextComponent>}
                 </div>
             )}
         </aside>

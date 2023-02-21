@@ -10,7 +10,7 @@
     color:rgb(92, 92, 92);
 }
 .searchbar-container > input{
-    font-size:0.95rem;
+    font-size:0.90rem;
     color:rgb(92, 92, 92);
     border:none;
     padding:3px 5px 3px 5px;
@@ -26,7 +26,8 @@
 .clear-btn{
     cursor:pointer;
     visibility:visible;
-    font-size: 1rem !important;
+    font-size: 1.3rem !important;
+    padding-right:5px;
 }
 .hidden{
     visibility: hidden;

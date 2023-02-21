@@ -65,13 +65,13 @@ const App = () => {
     <div className="App">
       <header>
         <div className="header-container">
-          <h1>poster.fm</h1>
+          <a href=""><h1>poster.fm</h1></a>
           <button onClick={savePng}>DOWNLOAD</button>
         </div>
       </header>
       <div className="container">
-        <Aside setAlbum={setAlbum} setArtist={setArtist} 
-               setImage={setImage} setDate={setDate} setYear={setYear}
+        <Aside album = {album} setAlbum={setAlbum} setArtist={setArtist} 
+               setImage={setImage} setDate={setDate} year={year} setYear={setYear} duration={duration}
                setDuration={setDuration} setTracklist={setTracklist} setGenreTagOne={setGenreTagOne}
                setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree} setMargin={setMargin}/>
         <main style={{marginLeft: `${margin}px`}}>
