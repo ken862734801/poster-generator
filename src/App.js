@@ -49,17 +49,22 @@ const App = () => {
   const [genreTagTwo, setGenreTagTwo] = useState("Genre");
   const [genreTagThree, setGenreTagThree] = useState("Genre");
 
-  const [colorOne, setColorOne] = useState("");
-  const [colorTwo, setColorTwo] = useState("");
+  const {data, loading, error} = usePalette(image);
+  const [colorOne, setColorOne] = useState(data.vibrant);
+  const [colorTwo, setColorTwo] = useState();
   const [colorThree, setColorThree] = useState("");
   const [colorFour, setColorFour] = useState("");
   const [colorFive, setColorFive] = useState("");
-  const {data, loading, error} = usePalette(image);
 
-  useEffect(()=> {
+useEffect(() => {
+  if (data) {
     setColorOne(data.vibrant);
-  }, [image])
-
+    setColorTwo(data.lightVibrant);
+    setColorThree(data.darkVibrant);
+    setColorFour(data.muted);
+    setColorFive(data.lightMuted);
+  }
+}, [data]);
 
 
   return (
@@ -74,13 +79,14 @@ const App = () => {
           <Aside album = {album} setAlbum={setAlbum} artist={artist} setArtist={setArtist} 
                 setImage={setImage} date={date} setDate={setDate} year={year} setYear={setYear} duration={duration}
                 setDuration={setDuration} label={label} setLabel = {setLabel} setTracklist={setTracklist} genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne}
-                genreTagTwo={genreTagTwo} setGenreTagTwo={setGenreTagTwo} genreTagThree={genreTagThree} setGenreTagThree={setGenreTagThree} setMargin={setMargin}/>
+                genreTagTwo={genreTagTwo} setGenreTagTwo={setGenreTagTwo} genreTagThree={genreTagThree} setGenreTagThree={setGenreTagThree} setMargin={setMargin}
+                colorOne={colorOne} setColorOne ={setColorOne} colorTwo={colorTwo} colorThree = {colorThree} colorFour={colorFour} colorFive={colorFive}/>
           <main style={{marginLeft: `${margin}px`}}>
             <Template year={year} album={album} artist={artist} 
             image={image} date={date} duration={duration} tracklist={tracklist}
             label={label} genreTagOne={genreTagOne} genreTagTwo={genreTagTwo}
-            genreTagThree={genreTagThree} vibrant={data.vibrant} lightVibrant={data.lightVibrant} 
-            darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted}/>
+            genreTagThree={genreTagThree} vibrant={colorOne} lightVibrant={colorTwo} 
+            darkVibrant={colorThree} muted={colorFour} lightMuted={colorFive}/>
           <ZoomButton/>
           </main>
         </div>

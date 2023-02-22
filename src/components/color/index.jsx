@@ -1,55 +1,61 @@
 import "./color.css";
 
 
-const ColorComponent = () => {
-    const inputs = document.querySelectorAll('input[type="color"]');
-    const palettes = document.querySelectorAll(".poster-palette-color");
+const ColorComponent = (props) => {
 
-    inputs.forEach((input, index) => {
-        input.addEventListener('input', () => {
-        palettes[index].style.backgroundColor = input.value;
-        });
-    });
+    const { colorOne, setColorOne, colorTwo, setColorTwo, 
+            colorThree, setColorThree, colorFour, setColorFour, 
+            setColorFive, colorFive} = props;
+
+
+    const handleColorChange = (e) => {
+        const {name, value } = e.target;
+        if(e.target.type === "text"){
+            switch (name){
+                case "colorOne":
+                    setColorOne(value);
+                    break;
+                default:
+                    break;
+            }
+        } else if (e.target.type === "color"){
+            switch(name){
+                case "colorOne":
+                    setColorOne(value);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     return (
         <div className="nav-content-container">
-            <div className="background-color-container">
-                    <input type="color"></input>
-                    <label htmlFor=""></label>
-                    <input type="text"></input>
-            </div>
-            <div className="font-color-container">
-                    <input type="color"></input>
-                    <label htmlFor=""></label>
-                    <input type="text"></input>
-            </div>
-            <div className="palette-input-container">
                 <div className="palette-input">
-                    <input type="color"></input>
+                    <input type="color" name="colorOne" defaultValue={colorOne} onChange={handleColorChange}></input>
                     <label htmlFor=""></label>
-                    <input type="text"></input>
+                    <input type="text" name="colorOne" defaultValue={colorOne} onChange={handleColorChange}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color"></input>
+                    <input type="color" value={colorTwo}></input>
                     <label htmlFor=""></label>
-                    <input type="text"></input>
+                    <input type="text" value={colorTwo}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color"></input>
+                    <input type="color" value={colorThree}></input>
                     <label htmlFor=""></label>
-                    <input type="text"></input>
+                    <input type="text" value={colorThree}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color"></input>
+                    <input type="color" value={colorFour}></input>
                     <label htmlFor=""></label>
-                    <input type="text"></input>
+                    <input type="text" value={colorFour}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color"></input>
+                    <input type="color" value={colorFive}></input>
                     <label htmlFor=""></label>
-                    <input type="text"></input> 
+                    <input type="text" value={colorFive}></input>
                 </div>
-            </div>
         </div>
     )
 }
