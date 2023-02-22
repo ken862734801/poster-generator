@@ -76,13 +76,10 @@ main{
     background-color: rgb(245, 245, 245);
     display:flex;
     justify-content: center;
-    align-items: center;
     overflow-y: auto;
     /* 100 @.75 */
     /* padding-top:200px; */
     /* 400 @ 1 */
-    padding-top:400px;
-    /* zoom:0.60; */
 }
 .media-query-warning{
     display:none;

@@ -31,3 +31,22 @@
     outline:none;
     cursor:pointer;
 }
+.text-input-container{
+    width:100%;
+    padding:6px 8px;
+    margin:5px 0px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(240, 240, 240);
+    border-radius:12px;
+}
+.text-input-container > input{
+    font-size:0.90rem;
+    color:rgb(92, 92, 92);
+    border:none;
+    padding:3px 5px 3px 5px;
+    flex: 1;
+    background-color: rgb(240, 240, 240);
+    outline:none;
+}

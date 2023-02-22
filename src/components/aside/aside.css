@@ -45,7 +45,8 @@ aside{
     align-items: center;
     margin:6px auto;
     padding:8px 0px;
-    width:90%;
+    width:95%;
+    /* border:1px solid red !important; */
 }
 .side-nav-header  > p:nth-of-type(1){
     color:rgb(100, 100, 100);

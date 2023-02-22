@@ -3,6 +3,7 @@ import "./App.css";
 import React, {useEffect, useState } from "react";
 import Aside from "./components/aside";
 import Template from "./components/template";
+import ZoomButton from "./components/zoom";
 import { usePalette } from 'react-palette';
 import DomToImage from 'dom-to-image';
 
@@ -70,24 +71,25 @@ const App = () => {
         </div>
       </header>
       <div className="container">
-        <Aside album = {album} setAlbum={setAlbum} artist={artist} setArtist={setArtist} 
-               setImage={setImage} date={date} setDate={setDate} year={year} setYear={setYear} duration={duration}
-               setDuration={setDuration} label={label} setLabel = {setLabel} setTracklist={setTracklist} genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne}
-              genreTagTwo={genreTagTwo} setGenreTagTwo={setGenreTagTwo} genreTagThree={genreTagThree} setGenreTagThree={setGenreTagThree} setMargin={setMargin}/>
-        <main style={{marginLeft: `${margin}px`}}>
-          <Template year={year} album={album} artist={artist} 
-          image={image} date={date} duration={duration} tracklist={tracklist}
-          label={label} genreTagOne={genreTagOne} genreTagTwo={genreTagTwo}
-          genreTagThree={genreTagThree} vibrant={data.vibrant} lightVibrant={data.lightVibrant} 
-          darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted}/>
-        </main>
-      </div>
-      <div className="media-query-warning">
-        <h1>poster.fm</h1>
-        <span>Please use a larger screen</span>
-        <p>Poster.fm is currently only supported on notebooks, desktops, and tablets.</p>
-        <p>Switch to a device with a larger screen to view this page.</p>
-      </div>
+          <Aside album = {album} setAlbum={setAlbum} artist={artist} setArtist={setArtist} 
+                setImage={setImage} date={date} setDate={setDate} year={year} setYear={setYear} duration={duration}
+                setDuration={setDuration} label={label} setLabel = {setLabel} setTracklist={setTracklist} genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne}
+                genreTagTwo={genreTagTwo} setGenreTagTwo={setGenreTagTwo} genreTagThree={genreTagThree} setGenreTagThree={setGenreTagThree} setMargin={setMargin}/>
+          <main style={{marginLeft: `${margin}px`}}>
+            <Template year={year} album={album} artist={artist} 
+            image={image} date={date} duration={duration} tracklist={tracklist}
+            label={label} genreTagOne={genreTagOne} genreTagTwo={genreTagTwo}
+            genreTagThree={genreTagThree} vibrant={data.vibrant} lightVibrant={data.lightVibrant} 
+            darkVibrant={data.darkVibrant} muted={data.muted} lightMuted={data.lightMuted}/>
+          <ZoomButton/>
+          </main>
+        </div>
+        <div className="media-query-warning">
+          <h1>poster.fm</h1>
+          <span>Please use a larger screen</span>
+          <p>Poster.fm is currently only supported on notebooks, desktops, and tablets.</p>
+          <p>Switch to a device with a larger screen to view this page.</p>
+        </div>
     </div>
   );
 }

@@ -3,15 +3,16 @@
     /* font-family: monospace; */
     text-transform: uppercase;
     width:1000px;
-    min-height:1280px;
+    min-height:1480px;
     /* max-height:1400px; */
-    background-color: white;
-    margin: 180px 20px 100px 20px;
+    margin: 70px 20px 10px 20px;
+    /* transform: scale(0.55); */
     /* margin top at -350px when zoom @.60 */
 }
 .poster-container{
     padding:20px 30px 20px 30px;
     background-color: white;
+    /* border:1px solid red; */
 }
 hr{
     border:1px solid black;
@@ -22,7 +23,7 @@ hr{
     font-size:2.5rem;
 }
 .poster-album-name{
-    font-size:4rem;
+    font-size:4.75rem;
     margin-bottom:4px;
 }
 .poster-image-container{
@@ -43,7 +44,8 @@ hr{
     width:20%;
 }
 .poster-body{
-    padding-top:10px;
+    padding-top:8px;
+    /* border:1px solid red; */
 }
 .poster-body-container{
     display:flex;
