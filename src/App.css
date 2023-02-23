@@ -63,7 +63,7 @@ header{
     display:flex;
 } */
 .container{
-    margin-top:45px;
+    padding-top:45px;
     height:inherit;
     display:flex;
 }
