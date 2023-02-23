@@ -56,15 +56,21 @@ const App = () => {
   const [colorFour, setColorFour] = useState("");
   const [colorFive, setColorFive] = useState("");
 
-useEffect(() => {
-  if (data) {
-    setColorOne(data.vibrant);
-    setColorTwo(data.lightVibrant);
-    setColorThree(data.darkVibrant);
-    setColorFour(data.muted);
-    setColorFive(data.lightMuted);
-  }
-}, [data]);
+  const [bgColor, setBgColor] = useState("white");
+  const [textColor, setTextColor] = useState("black");
+
+  useEffect(() => {
+    if (error) {
+      console.error(error);
+    }
+    if (data) {
+      setColorOne(data.vibrant);
+      setColorTwo(data.lightVibrant);
+      setColorThree(data.darkVibrant);
+      setColorFour(data.muted);
+      setColorFive(data.lightMuted);
+    }
+  }, [data, error]);
 
 
   return (
@@ -80,9 +86,10 @@ useEffect(() => {
                 setImage={setImage} date={date} setDate={setDate} year={year} setYear={setYear} duration={duration}
                 setDuration={setDuration} label={label} setLabel = {setLabel} setTracklist={setTracklist} genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne}
                 genreTagTwo={genreTagTwo} setGenreTagTwo={setGenreTagTwo} genreTagThree={genreTagThree} setGenreTagThree={setGenreTagThree} setMargin={setMargin}
-                colorOne={colorOne} setColorOne ={setColorOne} colorTwo={colorTwo} colorThree = {colorThree} colorFour={colorFour} colorFive={colorFive}/>
+                colorOne={colorOne} setColorOne ={setColorOne} setColorTwo = {setColorTwo} colorTwo={colorTwo} setColorThree = {setColorThree} colorThree = {colorThree} 
+                colorFour={colorFour} setColorFour={setColorFour} setColorFive={setColorFive} colorFive={colorFive}/>
           <main style={{marginLeft: `${margin}px`}}>
-            <Template year={year} album={album} artist={artist} 
+            <Template bgColor={bgColor} textColor={textColor} year={year} album={album} artist={artist} 
             image={image} date={date} duration={duration} tracklist={tracklist}
             label={label} genreTagOne={genreTagOne} genreTagTwo={genreTagTwo}
             genreTagThree={genreTagThree} vibrant={colorOne} lightVibrant={colorTwo} 
@@ -91,9 +98,9 @@ useEffect(() => {
           </main>
         </div>
         <div className="media-query-warning">
-          <h1>poster.fm</h1>
+          <h1>Poster Generator</h1>
           <span>Please use a larger screen</span>
-          <p>Poster.fm is currently only supported on notebooks, desktops, and tablets.</p>
+          <p>Poster Generator is currently only supported on notebooks, desktops, and tablets.</p>
           <p>Switch to a device with a larger screen to view this page.</p>
         </div>
     </div>

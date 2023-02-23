@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./color.css";
 
 
@@ -5,8 +6,16 @@ const ColorComponent = (props) => {
 
     const { colorOne, setColorOne, colorTwo, setColorTwo, 
             colorThree, setColorThree, colorFour, setColorFour, 
-            setColorFive, colorFive} = props;
+            setColorFive, colorFive } = props;
 
+    // const handleColorChange = (e) => {
+    //     const { name, value } = e.target;
+    //     if (e.target.type === "text") {
+    //       setColors({ ...colors, [name]: value });
+    //     } else if (e.target.type === "color") {
+    //       setColors({ ...colors, [name]: value });
+    //     }
+    //   };
 
     const handleColorChange = (e) => {
         const {name, value } = e.target;
@@ -15,6 +24,18 @@ const ColorComponent = (props) => {
                 case "colorOne":
                     setColorOne(value);
                     break;
+                case "colorTwo":
+                    setColorTwo(value);
+                    break;
+                case "colorThree":
+                    setColorThree(value);
+                    break;
+                case "colorFour":
+                    setColorFour(value);
+                    break;
+                case "colorFive":
+                    setColorFive(value);
+                    break;
                 default:
                     break;
             }
@@ -22,6 +43,18 @@ const ColorComponent = (props) => {
             switch(name){
                 case "colorOne":
                     setColorOne(value);
+                    break;
+                case "colorTwo":
+                    setColorTwo(value);
+                    break;
+                case "colorThree":
+                    setColorThree(value);
+                    break;
+                case "colorFour":
+                    setColorFour(value);
+                    break;
+                case "colorFive":
+                    setColorFive(value);
                     break;
                 default:
                     break;
@@ -37,24 +70,24 @@ const ColorComponent = (props) => {
                     <input type="text" name="colorOne" defaultValue={colorOne} onChange={handleColorChange}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color" value={colorTwo}></input>
+                    <input type="color" name="colorTwo" defaultValue={colorTwo} onChange={handleColorChange}></input>
                     <label htmlFor=""></label>
-                    <input type="text" value={colorTwo}></input>
+                    <input type="text"  name="colorTwo" defaultValue={colorTwo} onChange={handleColorChange}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color" value={colorThree}></input>
+                    <input type="color" name="colorThree" value={colorThree} onChange={handleColorChange}></input>
                     <label htmlFor=""></label>
-                    <input type="text" value={colorThree}></input>
+                    <input type="text" name="colorThree" value={colorThree} onChange={handleColorChange}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color" value={colorFour}></input>
+                    <input type="color" name="colorFour" value={colorFour} onChange={handleColorChange}></input>
                     <label htmlFor=""></label>
-                    <input type="text" value={colorFour}></input>
+                    <input type="text" name="colorFour" value={colorFour} onChange={handleColorChange}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color" value={colorFive}></input>
+                    <input type="color" name="colorFive" value={colorFive} onChange={handleColorChange}></input>
                     <label htmlFor=""></label>
-                    <input type="text" value={colorFive}></input>
+                    <input type="text" name="colorFive" value={colorFive} onChange={handleColorChange}></input>
                 </div>
         </div>
     )

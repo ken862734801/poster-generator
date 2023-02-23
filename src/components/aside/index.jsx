@@ -11,7 +11,7 @@ const Aside = (props) => {
     const {setMargin, album, setAlbum, artist, setArtist, setImage, date, setDate,
          year, setYear, setTracklist ,duration, setDuration, label, setLabel, genreTagOne, 
          setGenreTagOne, genreTagTwo, setGenreTagTwo, genreTagThree, setGenreTagThree, colorOne, setColorOne,
-         colorTwo, colorThree, colorFour, colorFive } = props;
+         setColorTwo, colorTwo, setColorThree, colorThree, setColorFour, colorFour, setColorFive, colorFive } = props;
 
     const [showNav, setShowNav] = useState(true);
     const [navContent, setNavContent] = useState("Search");
@@ -181,8 +181,9 @@ const Aside = (props) => {
                     setDate={setDate} setYear={setYear} setDuration = {setDuration} setTracklist={setTracklist}
                     setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}>
                     </SearchComponent>} 
-                    {navContent === "Color" && <ColorComponent colorOne = {colorOne} setColorOne={setColorOne} colorTwo = {colorTwo} 
-                    colorThree={colorThree} colorFour={colorFour} colorFive={colorFive}></ColorComponent>}
+                    {navContent === "Color" && <ColorComponent colorOne = {colorOne} setColorOne={setColorOne} colorTwo = {colorTwo} setColorTwo = {setColorTwo} 
+                    colorThree={colorThree} setColorThree={setColorThree} setColorFour = {setColorFour} colorFour={colorFour}  setColorFive={setColorFive} 
+                    colorFive={colorFive}></ColorComponent>}
                     {navContent === "Text" && <TextComponent year={year} setYear={setYear} album={album} setAlbum={setAlbum} artist={artist}
                     setArtist={setArtist} date={date} setDate={setDate} duration={duration} label={label} setLabel={setLabel} setDuration={setDuration}
                     genreTagOne={genreTagOne} genreTagTwo={genreTagTwo} genreTagThree={genreTagThree}></TextComponent>}

@@ -5,9 +5,9 @@ import React from "react";
 const Template = (props) =>{
     return (
         <div className="poster" id="poster">
-            <div className="poster-container" id="poster-container">
+            <div className="poster-container" style={{backgroundColor: props.bgColor, color: props.textColor}} id="poster-container">
                 <div className="poster-header">
-                    <hr></hr>
+                    <hr style={{backgroundColor: props.textColor, border: `1px solid ${props.textColor}`}}></hr>
                     <h2 className="poster-release-year">{props.year}</h2>
                     <h1 className="poster-album-name">{props.album}</h1>
                 </div>
