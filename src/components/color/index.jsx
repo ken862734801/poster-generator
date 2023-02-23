@@ -4,18 +4,9 @@ import "./color.css";
 
 const ColorComponent = (props) => {
 
-    const { colorOne, setColorOne, colorTwo, setColorTwo, 
+    const { textColor, setTextColor, bgColor, setBgColor, colorOne, setColorOne, colorTwo, setColorTwo, 
             colorThree, setColorThree, colorFour, setColorFour, 
-            setColorFive, colorFive } = props;
-
-    // const handleColorChange = (e) => {
-    //     const { name, value } = e.target;
-    //     if (e.target.type === "text") {
-    //       setColors({ ...colors, [name]: value });
-    //     } else if (e.target.type === "color") {
-    //       setColors({ ...colors, [name]: value });
-    //     }
-    //   };
+            setColorFive, colorFive, resetPalette } = props;
 
     const handleColorChange = (e) => {
         const {name, value } = e.target;
@@ -35,6 +26,12 @@ const ColorComponent = (props) => {
                     break;
                 case "colorFive":
                     setColorFive(value);
+                    break;
+                case "bgColor":
+                    setBgColor(value);
+                    break;
+                case "textColor":
+                    setTextColor(value);
                     break;
                 default:
                     break;
@@ -56,6 +53,12 @@ const ColorComponent = (props) => {
                 case "colorFive":
                     setColorFive(value);
                     break;
+                case "bgColor":
+                    setBgColor(value);
+                    break;
+                case "textColor":
+                    setTextColor(value);
+                    break;
                 default:
                     break;
             }
@@ -64,15 +67,28 @@ const ColorComponent = (props) => {
 
     return (
         <div className="nav-content-container">
-                <div className="palette-input">
-                    <input type="color" name="colorOne" defaultValue={colorOne} onChange={handleColorChange}></input>
+                <p>Background</p>
+                <div className="background-input">
+                    <input type="color" name="bgColor" value={bgColor} onChange={handleColorChange}></input>
                     <label htmlFor=""></label>
-                    <input type="text" name="colorOne" defaultValue={colorOne} onChange={handleColorChange}></input>
+                    <input type="text" name="bgColor" value={bgColor} onChange={handleColorChange}></input>
+                </div>
+                <p>Font</p>
+                <div className="font-input">
+                    <input type="color" name="textColor" value={textColor} onChange={handleColorChange}></input>
+                    <label htmlFor=""></label>
+                    <input type="text" name="textColor" value={textColor} onChange={handleColorChange}></input>
+                </div>
+                <p>Palette</p>
+                <div className="palette-input">
+                    <input type="color" name="colorOne" value={colorOne} onChange={handleColorChange}></input>
+                    <label htmlFor=""></label>
+                    <input type="text" name="colorOne" value={colorOne} onChange={handleColorChange}></input>
                 </div>
                 <div className="palette-input">
-                    <input type="color" name="colorTwo" defaultValue={colorTwo} onChange={handleColorChange}></input>
+                    <input type="color" name="colorTwo" value={colorTwo} onChange={handleColorChange}></input>
                     <label htmlFor=""></label>
-                    <input type="text"  name="colorTwo" defaultValue={colorTwo} onChange={handleColorChange}></input>
+                    <input type="text"  name="colorTwo" value={colorTwo} onChange={handleColorChange}></input>
                 </div>
                 <div className="palette-input">
                     <input type="color" name="colorThree" value={colorThree} onChange={handleColorChange}></input>
@@ -89,6 +105,7 @@ const ColorComponent = (props) => {
                     <label htmlFor=""></label>
                     <input type="text" name="colorFive" value={colorFive} onChange={handleColorChange}></input>
                 </div>
+                <button onClick={resetPalette}>RESET</button>
         </div>
     )
 }

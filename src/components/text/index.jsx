@@ -53,7 +53,7 @@ const TextComponent = (props) => {
                 </div>
                 <label>Year</label>
                 <div className="text-input-container">
-                    <input type="text" name="year" value={year} onChange={handleInputChange} />
+                    <input type="text" name="year" defaultValue={year} onChange={handleInputChange} />
                     {/* <select>
                         <option>1</option>
                         <option>2</option>
@@ -61,7 +61,7 @@ const TextComponent = (props) => {
                 </div>
                 <label>Album</label>
                 <div className="text-input-container">
-                    <input type="text" name="album" value={album} onChange={handleInputChange} />
+                    <input type="text" name="album" defaultValue={album} onChange={handleInputChange} />
                     {/* <input type="text" name="city" list="citynames"/>
                         <datalist id="citynames">
                             <option value="Boston"></option>
@@ -70,31 +70,31 @@ const TextComponent = (props) => {
                 </div>
                 <label>Artist</label>
                 <div className="text-input-container">
-                    <input type="text" name="artist" value={artist} onChange={handleInputChange} />
+                    <input type="text" name="artist" defaultValue={artist} onChange={handleInputChange} />
                 </div>
                 <label htmlFor="">Release Date:</label>
                 <div className="text-input-container">
-                    <input type="text" name="date" value={date} onChange={handleInputChange} />
+                    <input type="text" name="date" defaultValue={date} onChange={handleInputChange} />
                 </div>
                 <label htmlFor="">Duration:</label>
                 <div className="text-input-container">
-                    <input type="text" name="duration" value={duration} onChange={handleInputChange} />
+                    <input type="text" name="duration" defaultValue={duration} onChange={handleInputChange} />
                 </div>
                 <label>Label</label>
                 <div className="text-input-container">
-                    <input type="text" name="label" value={label} onChange={handleInputChange} />
+                    <input type="text" name="label" defaultValue={label} onChange={handleInputChange} />
                 </div>
                 <label>Genre #1</label>
                 <div className="text-input-container">
-                    <input type="text" value={genreTagOne}/>
+                    <input type="text" defaultValue={genreTagOne}/>
                 </div>
                 <label>Genre #2</label>
                 <div className="text-input-container">
-                    <input type="text" value={genreTagTwo}/>
+                    <input type="text" defaultValue={genreTagTwo}/>
                 </div>
                 <label>Genre #3</label>
                 <div className="text-input-container">
-                    <input type="text" value={genreTagThree}/>
+                    <input type="text" defaultValue={genreTagThree}/>
                 </div>
             </div>
         </div>

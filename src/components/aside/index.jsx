@@ -8,10 +8,10 @@ import { Search, PaletteOutlined, ImageOutlined, TextFields, AddPhotoAlternateOu
 
 
 const Aside = (props) => {
-    const {setMargin, album, setAlbum, artist, setArtist, setImage, date, setDate,
+    const { textColor, setTextColor, bgColor, setBgColor, setMargin, album, setAlbum, artist, setArtist, setImage, date, setDate,
          year, setYear, setTracklist ,duration, setDuration, label, setLabel, genreTagOne, 
          setGenreTagOne, genreTagTwo, setGenreTagTwo, genreTagThree, setGenreTagThree, colorOne, setColorOne,
-         setColorTwo, colorTwo, setColorThree, colorThree, setColorFour, colorFour, setColorFive, colorFive } = props;
+         setColorTwo, colorTwo, setColorThree, colorThree, setColorFour, colorFour, setColorFive, colorFive, resetPalette } = props;
 
     const [showNav, setShowNav] = useState(true);
     const [navContent, setNavContent] = useState("Search");
@@ -181,9 +181,11 @@ const Aside = (props) => {
                     setDate={setDate} setYear={setYear} setDuration = {setDuration} setTracklist={setTracklist}
                     setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} setGenreTagThree={setGenreTagThree}>
                     </SearchComponent>} 
-                    {navContent === "Color" && <ColorComponent colorOne = {colorOne} setColorOne={setColorOne} colorTwo = {colorTwo} setColorTwo = {setColorTwo} 
+
+                    {navContent === "Color" && <ColorComponent textColor={textColor} setTextColor={setTextColor} bgColor={bgColor} setBgColor={setBgColor} colorOne = {colorOne} setColorOne={setColorOne} colorTwo = {colorTwo} setColorTwo = {setColorTwo} 
                     colorThree={colorThree} setColorThree={setColorThree} setColorFour = {setColorFour} colorFour={colorFour}  setColorFive={setColorFive} 
-                    colorFive={colorFive}></ColorComponent>}
+                    colorFive={colorFive} resetPalette={resetPalette}></ColorComponent>}
+
                     {navContent === "Text" && <TextComponent year={year} setYear={setYear} album={album} setAlbum={setAlbum} artist={artist}
                     setArtist={setArtist} date={date} setDate={setDate} duration={duration} label={label} setLabel={setLabel} setDuration={setDuration}
                     genreTagOne={genreTagOne} genreTagTwo={genreTagTwo} genreTagThree={genreTagThree}></TextComponent>}
