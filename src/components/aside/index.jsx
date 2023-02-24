@@ -1,6 +1,7 @@
 import "./aside.css";
 import { useEffect, useState } from "react";
 import SearchComponent from "../search";
+import ImageComponent from "../image";
 import ColorComponent from "../color";
 import TextComponent from "../text";
 import { Close } from "@material-ui/icons";
@@ -8,7 +9,7 @@ import { Search, PaletteOutlined, ImageOutlined, TextFields, AddPhotoAlternateOu
 
 
 const Aside = (props) => {
-    const { textColor, setTextColor, bgColor, setBgColor, setMargin, album, setAlbum, artist, setArtist, setImage, date, setDate,
+    const {textColor, setTextColor, bgColor, setBgColor, setMargin, album, setAlbum, artist, setArtist, setImage, date, setDate,
          year, setYear, setTracklist ,duration, setDuration, label, setLabel, genreTagOne, 
          setGenreTagOne, genreTagTwo, setGenreTagTwo, genreTagThree, setGenreTagThree, colorOne, setColorOne,
          setColorTwo, colorTwo, setColorThree, colorThree, setColorFour, colorFour, setColorFive, colorFive, resetPalette } = props;
@@ -189,6 +190,8 @@ const Aside = (props) => {
                     {navContent === "Text" && <TextComponent year={year} setYear={setYear} album={album} setAlbum={setAlbum} artist={artist}
                     setArtist={setArtist} date={date} setDate={setDate} duration={duration} label={label} setLabel={setLabel} setDuration={setDuration}
                     genreTagOne={genreTagOne} genreTagTwo={genreTagTwo} genreTagThree={genreTagThree}></TextComponent>}
+
+                    {navContent === "Image" && <ImageComponent setImage={setImage}/>}
                 </div>
             )}
         </aside>

@@ -2,12 +2,12 @@
     font-family: Verdana, sans-serif;
     /* font-family: monospace; */
     text-transform: uppercase;
-    width:1000px;
+    width:1050px;
     min-height:1480px;
     /* max-height:1400px; */
     /* margin: 90px 10px 0px 10px; */
     margin-inline: auto;
-    margin-top:80px;
+    margin-top:40px;
     /* align-self: center; */
     /* transform: scale(0.55); */
     /* margin top at -350px when zoom @.60 */
@@ -27,10 +27,10 @@
 }
 .poster-album-name{
     font-size:4.5rem;
-    margin-bottom:4px;
+    margin-bottom:5px;
 }
 .poster-image-container{
-    height:900px;
+    height:960px;
     /* border:1px solid red; */
     width:100%;
     margin: 0 auto;
