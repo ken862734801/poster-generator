@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/poster-generator/static/css/main.ae24cd7d.css",
-    "main.js": "/poster-generator/static/js/main.aaed786a.js",
+    "main.js": "/poster-generator/static/js/main.8784db4f.js",
     "index.html": "/poster-generator/index.html",
     "main.ae24cd7d.css.map": "/poster-generator/static/css/main.ae24cd7d.css.map",
-    "main.aaed786a.js.map": "/poster-generator/static/js/main.aaed786a.js.map"
+    "main.8784db4f.js.map": "/poster-generator/static/js/main.8784db4f.js.map"
   },
   "entrypoints": [
     "static/css/main.ae24cd7d.css",
-    "static/js/main.aaed786a.js"
+    "static/js/main.8784db4f.js"
   ]
 }
