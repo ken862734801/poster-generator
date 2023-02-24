@@ -11,7 +11,7 @@ const SearchComponent = (props) => {
 
     const getData = async (artist, album) => {
         try{
-            const response = await fetch("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=" + process.env.REACT_APP_API_KEY + "&artist=" + artist + "&album=" + album + "&format=json");
+            const response = await fetch("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=" + process.env.REACT_APP_API_KEY + "&artist=" + artist + "&album=" + album + "&format=json");
             if(!response.ok) throw console.log("Error!");
                 const data = await response.json();
                     createPoster(data);
