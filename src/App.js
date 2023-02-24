@@ -3,7 +3,6 @@ import "./App.css";
 import React, {useEffect, useState } from "react";
 import Aside from "./components/aside";
 import Template from "./components/template";
-import ZoomButton from "./components/zoom";
 import { usePalette } from 'react-palette';
 import DomToImage from 'dom-to-image';
 
@@ -105,7 +104,6 @@ const App = () => {
             genreTagThree={genreTagThree} vibrant={colorOne} lightVibrant={colorTwo} 
             darkVibrant={colorThree} muted={colorFour} lightMuted={colorFive}/>
 
-          <ZoomButton/>
           </main>
         </div>
         <div className="media-query-warning">

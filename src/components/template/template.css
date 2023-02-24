@@ -13,7 +13,7 @@
     /* margin top at -350px when zoom @.60 */
 }
 .poster-container{
-    padding:20px 30px 20px 30px;
+    padding:25px 30px 20px 30px;
     background-color: white;
     height:inherit;
     /* border:1px solid red; */
@@ -23,7 +23,7 @@
 } */
 .poster-release-year{
     text-align:right;
-    font-size:2.75rem;
+    font-size:2.25rem;
 }
 .poster-album-name{
     font-size:4.5rem;

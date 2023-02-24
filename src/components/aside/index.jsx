@@ -30,7 +30,7 @@ const Aside = (props) => {
     };
 
     useEffect(() => {
-        getData("Tomoko Aran", "Fuyukukan");
+        getData("Bad Bunny", "Un Verano Sin Ti");
     }, []);
     
     const createPoster = (response) => {
@@ -189,7 +189,8 @@ const Aside = (props) => {
 
                     {navContent === "Text" && <TextComponent year={year} setYear={setYear} album={album} setAlbum={setAlbum} artist={artist}
                     setArtist={setArtist} date={date} setDate={setDate} duration={duration} label={label} setLabel={setLabel} setDuration={setDuration}
-                    genreTagOne={genreTagOne} genreTagTwo={genreTagTwo} genreTagThree={genreTagThree}></TextComponent>}
+                    genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} 
+                    genreTagTwo={genreTagTwo} genreTagThree={genreTagThree} setGenreTagThree = {setGenreTagThree}></TextComponent>}
 
                     {navContent === "Image" && <ImageComponent setImage={setImage}/>}
                 </div>

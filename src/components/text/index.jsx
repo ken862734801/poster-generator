@@ -1,10 +1,49 @@
 import "./text.css";
+import { useEffect, useState } from "react";
 
 const TextComponent = (props) => {
 
     const {year, setYear, album, setAlbum, artist, setArtist, date, setDate, duration, setDuration, label, setLabel, genreTagOne,
-    genreTagTwo, genreTagThree} = props;
+    setGenreTagOne, setGenreTagTwo ,genreTagTwo, setGenreTagThree ,genreTagThree} = props;
 
+    const [initialValues, setInitialValues] = useState({
+        defaultYear: year,
+        defaultAlbum: album,
+        defaultArtist: artist,
+        defaultDate: date,
+        defaultDuration: duration,
+        defaultLabel: label,
+        defaultGenreTagOne: genreTagOne,
+        defaultGenreTagTwo: genreTagTwo,
+        defaultGenreTagThree: genreTagThree
+    });
+
+    useEffect(() => {
+        setInitialValues({
+            defaultYear: year,
+            defaultAlbum: album,
+            defaultArtist: artist,
+            defaultDate: date,
+            defaultDuration: duration,
+            defaultLabel: label,
+            defaultGenreTagOne: genreTagOne,
+            defaultGenreTagTwo: genreTagTwo,
+            defaultGenreTagThree: genreTagThree
+        });
+    }, []);
+
+    const handleResetClick = () => {
+        setYear(initialValues.defaultYear);
+        setAlbum(initialValues.defaultAlbum);
+        setArtist(initialValues.defaultArtist);
+        setDate(initialValues.defaultDate);
+        setDuration(initialValues.defaultDuration);
+        setLabel(initialValues.defaultLabel);
+        setGenreTagOne(initialValues.defaultGenreTagOne);
+        setGenreTagTwo(initialValues.defaultGenreTagTwo);
+        setGenreTagThree(initialValues.defaultGenreTagThree);
+    };
+      
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         switch (name) {
@@ -26,15 +65,15 @@ const TextComponent = (props) => {
           case "label":
             setLabel(value);
             break;
-        //   case "genreTagOne":
-        //     setGenreTagOne(value);
-        //     break;
-        //   case "genreTagTwo":
-        //     setGenreTagTwo(value);
-        //     break;
-        //   case "genreTagThree":
-        //     setGenreTagThree(value);
-        //     break;
+          case "genreTagOne":
+            setGenreTagOne(value);
+            break;
+          case "genreTagTwo":
+            setGenreTagTwo(value);
+            break;
+          case "genreTagThree":
+            setGenreTagThree(value);
+            break;
           default:
             break;
         }
@@ -43,17 +82,17 @@ const TextComponent = (props) => {
     return (
         <div className="nav-content-container">
            <div className="text-container">
-                <label>Font</label>
+                {/* <label>Font</label>
                 <div className="text-select-container">
-                    <select defaultValue="Verdana">
+                    <select value="Verdana">
                         <option>Arial</option>
                         <option>Monospace</option>
                         <option value="Verdana">Verdana</option>
                     </select>
-                </div>
+                </div> */}
                 <label>Year</label>
                 <div className="text-input-container">
-                    <input type="text" name="year" defaultValue={year} onChange={handleInputChange} />
+                    <input type="text" name="year" value={year} onChange={handleInputChange} />
                     {/* <select>
                         <option>1</option>
                         <option>2</option>
@@ -61,7 +100,7 @@ const TextComponent = (props) => {
                 </div>
                 <label>Album</label>
                 <div className="text-input-container">
-                    <input type="text" name="album" defaultValue={album} onChange={handleInputChange} />
+                    <input type="text" name="album" value={album} onChange={handleInputChange} />
                     {/* <input type="text" name="city" list="citynames"/>
                         <datalist id="citynames">
                             <option value="Boston"></option>
@@ -70,33 +109,34 @@ const TextComponent = (props) => {
                 </div>
                 <label>Artist</label>
                 <div className="text-input-container">
-                    <input type="text" name="artist" defaultValue={artist} onChange={handleInputChange} />
+                    <input type="text" name="artist" value={artist} onChange={handleInputChange} />
                 </div>
                 <label htmlFor="">Release Date:</label>
                 <div className="text-input-container">
-                    <input type="text" name="date" defaultValue={date} onChange={handleInputChange} />
+                    <input type="text" name="date" value={date} onChange={handleInputChange} />
                 </div>
                 <label htmlFor="">Duration:</label>
                 <div className="text-input-container">
-                    <input type="text" name="duration" defaultValue={duration} onChange={handleInputChange} />
+                    <input type="text" name="duration" value={duration} onChange={handleInputChange} />
                 </div>
                 <label>Label</label>
                 <div className="text-input-container">
-                    <input type="text" name="label" defaultValue={label} onChange={handleInputChange} />
+                    <input type="text" name="label" value={label} onChange={handleInputChange} />
                 </div>
                 <label>Genre #1</label>
                 <div className="text-input-container">
-                    <input type="text" defaultValue={genreTagOne}/>
+                    <input type="text" name="genreTagOne" value={genreTagOne} onChange={handleInputChange}/>
                 </div>
                 <label>Genre #2</label>
                 <div className="text-input-container">
-                    <input type="text" defaultValue={genreTagTwo}/>
+                    <input type="text" name="genreTagTwo" value={genreTagTwo} onChange={handleInputChange}/>
                 </div>
                 <label>Genre #3</label>
                 <div className="text-input-container">
-                    <input type="text" defaultValue={genreTagThree}/>
+                    <input type="text" name="genreTagThree" value={genreTagThree} onChange={handleInputChange}/>
                 </div>
             </div>
+            <button onClick={handleResetClick}>Reset</button>
         </div>
     )
 }
