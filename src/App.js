@@ -108,7 +108,6 @@ const App = () => {
         </div>
         <div className="media-query-warning">
           <h1>Poster Generator</h1>
-          <span>Please use a larger screen</span>
           <p>Poster Generator is currently only supported on notebooks, desktops, and tablets.</p>
           <p>Switch to a device with a larger screen to view this page.</p>
         </div>

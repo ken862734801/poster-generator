@@ -49,4 +49,5 @@
     flex: 1;
     background-color: rgb(240, 240, 240);
     outline:none;
+    text-transform: capitalize;
 }

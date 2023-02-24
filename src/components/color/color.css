@@ -1,0 +1,3 @@
+.background-input > input, .font-input > input, .palette-input > input{
+    text-transform: uppercase;
+}

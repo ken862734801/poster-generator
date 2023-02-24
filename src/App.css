@@ -90,6 +90,19 @@ main{
         display:none;
     }
     .media-query-warning{
+        font-family: Arial, Helvetica, sans-serif;
         display:block;
+    }
+    .media-query-warning > h1{
+        font-size: 1.75rem;
+        color:rgb(88, 88, 88);
+        padding:10px;
+    }
+    .media-query-warning > p{
+        font-weight: bold;
+        font-size:0.9em;
+        color:rgb(129, 129, 129);
+        line-height: 2;
+        padding:10px;
     }
 }

@@ -13,6 +13,7 @@ const ImageComponent = (props) => {
     }
     return (
         <div>
+            <div></div>
             <input type="file" onChange={handleImageUpload}/>
         </div>
     )
