@@ -90,7 +90,7 @@ const App = () => {
       </header>
       <div className="container">
           <Aside textColor={textColor} setTextColor={setTextColor} bgColor={bgColor} setBgColor={setBgColor} album = {album} setAlbum={setAlbum} artist={artist} setArtist={setArtist} 
-                setImage={setImage} date={date} setDate={setDate} year={year} setYear={setYear} duration={duration}
+               image={image} setImage={setImage} date={date} setDate={setDate} year={year} setYear={setYear} duration={duration}
                 setDuration={setDuration} label={label} setLabel = {setLabel} setTracklist={setTracklist} genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne}
                 genreTagTwo={genreTagTwo} setGenreTagTwo={setGenreTagTwo} genreTagThree={genreTagThree} setGenreTagThree={setGenreTagThree} setMargin={setMargin}
                 colorOne={colorOne} setColorOne ={setColorOne} setColorTwo = {setColorTwo} colorTwo={colorTwo} setColorThree = {setColorThree} colorThree = {colorThree} 

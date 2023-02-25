@@ -24,10 +24,11 @@
 .poster-release-year{
     text-align:right;
     font-size:2.35rem;
+    margin-bottom:10px;
 }
 .poster-album-name{
     font-size:4.5rem;
-    margin-bottom:5px;
+    /* margin-bottom:5px; */
 }
 .poster-image-container{
     height:960px;

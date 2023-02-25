@@ -9,7 +9,7 @@ import { Search, PaletteOutlined, ImageOutlined, TextFields, AddPhotoAlternateOu
 
 
 const Aside = (props) => {
-    const {textColor, setTextColor, bgColor, setBgColor, setMargin, album, setAlbum, artist, setArtist, setImage, date, setDate,
+    const {textColor, setTextColor, bgColor, setBgColor, setMargin, album, setAlbum, artist, setArtist, image, setImage, date, setDate,
          year, setYear, setTracklist ,duration, setDuration, label, setLabel, genreTagOne, 
          setGenreTagOne, genreTagTwo, setGenreTagTwo, genreTagThree, setGenreTagThree, colorOne, setColorOne,
          setColorTwo, colorTwo, setColorThree, colorThree, setColorFour, colorFour, setColorFive, colorFive, resetPalette } = props;
@@ -30,7 +30,7 @@ const Aside = (props) => {
     };
 
     useEffect(() => {
-        getData("Bad Bunny", "Un Verano Sin Ti");
+        getData("SZA", "Ctrl");
     }, []);
     
     const createPoster = (response) => {
@@ -192,7 +192,7 @@ const Aside = (props) => {
                     genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} 
                     genreTagTwo={genreTagTwo} genreTagThree={genreTagThree} setGenreTagThree = {setGenreTagThree}></TextComponent>}
 
-                    {navContent === "Image" && <ImageComponent setImage={setImage}/>}
+                    {navContent === "Image" && <ImageComponent image={image} setImage={setImage}/>}
                 </div>
             )}
         </aside>
