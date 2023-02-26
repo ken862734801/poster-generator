@@ -1,8 +1,6 @@
 import "./text.css";
 import { useEffect, useState } from "react";
 
-let test =  [['1. Supermodel', '2. Love Galore', '3. Doves In the Wind', '4. Drew Barrymore', '5. Prom', '6. The Weekend', '7. Go Gina', '8. Garden (Say It Like Dat)', '9. Broken Clocks'], ['10. Anything', '11. Wavy (Interlude)', '12. Normal Girl', '13. Pretty Little Birds', '14. 20 Something']]
-
 const TextComponent = (props) => {
 
     const {year, setYear, album, setAlbum, artist, setArtist, date, setDate, duration, setDuration, label, setLabel, genreTagOne,
@@ -17,8 +15,9 @@ const TextComponent = (props) => {
         defaultLabel: label,
         defaultGenreTagOne: genreTagOne,
         defaultGenreTagTwo: genreTagTwo,
-        defaultGenreTagThree: genreTagThree
-    });
+        defaultGenreTagThree: genreTagThree,
+        defaultTracklist: JSON.parse(JSON.stringify(tracklist)) // create a new copy of the tracklist array
+      });
 
     useEffect(() => {
         setInitialValues({
@@ -30,8 +29,9 @@ const TextComponent = (props) => {
             defaultLabel: label,
             defaultGenreTagOne: genreTagOne,
             defaultGenreTagTwo: genreTagTwo,
-            defaultGenreTagThree: genreTagThree
-        });
+            defaultGenreTagThree: genreTagThree,
+            defaultTracklist: JSON.parse(JSON.stringify(tracklist))
+          });
     }, []);
 
     const handleResetClick = () => {
@@ -44,13 +44,14 @@ const TextComponent = (props) => {
         setGenreTagOne(initialValues.defaultGenreTagOne);
         setGenreTagTwo(initialValues.defaultGenreTagTwo);
         setGenreTagThree(initialValues.defaultGenreTagThree);
-    };
+        setTracklist(JSON.parse(JSON.stringify(initialValues.defaultTracklist)));
+      };
 
     const handleTracklistChange = (index, subIndex, value) => {
       setTracklist(prevTracklist => {
         const newTracklist = [...prevTracklist];
         newTracklist[index][subIndex] = value;
-        return newTracklist;
+          return newTracklist;
       });
     };
       
