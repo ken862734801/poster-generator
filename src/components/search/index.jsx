@@ -5,8 +5,7 @@ import { Close, Search } from "@material-ui/icons";
 
 const SearchComponent = (props) => {
     const { setShowNav, setAlbum, setArtist, setImage, setDate, setYear, setDuration, setTracklist, setGenreTagOne, setGenreTagTwo, setGenreTagThree} = props;
-
-
+;
    const [inputValues, setInputValues] = useState({artist: "", album: ""});
 
     const getData = async (artist, album) => {

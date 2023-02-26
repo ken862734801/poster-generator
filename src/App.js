@@ -91,7 +91,7 @@ const App = () => {
       <div className="container">
           <Aside textColor={textColor} setTextColor={setTextColor} bgColor={bgColor} setBgColor={setBgColor} album = {album} setAlbum={setAlbum} artist={artist} setArtist={setArtist} 
                image={image} setImage={setImage} date={date} setDate={setDate} year={year} setYear={setYear} duration={duration}
-                setDuration={setDuration} label={label} setLabel = {setLabel} setTracklist={setTracklist} genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne}
+                setDuration={setDuration} label={label} setLabel = {setLabel} tracklist={tracklist} setTracklist={setTracklist} genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne}
                 genreTagTwo={genreTagTwo} setGenreTagTwo={setGenreTagTwo} genreTagThree={genreTagThree} setGenreTagThree={setGenreTagThree} setMargin={setMargin}
                 colorOne={colorOne} setColorOne ={setColorOne} setColorTwo = {setColorTwo} colorTwo={colorTwo} setColorThree = {setColorThree} colorThree = {colorThree} 
                 colorFour={colorFour} setColorFour={setColorFour} setColorFive={setColorFive} colorFive={colorFive} resetPalette={resetPalette}/>

@@ -1,10 +1,12 @@
 import "./text.css";
 import { useEffect, useState } from "react";
 
+let test =  [['1. Supermodel', '2. Love Galore', '3. Doves In the Wind', '4. Drew Barrymore', '5. Prom', '6. The Weekend', '7. Go Gina', '8. Garden (Say It Like Dat)', '9. Broken Clocks'], ['10. Anything', '11. Wavy (Interlude)', '12. Normal Girl', '13. Pretty Little Birds', '14. 20 Something']]
+
 const TextComponent = (props) => {
 
     const {year, setYear, album, setAlbum, artist, setArtist, date, setDate, duration, setDuration, label, setLabel, genreTagOne,
-    setGenreTagOne, setGenreTagTwo ,genreTagTwo, setGenreTagThree ,genreTagThree} = props;
+    setGenreTagOne, setGenreTagTwo ,genreTagTwo, setGenreTagThree ,genreTagThree, tracklist, setTracklist} = props;
 
     const [initialValues, setInitialValues] = useState({
         defaultYear: year,
@@ -42,6 +44,14 @@ const TextComponent = (props) => {
         setGenreTagOne(initialValues.defaultGenreTagOne);
         setGenreTagTwo(initialValues.defaultGenreTagTwo);
         setGenreTagThree(initialValues.defaultGenreTagThree);
+    };
+
+    const handleTracklistChange = (index, subIndex, value) => {
+      setTracklist(prevTracklist => {
+        const newTracklist = [...prevTracklist];
+        newTracklist[index][subIndex] = value;
+        return newTracklist;
+      });
     };
       
     const handleInputChange = (event) => {
@@ -136,6 +146,17 @@ const TextComponent = (props) => {
                     <input type="text" name="genreTagThree" value={genreTagThree} onChange={handleInputChange}/>
                 </div>
             </div>
+            {tracklist.map((subArray, index) => (
+              <div key={index}>
+                {subArray.map((value, subIndex) => (
+                  <input
+                    key={subIndex}
+                    value={value}
+                    onChange={(e) => handleTracklistChange(index, subIndex, e.target.value)}
+                  />
+                ))}
+              </div>
+            ))}
             <button onClick={handleResetClick}>Reset</button>
         </div>
     )

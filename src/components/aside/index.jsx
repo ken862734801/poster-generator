@@ -10,7 +10,7 @@ import { Search, PaletteOutlined, ImageOutlined, TextFields, AddPhotoAlternateOu
 
 const Aside = (props) => {
     const {textColor, setTextColor, bgColor, setBgColor, setMargin, album, setAlbum, artist, setArtist, image, setImage, date, setDate,
-         year, setYear, setTracklist ,duration, setDuration, label, setLabel, genreTagOne, 
+         year, setYear, tracklist, setTracklist ,duration, setDuration, label, setLabel, genreTagOne, 
          setGenreTagOne, genreTagTwo, setGenreTagTwo, genreTagThree, setGenreTagThree, colorOne, setColorOne,
          setColorTwo, colorTwo, setColorThree, colorThree, setColorFour, colorFour, setColorFive, colorFive, resetPalette } = props;
 
@@ -190,7 +190,8 @@ const Aside = (props) => {
                     {navContent === "Text" && <TextComponent year={year} setYear={setYear} album={album} setAlbum={setAlbum} artist={artist}
                     setArtist={setArtist} date={date} setDate={setDate} duration={duration} label={label} setLabel={setLabel} setDuration={setDuration}
                     genreTagOne={genreTagOne} setGenreTagOne={setGenreTagOne} setGenreTagTwo={setGenreTagTwo} 
-                    genreTagTwo={genreTagTwo} genreTagThree={genreTagThree} setGenreTagThree = {setGenreTagThree}></TextComponent>}
+                    genreTagTwo={genreTagTwo} genreTagThree={genreTagThree} setGenreTagThree = {setGenreTagThree} tracklist={tracklist} 
+                    setTracklist={setTracklist}></TextComponent>}
 
                     {navContent === "Image" && <ImageComponent image={image} setImage={setImage}/>}
                 </div>

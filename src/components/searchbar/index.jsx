@@ -25,7 +25,7 @@ const SearchBar = (props) => {
     return (
         <div className="searchbar-container">
             <Search fontSize="small"></Search>
-            <input type="text" onChange={handleInputChange} placeholder={placeholderText} value={inputValues[nameText] || ""} name={nameText} required></input>
+            <input type="text" onChange={handleInputChange} placeholder={placeholderText} value={inputValues[nameText]} name={nameText} required></input>
             <Close onClick={clearInput} className={showClearBtn ? "clear-btn visible": "clear-btn hidden" } fontSize="small"></Close>
         </div>
     )
