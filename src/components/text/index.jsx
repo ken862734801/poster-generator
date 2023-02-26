@@ -179,21 +179,21 @@ const TextComponent = (props) => {
                 <div className="text-input-container">
                     <input type="text" name="genreTagThree" value={genreTagThree} onChange={handleInputChange}/>
                 </div>
-                {tracklist.map((subArray, index) => (
-              <div key={index}>
-                {subArray.map((value, subIndex) => (
-                  <input
-                    key={subIndex}
-                    value={value}
-                    onChange={(e) => handleTracklistChange(index, subIndex, e.target.value)}
-                  />
-                ))}
-              </div>
-            ))}
+                {/* {tracklist.map((subArray, index) => (
+                  <div key={index}>
+                    {subArray.map((value, subIndex) => (
+                      <input
+                        key={subIndex}
+                        value={value}
+                        onChange={(e) => handleTracklistChange(index, subIndex, e.target.value)}
+                      />
+                    ))}
+                  </div>
+                ))} */}
               <button onClick={handleResetClick}>Reset</button>
-              <p>Select number of songs:</p>
+              {/* <p>Select number of songs:</p>
               <input type="number" value={listLength} onChange={handleNumberInput}></input>
-              <button onClick = {handleManualEntry}>Manually enter track list</button>
+              <button onClick = {handleManualEntry}>Manually enter track list</button>  */}
           </div>
         </div>
     )

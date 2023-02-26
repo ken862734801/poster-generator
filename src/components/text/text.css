@@ -1,14 +1,12 @@
 .text-container{
-    padding-top:100px;
+    /* padding-top:100px; */
     width:90%;
     margin:0 auto;
     display:flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-height:700px;
     /* border:1px solid red; */
-    overflow-y: auto;
 }
 .text-container > label{
     color:rgb(92, 92, 92);
