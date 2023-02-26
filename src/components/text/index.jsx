@@ -19,6 +19,8 @@ const TextComponent = (props) => {
         defaultTracklist: JSON.parse(JSON.stringify(tracklist)) // create a new copy of the tracklist array
       });
 
+    const [listLength, setListLength] = useState(0);
+
     useEffect(() => {
         setInitialValues({
             defaultYear: year,
@@ -47,6 +49,10 @@ const TextComponent = (props) => {
         setTracklist(JSON.parse(JSON.stringify(initialValues.defaultTracklist)));
       };
 
+    const handleNumberInput = (e) => {
+      console.log(e.target.value);
+      setListLength(e.target.value);
+    }
     const handleTracklistChange = (index, subIndex, value) => {
       setTracklist(prevTracklist => {
         const newTracklist = [...prevTracklist];
@@ -89,6 +95,33 @@ const TextComponent = (props) => {
             break;
         }
       };
+
+      // testing manual tracklist creation
+      // const newArray = Array.from({listLength}, (_, i) => `${i+1}. Track Name`);
+      // console.log(newArray);
+      // let emptyArray = [];
+
+      const divideTracklist = (arr, newArr) => {
+        if(arr.length <= 10){
+            newArr.push(arr)
+                return newArr
+        }else if(arr.length > 10){
+            let left = arr.slice(0,9);
+            let right = arr.slice(9);
+                newArr.push(left);
+                    return divideTracklist(right, newArr)
+        }
+    };
+
+    // const updatedArray = divideTracklist(newArray, emptyArray);
+    // console.log(updatedArray);
+
+    const handleManualEntry = () => {
+      let emptyArray = [];
+      const newArray = Array.from({length: listLength}, (_, i) => `${i+1}. Track Name`);
+      const updatedArray = divideTracklist(newArray, emptyArray);
+      setTracklist(updatedArray);
+    }
 
     return (
         <div className="nav-content-container">
@@ -146,8 +179,7 @@ const TextComponent = (props) => {
                 <div className="text-input-container">
                     <input type="text" name="genreTagThree" value={genreTagThree} onChange={handleInputChange}/>
                 </div>
-            </div>
-            {tracklist.map((subArray, index) => (
+                {tracklist.map((subArray, index) => (
               <div key={index}>
                 {subArray.map((value, subIndex) => (
                   <input
@@ -158,7 +190,11 @@ const TextComponent = (props) => {
                 ))}
               </div>
             ))}
-            <button onClick={handleResetClick}>Reset</button>
+              <button onClick={handleResetClick}>Reset</button>
+              <p>Select number of songs:</p>
+              <input type="number" value={listLength} onChange={handleNumberInput}></input>
+              <button onClick = {handleManualEntry}>Manually enter track list</button>
+          </div>
         </div>
     )
 }
