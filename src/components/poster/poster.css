@@ -1,38 +1,26 @@
 .poster{
     font-family: Verdana, sans-serif;
-    /* font-family: monospace; */
     text-transform: uppercase;
     width:1050px;
     min-height:1480px;
-    /* max-height:1400px; */
-    /* margin: 90px 10px 0px 10px; */
     margin-inline: auto;
     margin-top:40px;
-    /* align-self: center; */
-    /* transform: scale(0.55); */
-    /* margin top at -350px when zoom @.60 */
 }
 .poster-container{
     padding:25px 30px 20px 30px;
     background-color: white;
     height:inherit;
-    /* border:1px solid red; */
 }
-/* hr{
-    border:1px solid black;
-} */
 .poster-release-year{
     text-align:right;
     font-size:2.35rem;
-    margin-bottom:10px;
+    margin-bottom:5px;
 }
 .poster-album-name{
     font-size:4.5rem;
-    /* margin-bottom:5px; */
 }
 .poster-image-container{
     height:960px;
-    /* border:1px solid red; */
     width:100%;
     margin: 0 auto;
 }
@@ -51,7 +39,6 @@
 .poster-body{
     padding-top:12px;
     padding-bottom:-2px;
-    /* border:1px solid red; */
 }
 .poster-body-container{
     display:flex;
@@ -67,13 +54,10 @@ ul{
 ul:nth-of-type(2){
     margin: 0px 8px;
 }
-/* ul:nth-of-type(3){
-    margin-left:-5px;
-} */
+
 li{
     list-style-type:none;
     margin:2px 0px;
-    /* font-size:0.85rem; */
 }
 .poster-text-container{
     margin-top:-12px;

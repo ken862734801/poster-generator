@@ -1,0 +1,23 @@
+.small-screen-warning{
+    display:none;
+}
+
+@media screen and (max-width : 768px) {
+.small-screen-warning{
+    font-family: Arial, Helvetica, sans-serif;
+    display:block;
+}
+.small-screen-warning > h1{
+    font-size: 1.75rem;
+    color:rgb(88, 88, 88);
+    padding:10px;
+}
+.small-screen-warning > p{
+    font-weight: bold;
+    font-size:0.9em;
+    color:rgb(129, 129, 129);
+    line-height: 2;
+    padding:10px;
+}
+
+}

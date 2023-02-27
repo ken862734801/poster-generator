@@ -1,30 +1,47 @@
-// import "./template.css";
-import "./template.css";
-import React from "react";
+import "./poster.css";
 
-const Template = (props) =>{
+export default function Poster (props){
+    const  {
+            bgColor,
+            textColor,
+            album,
+            artist,
+            image,
+            date,
+            duration,
+            label,
+            year, 
+            tracklist,
+            genreTagOne,
+            genreTagTwo,
+            genreTagThree,
+            colorOne,
+            colorTwo,
+            colorThree,
+            colorFour,
+            colorFive} = props;
     return (
         <div className="poster" id="poster">
-            <div className="poster-container" style={{backgroundColor: props.bgColor, color: props.textColor}} id="poster-container">
+            <div className="poster-container" style={{backgroundColor: bgColor, color: textColor}} id="poster-container">
                 <div className="poster-header">
-                    <hr style={{backgroundColor: props.textColor, border: `1px solid ${props.textColor}`}}></hr>
-                    <h2 className="poster-release-year">{props.year}</h2>
-                    <h1 className="poster-album-name">{props.album}</h1>
+                    <hr style={{backgroundColor: textColor, border: `1px solid ${textColor}`}}></hr>
+                    <h2 className="poster-release-year">{year}</h2>
+                    <h1 className="poster-album-name">{album}</h1>
                 </div>
                 <div className="poster-image-container">
-                    <img className="poster-image" src={props.image}></img>
+                    <img className="poster-image" src={image}></img>
                 </div>
                 <div className="poster-body">
                     <div className="poster-palette-container">
-                        <div className="poster-palette-color" style={{backgroundColor: `${props.vibrant}`}}></div>
-                        <div className="poster-palette-color" style={{backgroundColor: `${props.lightVibrant}`}}></div>
-                        <div className="poster-palette-color" style={{backgroundColor: `${props.darkVibrant}`}}></div>
-                        <div className="poster-palette-color" style={{backgroundColor: `${props.muted}`}}></div>
-                        <div className="poster-palette-color" style={{backgroundColor: `${props.lightMuted}`}}></div>
+                        <div className="poster-palette-color" style={{backgroundColor: colorOne}}></div>
+                        <div className="poster-palette-color" style={{backgroundColor: colorTwo}}></div>
+                        <div className="poster-palette-color" style={{backgroundColor: colorThree}}></div>
+                        <div className="poster-palette-color" style={{backgroundColor: colorFour}}></div>
+                        <div className="poster-palette-color" style={{backgroundColor: colorFive}}></div>
                     </div>
                     <div className="poster-body-container">
                         <div className="poster-tracklist-container">
-                        {Array.from(props.tracklist).map((subArray, index) => {
+                        {Array.from(tracklist).map((subArray, index) => {
                             if (Array.isArray(subArray)) {
                                 return (
                                   <ul key={index}>
@@ -41,21 +58,21 @@ const Template = (props) =>{
                         <div className="poster-text-container">
                             <div className="poster-information-container">
                                 <div className="poster-artist-container">
-                                    <h3 className="poster-artist">{props.artist}</h3>
+                                    <h3 className="poster-artist">{artist}</h3>
                                 </div>
                                 <div>
                                     <h4>Out Now</h4>
-                                    <p>{props.date}</p>
-                                    <p>{props.duration}</p>
+                                    <p>{date}</p>
+                                    <p>{duration}</p>
                                 </div>
                                 <div>
                                     <h4>Released By</h4>
-                                    <p>{props.label}</p>
+                                    <p>{label}</p>
                                 </div>
                                 <div>
                                     <h4>Genre</h4>
                                     <p>
-                                    <span>{props.genreTagOne}</span> · <span>{props.genreTagTwo}</span> · <span>{props.genreTagThree}</span>
+                                    <span>{genreTagOne}</span> · <span>{genreTagTwo}</span> · <span>{genreTagThree}</span>
                                     </p>
                                 </div>
                             </div>
@@ -65,6 +82,4 @@ const Template = (props) =>{
             </div>
         </div>
     )
-};
-
-export default Template;
+}

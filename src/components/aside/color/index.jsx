@@ -6,7 +6,7 @@ const ColorComponent = (props) => {
 
     const { textColor, setTextColor, bgColor, setBgColor, colorOne, setColorOne, colorTwo, setColorTwo, 
             colorThree, setColorThree, colorFour, setColorFour, 
-            setColorFive, colorFive, resetPalette } = props;
+            setColorFive, colorFive, resetColor } = props;
 
     const handleColorChange = (e) => {
         const {name, value } = e.target;
@@ -105,7 +105,7 @@ const ColorComponent = (props) => {
                     <label htmlFor=""></label>
                     <input type="text" name="colorFive" value={colorFive} onChange={handleColorChange}></input>
                 </div>
-                <button onClick={resetPalette}>RESET</button>
+                <button onClick={resetColor}>RESET</button>
         </div>
     )
 }

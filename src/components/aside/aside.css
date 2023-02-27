@@ -4,7 +4,7 @@ aside{
     position:relative;
     height:inherit;
 }
-.aside-btn-container{
+.button-container{
     width:85px;
     padding:5px;
     border:1px solid rgb(231, 231, 231);
@@ -13,7 +13,7 @@ aside{
     position:fixed;
     height:inherit;
 }
-.aside-btn{
+.aside-button{
     margin:5px 0px;
     padding:15px 5px;
     border-radius:16px;
@@ -21,10 +21,10 @@ aside{
     text-align: center;
     color:rgb(92, 92, 92);
 }
-.aside-btn:hover{
+.aside-button:hover{
     background-color: rgb(231, 231, 231);
 }
-.aside-btn > p{
+.aside-button > p{
     font-size:0.75em;
     font-weight: bold;
     margin-top:5px;
@@ -38,6 +38,7 @@ aside{
     left:85px;
     height:inherit;
     padding:15px;
+    overflow-y: auto;
 }
 .side-nav-header{
     display:flex;
@@ -53,10 +54,10 @@ aside{
     font-size: 1.1rem;
     font-weight: bold;
 }
-.close-btn{
-    color:rgb(228, 228, 228);
+.close-button{
+    color:rgb(190, 190, 190);
     cursor: pointer;
 }
-.close-btn:hover{
-    color:rgb(66, 66, 66);
+.close-button:hover{
+    color:rgb(100, 100, 100);
 }
