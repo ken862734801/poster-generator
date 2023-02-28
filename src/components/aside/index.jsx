@@ -10,7 +10,9 @@ import { Search,
 import { useEffect } from "react";
 
 export default function Aside (props){
-    const { textColor,
+    const { 
+            setPosterMargin,
+            textColor,
             setTextColor,
             bgColor,
             setBgColor,
@@ -142,11 +144,13 @@ export default function Aside (props){
         setMargin(410);
         setNavContent(content);
         setNavHeader(content);
+        setPosterMargin(0);
     };
 
     function hideNavContent (){
         setShowNav(false);
         setMargin(85);
+        setPosterMargin(-85);
     };
 
     useEffect(() => {
@@ -154,6 +158,7 @@ export default function Aside (props){
             if(window.innerWidth < 1100){
                 setShowNav(false);
                 setMargin(85);
+                setPosterMargin(-85);
             }
         }
         window.addEventListener("resize", handleResize);

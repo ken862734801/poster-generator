@@ -2,7 +2,9 @@ import "./main.css";
 import Poster from "../poster";
 
 export default function Main(props){
-    const { margin,
+    const { 
+            posterMargin,
+            margin,
             bgColor,
             textColor,
             album,
@@ -24,6 +26,7 @@ export default function Main(props){
     return(
         <main style={{marginLeft: `${margin}px`}}>
             <Poster
+                posterMargin={posterMargin}
                 bgColor={bgColor}
                 textColor={textColor}
                 album={album}

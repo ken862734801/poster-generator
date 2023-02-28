@@ -3,8 +3,8 @@
     text-transform: uppercase;
     width:1050px;
     min-height:1480px;
-    margin-inline: auto;
     margin-top:40px;
+    /* margin-right:-85px; */
 }
 .poster-container{
     padding:25px 30px 20px 30px;

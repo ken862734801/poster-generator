@@ -7,6 +7,7 @@ import { usePalette } from "react-palette";
 
 export default function Container(){
     const [margin, setMargin] = useState(410);
+    const [posterMargin, setPosterMargin] = useState(0);
     const [bgColor, setBgColor] = useState("#FFFFFF");
     const [textColor, setTextColor] = useState("#000000");
 
@@ -55,6 +56,8 @@ export default function Container(){
     return(
         <div className="container">
             <Aside
+                posterMargin={posterMargin}
+                setPosterMargin={setPosterMargin}
                 margin={margin}
                 setMargin={setMargin}
                 bgColor={bgColor}
