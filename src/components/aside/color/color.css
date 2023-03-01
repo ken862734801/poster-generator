@@ -43,10 +43,11 @@
     border-radius:8px;
     background-color: rgb(240, 240, 240);
     color:rgb(92, 92, 92);
-    margin:4px 4px;
+    margin:5px 5px;
 }
 .text-box > p{
-    font-size: 0.75rem;
+    padding-left:1px;
+    font-size: 0.8rem;
 }
 .text-box > input{
     outline:none;
@@ -54,6 +55,6 @@
     border:none;
     margin-left:6px;
     color:rgb(92, 92, 92);
-    padding:1px 5px 1px 5px;
-    font-size:0.90rem;
+    padding:2px 5px 2px 5px;
+    font-size:0.85rem;
 }

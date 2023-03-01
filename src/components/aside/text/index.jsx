@@ -1,6 +1,7 @@
 import "./text.css";
 import Reset from "../reset";
-import { useEffect, useState } from "react";
+import {React, useEffect, useState } from "react";
+import {Accordion, AccordionItem} from "../accordion";
 
 const TextComponent = (props) => {
 
@@ -127,74 +128,63 @@ const TextComponent = (props) => {
     return (
         <div className="nav-content-container">
            <div className="text-container">
-                {/* <label>Font</label>
-                <div className="text-select-container">
-                    <select value="Verdana">
-                        <option>Arial</option>
-                        <option>Monospace</option>
-                        <option value="Verdana">Verdana</option>
-                    </select>
-                </div> */}
+            <Accordion>
+              <AccordionItem title="Item 1">
                 <label>Year</label>
-                <div className="text-input-container">
-                    <input type="text" name="year" value={year} onChange={handleInputChange} />
-                    {/* <select>
-                        <option>1</option>
-                        <option>2</option>
-                    </select> */}
-                </div>
-                <label>Album</label>
-                <div className="text-input-container">
-                    <input type="text" name="album" value={album} onChange={handleInputChange} />
-                    {/* <input type="text" name="city" list="citynames"/>
-                        <datalist id="citynames">
-                            <option value="Boston"></option>
-                            <option value="Cambridge"></option>
-                        </datalist> */}
-                </div>
-                <label>Artist</label>
-                <div className="text-input-container">
-                    <input type="text" name="artist" value={artist} onChange={handleInputChange} />
-                </div>
-                <label htmlFor="">Release Date:</label>
-                <div className="text-input-container">
-                    <input type="text" name="date" value={date} onChange={handleInputChange} />
-                </div>
-                <label htmlFor="">Duration:</label>
-                <div className="text-input-container">
-                    <input type="text" name="duration" value={duration} onChange={handleInputChange} />
-                </div>
-                <label>Label</label>
-                <div className="text-input-container">
-                    <input type="text" name="label" value={label} onChange={handleInputChange} />
-                </div>
-                <label>Genre #1</label>
-                <div className="text-input-container">
-                    <input type="text" name="genreTagOne" value={genreTagOne} onChange={handleInputChange}/>
-                </div>
-                <label>Genre #2</label>
-                <div className="text-input-container">
-                    <input type="text" name="genreTagTwo" value={genreTagTwo} onChange={handleInputChange}/>
-                </div>
-                <label>Genre #3</label>
-                <div className="text-input-container">
-                    <input type="text" name="genreTagThree" value={genreTagThree} onChange={handleInputChange}/>
-                </div>
-                {/* {tracklist.map((subArray, index) => (
-                  <div key={index}>
-                    {subArray.map((value, subIndex) => (
-                      <input
-                        key={subIndex}
-                        value={value}
-                        onChange={(e) => handleTracklistChange(index, subIndex, e.target.value)}
-                      />
-                    ))}
+                  <div className="text-input-container">
+                      <input type="text" name="year" value={year} onChange={handleInputChange} />
                   </div>
-                ))} */}
+                  <label>Album</label>
+                  <div className="text-input-container">
+                      <input type="text" name="album" value={album} onChange={handleInputChange} />
+                  </div>
+                  <label>Artist</label>
+                  <div className="text-input-container">
+                      <input type="text" name="artist" value={artist} onChange={handleInputChange} />
+                  </div>
+                  <label htmlFor="">Release Date:</label>
+                  <div className="text-input-container">
+                      <input type="text" name="date" value={date} onChange={handleInputChange} />
+                  </div>
+                  <label htmlFor="">Duration:</label>
+                  <div className="text-input-container">
+                      <input type="text" name="duration" value={duration} onChange={handleInputChange} />
+                  </div>
+                  <label>Label</label>
+                  <div className="text-input-container">
+                      <input type="text" name="label" value={label} onChange={handleInputChange} />
+                  </div>
+                  <label>Genre #1</label>
+                  <div className="text-input-container">
+                      <input type="text" name="genreTagOne" value={genreTagOne} onChange={handleInputChange}/>
+                  </div>
+                  <label>Genre #2</label>
+                  <div className="text-input-container">
+                      <input type="text" name="genreTagTwo" value={genreTagTwo} onChange={handleInputChange}/>
+                  </div>
+                  <label>Genre #3</label>
+                  <div className="text-input-container">
+                      <input type="text" name="genreTagThree" value={genreTagThree} onChange={handleInputChange}/>
+                  </div>
+              </AccordionItem>
+              <AccordionItem title="Item 2">
+                {tracklist.map((subArray, index) => (
+                    <div key={index}>
+                      {subArray.map((value, subIndex) => (
+                        <input
+                          key={subIndex}
+                          value={value}
+                          onChange={(e) => handleTracklistChange(index, subIndex, e.target.value)}
+                        />
+                      ))}
+                    </div>
+                  ))}
+                  <p>Select number of songs:</p>
+                  <input type="number" value={listLength} onChange={handleNumberInput}></input>
+                  <button onClick = {handleManualEntry}>Manually enter track list</button> 
+              </AccordionItem>
+            </Accordion>
               <Reset onClick={handleResetClick}/>
-              {/* <p>Select number of songs:</p>
-              <input type="number" value={listLength} onChange={handleNumberInput}></input>
-              <button onClick = {handleManualEntry}>Manually enter track list</button>  */}
           </div>
         </div>
     )

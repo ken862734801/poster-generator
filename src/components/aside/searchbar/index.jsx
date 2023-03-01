@@ -11,7 +11,7 @@ const SearchBar = (props) => {
             ...inputValues,
             [e.target.name]: e.target.value
         });
-        setShowClearBtn(true);
+        setShowClearBtn(e.target.value.length > 0);
     }
 
     const clearInput = () => {
