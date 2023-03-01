@@ -12,8 +12,9 @@ const SearchComponent = (props) => {
     const getData = async (artist, album) => {
         try{
             const response = await fetch("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=" + process.env.REACT_APP_API_KEY + "&artist=" + artist + "&album=" + album + "&format=json");
-            if(!response.ok) throw console.log("Error!");
+            if(!response.ok) throw alert("The album was not found.");
                 const data = await response.json();
+                    console.log(data);
                     createPoster(data);
         } catch (err){
             console.error(err)
@@ -21,9 +22,30 @@ const SearchComponent = (props) => {
     };
     
     function createPoster(response){
-        setAlbum(response.album.name);
-        setArtist(response.album.artist);
-        setImage(response.album.image[5]["#text"].replace("/300x300", ""));
+
+        let errorMessages = [];
+
+        if(response.album.name){
+            setAlbum(response.album.name);
+        } else {
+            console.log("The artist was not found.");
+            errorMessages.push("The album was not found.")
+        };
+
+        if(response.album.artist){
+            setArtist(response.album.artist);
+        } else {
+            console.log("The artist was not found.");
+            errorMessages.push("The artist was not found.");
+        };
+
+        if(response.album.image){
+            setImage(response.album.image[5]["#text"].replace("/300x300", ""));
+        } else {
+            console.log("The cover art was not found.");
+            errorMessages.push("The cover art was not found.");
+        }
+
 
         let genreArr = [];
         if(response.album.tags){
@@ -35,7 +57,8 @@ const SearchComponent = (props) => {
                     setGenreTagThree(genreArr[2]);
             }
         } else {
-            console.log("The genre was not found!")
+            console.log("The genre was not found.");
+            errorMessages.push("The genre was not found.")
         };
 
         let tracklistArr = [];
@@ -48,7 +71,8 @@ const SearchComponent = (props) => {
             let newTracklist = divideTracklist(tracklistArr, arr);
                 setTracklist(newTracklist);
         } else {
-            console.log("The tracklist was not found!")
+            console.log("The tracklist was not found.");
+            errorMessages.push("The tracklist was not found.")
         };
 
         let durationArr = [];
@@ -63,7 +87,8 @@ const SearchComponent = (props) => {
                     setDuration(new Date(total * 1000).toISOString().substr(11,8));
             }
         } else{
-            console.log("The duration was not found!")
+            console.log("The duration was not found.");
+            errorMessages.push("The duration was not found.");
         };
 
         if(response.album.wiki){
@@ -81,8 +106,12 @@ const SearchComponent = (props) => {
             }
 
         } else {
-            console.log("The release date was not found!")
+            console.log("The release date was not found.");
+            errorMessages.push("The release date was not found.")
         }
+
+        console.log(errorMessages);
+
     };
 
     const handleSubmit = (e) => {

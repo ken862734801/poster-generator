@@ -1,5 +1,6 @@
 import "./image.css";
 import { useEffect, useState } from "react";
+import Reset from "../reset";
 
 const ImageComponent = (props) => {
   const { image, setImage } = props;
@@ -40,10 +41,9 @@ const ImageComponent = (props) => {
   };
 
   return (
-    <div>
-      <div></div>
+    <div className="image-container">
       <input type="file" onChange={handleImageUpload} />
-      <button onClick={handleReset}>Reset</button>
+      <Reset onClick={handleReset}/>
     </div>
   );
 };

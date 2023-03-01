@@ -41,7 +41,7 @@
     align-items: center;
     justify-content: space-between;
     background-color: rgb(240, 240, 240);
-    border-radius:12px;
+    border-radius:8px;
 }
 .text-input-container > input{
     font-size:0.90rem;

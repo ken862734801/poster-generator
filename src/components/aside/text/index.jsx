@@ -1,4 +1,5 @@
 import "./text.css";
+import Reset from "../reset";
 import { useEffect, useState } from "react";
 
 const TextComponent = (props) => {
@@ -190,7 +191,7 @@ const TextComponent = (props) => {
                     ))}
                   </div>
                 ))} */}
-              <button onClick={handleResetClick}>Reset</button>
+              <Reset onClick={handleResetClick}/>
               {/* <p>Select number of songs:</p>
               <input type="number" value={listLength} onChange={handleNumberInput}></input>
               <button onClick = {handleManualEntry}>Manually enter track list</button>  */}

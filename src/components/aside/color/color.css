@@ -1,3 +1,18 @@
+.color-container{
+    width:90%;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.color-container > p{
+    text-align: left;
+    width:90%;
+    font-size:0.7em;
+    font-weight:bold;
+    color:rgb(92, 92, 92);
+}
 .color-input{
     display:flex;
     align-items: center;
@@ -6,9 +21,9 @@
 .color-input > input, .color-input > div > input{
     text-transform: uppercase;
 }
-.color-input > div{
-    width:30px;
-    height:30px;
+.color-box{
+    width:32px;
+    height:32px;
     border-radius:8px;
     border:1px solid lightgray;
     overflow:hidden;
@@ -20,4 +35,25 @@
     height: 200%;
     cursor: pointer;
     transform: translate(-25%, -25%)
-  }
+}
+.text-box{
+    display:flex;
+    align-items: center;
+    padding:7px 8px;
+    border-radius:8px;
+    background-color: rgb(240, 240, 240);
+    color:rgb(92, 92, 92);
+    margin:4px 4px;
+}
+.text-box > p{
+    font-size: 0.75rem;
+}
+.text-box > input{
+    outline:none;
+    background-color: rgb(240, 240, 240);
+    border:none;
+    margin-left:6px;
+    color:rgb(92, 92, 92);
+    padding:1px 5px 1px 5px;
+    font-size:0.90rem;
+}

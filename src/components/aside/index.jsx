@@ -73,9 +73,30 @@ export default function Aside (props){
     }, []);
 
     function createPoster(response){
-        setAlbum(response.album.name);
-        setArtist(response.album.artist);
-        setImage(response.album.image[5]["#text"].replace("/300x300", ""));
+
+        let errorMessages = [];
+
+        if(response.album.name){
+            setAlbum(response.album.name);
+        } else {
+            console.log("The artist was not found.");
+            errorMessages.push("The album was not found.")
+        };
+
+        if(response.album.artist){
+            setArtist(response.album.artist);
+        } else {
+            console.log("The artist was not found.");
+            errorMessages.push("The artist was not found.");
+        };
+
+        if(response.album.image){
+            setImage(response.album.image[5]["#text"].replace("/300x300", ""));
+        } else {
+            console.log("The cover art was not found.");
+            errorMessages.push("The cover art was not found.");
+        }
+
 
         let genreArr = [];
         if(response.album.tags){
@@ -87,7 +108,8 @@ export default function Aside (props){
                     setGenreTagThree(genreArr[2]);
             }
         } else {
-            console.log("The genre was not found!")
+            console.log("The genre was not found.");
+            errorMessages.push("The genre was not found.")
         };
 
         let tracklistArr = [];
@@ -100,7 +122,8 @@ export default function Aside (props){
             let newTracklist = divideTracklist(tracklistArr, arr);
                 setTracklist(newTracklist);
         } else {
-            console.log("The tracklist was not found!")
+            console.log("The tracklist was not found.");
+            errorMessages.push("The tracklist was not found.")
         };
 
         let durationArr = [];
@@ -115,7 +138,8 @@ export default function Aside (props){
                     setDuration(new Date(total * 1000).toISOString().substr(11,8));
             }
         } else{
-            console.log("The duration was not found!")
+            console.log("The duration was not found.");
+            errorMessages.push("The duration was not found.");
         };
 
         if(response.album.wiki){
@@ -133,11 +157,13 @@ export default function Aside (props){
             }
 
         } else {
-            setYear(currentYear);
-            setDate(dateString);
-            console.log("The release date was not found!")
+            console.log("The release date was not found.");
+            errorMessages.push("The release date was not found.")
         }
-    }
+
+        console.log(errorMessages);
+
+    };
 
     function handleNavContent (content){
         setShowNav(true);
@@ -150,7 +176,7 @@ export default function Aside (props){
     function hideNavContent (){
         setShowNav(false);
         setMargin(85);
-        setPosterMargin(-85);
+        setPosterMargin(85);
     };
 
     useEffect(() => {
@@ -158,7 +184,7 @@ export default function Aside (props){
             if(window.innerWidth < 1100){
                 setShowNav(false);
                 setMargin(85);
-                setPosterMargin(-85);
+                setPosterMargin(85);
             }
         }
         window.addEventListener("resize", handleResize);

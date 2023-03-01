@@ -22,7 +22,7 @@ export default function Poster (props){
             colorFour,
             colorFive} = props;
     return (
-        <div className="poster" id="poster" style={{marginRight: `${posterMargin}px`}}>
+        <div className="poster" id="poster" style={{marginRight: `-${posterMargin}px`}}>
             <div className="poster-container" style={{backgroundColor: bgColor, color: textColor}} id="poster-container">
                 <div className="poster-header">
                     <hr style={{backgroundColor: textColor, border: `1px solid ${textColor}`}}></hr>

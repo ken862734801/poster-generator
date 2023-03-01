@@ -99,6 +99,7 @@ export default function Container(){
                 resetColor = {resetColor}
             />
             <Main
+                posterMargin={posterMargin}
                 margin={margin}
                 bgColor={bgColor}
                 textColor={textColor} 
