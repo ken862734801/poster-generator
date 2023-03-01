@@ -1,3 +1,11 @@
+.color-input{
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+}
 .color-input > input{
     text-transform: uppercase;
+}
+input[type="color"]{
+    border:none;
 }
