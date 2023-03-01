@@ -3,9 +3,21 @@
     align-items: center;
     flex-direction: row;
 }
-.color-input > input{
+.color-input > input, .color-input > div > input{
     text-transform: uppercase;
 }
-input[type="color"]{
-    border:none;
+.color-input > div{
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    border:1px solid lightgray;
+    overflow:hidden;
 }
+[type="color"] {
+    border: 0;
+    padding: 0;
+    width: 200%;
+    height: 200%;
+    cursor: pointer;
+    transform: translate(-25%, -25%)
+  }

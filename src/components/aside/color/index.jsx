@@ -71,39 +71,51 @@ const ColorComponent = (props) => {
                 <div className="color-input">
                     <label htmlFor=""></label>
                     <input type="text" name="bgColor" value={bgColor} onChange={handleColorChange}></input>
-                    <input type="color" name="bgColor" value={bgColor} onChange={handleColorChange}></input>
-                </div>
+                    <div>
+                        <input type="color" name="bgColor" value={bgColor} onChange={handleColorChange}></input>
+                    </div>                </div>
                 <p>Font</p>
                 <div className="color-input">
                     <label htmlFor=""></label>
                     <input type="text" name="textColor" value={textColor} onChange={handleColorChange}></input>
-                    <input type="color" name="textColor" value={textColor} onChange={handleColorChange}></input>
-                </div>
+                    <div>
+                        <input type="color" name="textColor" value={textColor} onChange={handleColorChange}></input>
+                    </div>                </div>
                 <p>Palette</p>
                 <div className="color-input">
                     <label htmlFor=""></label>
                     <input type="text" name="colorOne" value={colorOne} onChange={handleColorChange}></input>
-                    <input type="color" name="colorOne" value={colorOne} onChange={handleColorChange}></input>
+                    <div>
+                        <input type="color" name="colorOne" value={colorOne} onChange={handleColorChange}></input>
+                    </div>
                 </div>
                 <div className="color-input">
                     <label htmlFor=""></label>
                     <input type="text"  name="colorTwo" value={colorTwo} onChange={handleColorChange}></input>
-                    <input type="color" name="colorTwo" value={colorTwo} onChange={handleColorChange}></input>
+                    <div>
+                        <input type="color" name="colorTwo" value={colorTwo} onChange={handleColorChange}></input>
+                    </div>
                 </div>
                 <div className="color-input">
                     <label htmlFor=""></label>
                     <input type="text" name="colorThree" value={colorThree} onChange={handleColorChange}></input>
-                    <input type="color" name="colorThree" value={colorThree} onChange={handleColorChange}></input>
+                    <div>
+                        <input type="color" name="colorThree" value={colorThree} onChange={handleColorChange}></input>
+                    </div>
                 </div>
                 <div className="color-input">
                     <label htmlFor=""></label>
                     <input type="text" name="colorFour" value={colorFour} onChange={handleColorChange}></input>
-                    <input type="color" name="colorFour" value={colorFour} onChange={handleColorChange}></input>
+                    <div>
+                        <input type="color" name="colorFour" value={colorFour} onChange={handleColorChange}></input>
+                    </div>
                 </div>
                 <div className="color-input">
                     <label htmlFor="colorFive"></label>
                     <input type="text" name="colorFive" value={colorFive} onChange={handleColorChange}></input>
-                    <input type="color" name="colorFive" value={colorFive} onChange={handleColorChange}></input>
+                    <div>
+                        <input type="color" name="colorFive" value={colorFive} onChange={handleColorChange}></input>
+                    </div>
                 </div>
                 <button onClick={resetColor}>RESET</button>
         </div>
