@@ -22,8 +22,8 @@
     text-transform: uppercase;
 }
 .color-box{
-    width:32px;
-    height:32px;
+    width:30px;
+    height:30px;
     border-radius:8px;
     border:1px solid lightgray;
     overflow:hidden;
@@ -55,6 +55,15 @@
     border:none;
     margin-left:6px;
     color:rgb(92, 92, 92);
-    padding:2px 5px 2px 5px;
+    padding:1px 5px 1px 5px;
     font-size:0.85rem;
+}
+.refresh-btn{
+    color:rgb(190, 190, 190);
+    cursor:pointer;
+    margin:15px;
+    font-size: 28px !important;
+}
+.refresh-btn:hover{
+    color:rgb(126, 126, 126);
 }

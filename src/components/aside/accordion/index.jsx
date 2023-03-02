@@ -2,7 +2,7 @@ import React, { cloneElement, useState } from "react";
 import "./accordion.css";
 
  function Accordion({children}){
-    const [openIndex, setOpenIndex] = useState(null);
+    const [openIndex, setOpenIndex] = useState(0);
 
     const handleItemClick = (index) => {
       if (index === openIndex) {
@@ -13,7 +13,7 @@ import "./accordion.css";
     };
   
     return (
-      <div>
+      <div className="accordion">
         {React.Children.map(children, (child, index) =>
           React.cloneElement(child, {
             isOpen: openIndex === index,
@@ -26,9 +26,12 @@ import "./accordion.css";
 
 function AccordionItem({ title, children, isOpen, onClick }) {
     return (
-      <div>
-        <button onClick={onClick}>{title}</button>
-        {isOpen && <div>{children}</div>}
+      <div className="accordion-item">
+        <div className="accordion-header">
+            <p>{title}</p>
+            <button onClick={onClick}>+</button>
+        </div>
+        {isOpen && <div className="accordion-item-container">{children}</div>}
       </div>
     );
   }

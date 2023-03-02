@@ -1,6 +1,7 @@
 import ColorInput from "../colorinput";
 import "./color.css";
 import Reset from "../reset";
+import { RefreshOutlined } from "@material-ui/icons";
 
 
 const ColorComponent = (props) => {
@@ -133,7 +134,8 @@ const ColorComponent = (props) => {
                         <input type="color" name="colorFive" value={colorFive} onChange={handleColorChange}></input>
                     </div>
                 </div>
-                <Reset onClick={resetColor}/>
+                {/* <Reset onClick={resetColor}/> */}
+                <RefreshOutlined className="refresh-btn" onClick={resetColor}/>
                 </div>
         </div>
     )

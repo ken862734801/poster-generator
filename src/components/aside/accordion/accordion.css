@@ -1,0 +1,60 @@
+.accordion{
+    width:90%;
+}
+.accordion-item-container > label{
+    color:rgb(92, 92, 92);
+    text-align: left;
+    width:90%;
+    font-size:0.75em;
+    font-weight:bold;
+}
+.tracklist-input > input{
+    width:95%;
+    font-size:0.90rem;
+    color:rgb(92, 92, 92);
+    border:none;
+    padding:3px 5px 3px 5px;
+    background-color: rgb(240, 240, 240);
+    outline:none;
+    margin:4px 0px;
+    padding:8px 8px;
+    border-radius:8px;
+}
+.accordion-header{
+    display:flex;
+    justify-content: space-between;
+    /* border-bottom:1px solid rgb(180, 180, 180); */
+    margin:8px 0px;
+    padding:4px 0px;
+}
+.accordion-header > p{
+    color:rgb(180, 180, 180);
+    font-size:0.80rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.accordion-item-container > div{
+    display:flex;
+    flex-direction: column;
+}
+.accordion-item-container > div > p{
+    color:rgb(92, 92, 92);
+    font-size:0.75em;
+    font-weight:bold;
+    margin-top:10px;
+}
+.accordion-item-container > input{
+    margin:5px 0px;
+    width:50px;
+}
+.accordion-item-container > div > button{
+    padding:12px 5px;
+    width:125px;
+    border-radius:12px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
+    color:rgb(66, 66, 66);
+    justify-self: center;
+    margin:5px 0px;
+}

@@ -2,6 +2,7 @@ import "./text.css";
 import Reset from "../reset";
 import {React, useEffect, useState } from "react";
 import {Accordion, AccordionItem} from "../accordion";
+import { RefreshOutlined } from "@material-ui/icons";
 
 const TextComponent = (props) => {
 
@@ -129,7 +130,7 @@ const TextComponent = (props) => {
         <div className="nav-content-container">
            <div className="text-container">
             <Accordion>
-              <AccordionItem title="Item 1">
+              <AccordionItem title="General">
                 <label>Year</label>
                   <div className="text-input-container">
                       <input type="text" name="year" value={year} onChange={handleInputChange} />
@@ -167,11 +168,13 @@ const TextComponent = (props) => {
                       <input type="text" name="genreTagThree" value={genreTagThree} onChange={handleInputChange}/>
                   </div>
               </AccordionItem>
-              <AccordionItem title="Item 2">
+              <AccordionItem title="Advanced">
+                <label>Tracklist</label>
                 {tracklist.map((subArray, index) => (
-                    <div key={index}>
+                    <div className="tracklist-input" key={index}>
                       {subArray.map((value, subIndex) => (
                         <input
+                          type="text"
                           key={subIndex}
                           value={value}
                           onChange={(e) => handleTracklistChange(index, subIndex, e.target.value)}
@@ -179,12 +182,14 @@ const TextComponent = (props) => {
                       ))}
                     </div>
                   ))}
-                  <p>Select number of songs:</p>
-                  <input type="number" value={listLength} onChange={handleNumberInput}></input>
-                  <button onClick = {handleManualEntry}>Manually enter track list</button> 
+                  <div>
+                    <p>Enter a number to manually enter the tracklist:</p>
+                    <input type="number" value={listLength} onInput={handleNumberInput}></input>
+                    <button onClick = {handleManualEntry}>Select</button> 
+                  </div>
               </AccordionItem>
             </Accordion>
-              <Reset onClick={handleResetClick}/>
+              <RefreshOutlined className="refresh-btn" onClick={handleResetClick}/>
           </div>
         </div>
     )
