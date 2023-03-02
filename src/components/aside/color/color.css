@@ -7,12 +7,14 @@
     align-items: center;
     flex-direction: column;
 }
+
 .color-container > p{
     text-align: left;
     width:90%;
     font-size:0.7em;
     font-weight:bold;
     color:rgb(92, 92, 92);
+    margin-left:-15px;
 }
 .color-input{
     display:flex;
@@ -56,7 +58,7 @@
     border:none;
     margin-left:6px;
     color:rgb(92, 92, 92);
-    padding:2px 5px 2px 5px;
+    padding:1px 5px 1px 5px;
     font-size:0.85rem;
 }
 .refresh-btn{

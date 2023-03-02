@@ -1,4 +1,3 @@
-import ColorInput from "../colorinput";
 import "./color.css";
 import Reset from "../reset";
 import { RefreshOutlined } from "@material-ui/icons";

@@ -184,7 +184,7 @@ export default function Aside (props){
             if(window.innerWidth < 1100){
                 setShowNav(false);
                 setMargin(85);
-                setPosterMargin(85);
+                setPosterMargin(0);
             }
         }
         window.addEventListener("resize", handleResize);
