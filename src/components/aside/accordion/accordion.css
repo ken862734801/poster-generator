@@ -1,5 +1,5 @@
 .accordion{
-    width:90%;
+    width:95%;
 }
 .accordion-item-container > label{
     color:rgb(92, 92, 92);
@@ -23,15 +23,21 @@
 .accordion-header{
     display:flex;
     justify-content: space-between;
+    align-items: center;
     /* border-bottom:1px solid rgb(180, 180, 180); */
     margin:8px 0px;
     padding:4px 0px;
 }
-.accordion-header > p{
+.accordion-header > p:nth-of-type(1){
     color:rgb(180, 180, 180);
     font-size:0.80rem;
     font-weight: bold;
     text-transform: uppercase;
+}
+.accordion-header > div {
+    color:rgb(180, 180, 180);
+    margin-bottom:-5px;
+    cursor:pointer;
 }
 .accordion-item-container > div{
     display:flex;

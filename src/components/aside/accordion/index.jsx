@@ -1,5 +1,6 @@
-import React, { cloneElement, useState } from "react";
+import React, { cloneElement, useState, useEffect } from "react";
 import "./accordion.css";
+import { Remove, Add } from "@material-ui/icons";
 
  function Accordion({children}){
     const [openIndex, setOpenIndex] = useState(0);
@@ -25,11 +26,17 @@ import "./accordion.css";
 };
 
 function AccordionItem({ title, children, isOpen, onClick }) {
+    const [icon, setIcon] = useState(<Add/>);
+
+    useEffect(() => {
+        isOpen ? setIcon(<Remove />) : setIcon(<Add />);
+      }, [isOpen]);
+    
     return (
       <div className="accordion-item">
         <div className="accordion-header">
             <p>{title}</p>
-            <button onClick={onClick}>+</button>
+            <div className="icon-btn" onClick={onClick}>{icon}</div> 
         </div>
         {isOpen && <div className="accordion-item-container">{children}</div>}
       </div>
