@@ -1,6 +1,7 @@
 import "./image.css";
 import { useEffect, useState } from "react";
 import Reset from "../reset";
+import { RefreshOutlined } from "@material-ui/icons";
 
 const ImageComponent = (props) => {
   const { image, setImage } = props;
@@ -43,7 +44,7 @@ const ImageComponent = (props) => {
   return (
     <div className="image-container">
       <input type="file" onChange={handleImageUpload} />
-      <Reset onClick={handleReset}/>
+      <RefreshOutlined className="refresh-btn" onClick={handleReset}/>
     </div>
   );
 };

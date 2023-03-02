@@ -61,3 +61,6 @@ aside{
 .close-button:hover{
     color:rgb(100, 100, 100);
 }
+.nav-content-container{
+    padding-bottom:20px;
+}

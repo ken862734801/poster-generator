@@ -6,7 +6,7 @@
     cursor: pointer;
     font-weight: bold;
     color:rgb(66, 66, 66);
-    margin:15px auto;
+    margin:20px auto;
     justify-self: center;
 }
 .reset-button:hover{
