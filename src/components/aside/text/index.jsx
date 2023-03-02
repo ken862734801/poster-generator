@@ -182,11 +182,11 @@ const TextComponent = (props) => {
                       ))}
                     </div>
                   ))}
-                  <div>
+                  {/* <div>
                     <p>Enter a number to manually enter the tracklist:</p>
                     <input type="number" value={listLength} onInput={handleNumberInput}></input>
                     <button onClick = {handleManualEntry}>Select</button> 
-                  </div>
+                  </div> */}
               </AccordionItem>
             </Accordion>
               <RefreshOutlined className="refresh-btn" onClick={handleResetClick}/>

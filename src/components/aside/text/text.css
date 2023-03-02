@@ -33,23 +33,17 @@
     outline:none;
     cursor:pointer;
 }
-.text-input-container{
-    width:100%;
-    padding:6px 8px;
-    margin:5px 0px;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(240, 240, 240);
-    border-radius:8px;
-}
+
 .text-input-container > input{
+    width:95%;
     font-size:0.90rem;
     color:rgb(92, 92, 92);
     border:none;
     padding:3px 5px 3px 5px;
-    flex: 1;
     background-color: rgb(240, 240, 240);
     outline:none;
+    margin:4px 0px;
+    padding:8px 8px;
+    border-radius:8px;
     text-transform: capitalize;
 }

@@ -25,19 +25,22 @@
     justify-content: space-between;
     align-items: center;
     /* border-bottom:1px solid rgb(180, 180, 180); */
-    margin:8px 0px;
+    margin:4px 0px;
     padding:4px 0px;
 }
 .accordion-header > p:nth-of-type(1){
-    color:rgb(180, 180, 180);
+    color:rgb(148, 148, 148);
     font-size:0.80rem;
     font-weight: bold;
     text-transform: uppercase;
 }
 .accordion-header > div {
-    color:rgb(180, 180, 180);
+    color:rgb(204, 204, 204);
     margin-bottom:-5px;
     cursor:pointer;
+}
+.accordion-header > div:hover{
+    color:rgb(148, 148, 148);
 }
 .accordion-item-container > div{
     display:flex;

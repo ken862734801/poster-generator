@@ -1,4 +1,5 @@
 .color-container{
+    padding-top:10px;
     width:90%;
     margin: 0 auto;
     display:flex;
@@ -22,8 +23,8 @@
     text-transform: uppercase;
 }
 .color-box{
-    width:30px;
-    height:30px;
+    width:31px;
+    height:31px;
     border-radius:8px;
     border:1px solid lightgray;
     overflow:hidden;
@@ -47,7 +48,7 @@
 }
 .text-box > p{
     padding-left:1px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 .text-box > input{
     outline:none;
@@ -55,7 +56,7 @@
     border:none;
     margin-left:6px;
     color:rgb(92, 92, 92);
-    padding:1px 5px 1px 5px;
+    padding:2px 5px 2px 5px;
     font-size:0.85rem;
 }
 .refresh-btn{
