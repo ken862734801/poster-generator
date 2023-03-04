@@ -3,7 +3,7 @@ import { Search, Close } from "@material-ui/icons";
 import { useState } from "react";
 
 const SearchBar = (props) => {
-    const { placeholderText, nameText, inputValues, setInputValues} = props;
+    const {setFormSubmitted, placeholderText, nameText, inputValues, setInputValues} = props;
     const [showClearBtn, setShowClearBtn] = useState(false);
 
     const handleInputChange = (e) => {
@@ -14,19 +14,27 @@ const SearchBar = (props) => {
         setShowClearBtn(e.target.value.length > 0);
     }
 
-    const clearInput = () => {
-        setInputValues({
-          ...inputValues,
-          [nameText]: "",
-        });
+    // const clearInput = () => {
+    //     setInputValues({
+    //       ...inputValues,
+    //       [nameText]: "",
+    //     });
+    //     setShowClearBtn(false);
+    //   };
+
+      const clearInput = () => {
+        setInputValues({ ...inputValues, [nameText]: "" });
         setShowClearBtn(false);
-      };
+        props.setFormSubmitted(false);
+    };
 
     return (
         <div className="searchbar-container">
             <Search fontSize="small"></Search>
             <input type="text" onChange={handleInputChange} placeholder={placeholderText} value={inputValues[nameText]} name={nameText} required></input>
-            <Close onClick={clearInput} className={showClearBtn ? "clear-btn visible": "clear-btn hidden" } fontSize="small"></Close>
+            {showClearBtn && !props.formSubmitted && (
+                <Close className="clear-btn" onClick={clearInput} />
+            )}
         </div>
     )
 };

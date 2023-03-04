@@ -1,6 +1,7 @@
 import "./poster.css";
 
 export default function Poster (props){
+    
     const  {
             posterMargin,
             bgColor,

@@ -49,6 +49,11 @@ const ImageComponent = (props) => {
     return !!url.match(/\.(jpeg|jpg|gif|png)$/) || url.startsWith("data:image/");
   };
 
+  const handleImageClick = (imageUrl) => {
+    const posterImage = document.getElementById("poster-image");
+    posterImage.src = imageUrl;
+  };
+
   return (
     <div className="image-component">
         <div className="image-container">
@@ -59,7 +64,7 @@ const ImageComponent = (props) => {
           <p>Gallery</p>
           <div className="gallery-container">
             {imageList.map((img, index) => (
-              <img key={index} src={img} onClick={() => setImage(img)} />
+              <img key={index} src={img} onClick={() => {setImage(img); handleImageClick(img)}} />
             ))}
           </div>
         </div>
