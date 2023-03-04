@@ -1,7 +1,7 @@
 .searchbar-container{
-    width:100%;
-    padding:6px 8px;
-    margin:5px;
+    width:95%;
+    padding:6px 7px;
+    margin: 5px 5px;
     background-color: rgb(240, 240, 240);
     border-radius:8px;
     display:flex;
@@ -9,11 +9,14 @@
     justify-content: space-between;
     color:rgb(92, 92, 92);
 }
+.searchbar-container:nth-of-type(1){
+    margin-top:10px;
+}
 .searchbar-container > input{
     font-size:0.90rem;
     color:rgb(92, 92, 92);
     border:none;
-    padding:3px 5px 3px 5px;
+    padding:2px 5px 2px 5px;
     flex: 1;
     background-color: rgb(240, 240, 240);
 }

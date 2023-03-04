@@ -66,6 +66,7 @@
     cursor:pointer;
     margin:15px;
     font-size: 28px !important;
+    justify-self: center;
 }
 .refresh-btn:hover{
     color:rgb(126, 126, 126);
