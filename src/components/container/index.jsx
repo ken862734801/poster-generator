@@ -8,6 +8,7 @@ import { usePalette } from "react-palette";
 export default function Container(){
     
     const [margin, setMargin] = useState(410);
+    const [zoom, setZoom] = useState(1);
     const [posterMargin, setPosterMargin] = useState(0);
     const [bgColor, setBgColor] = useState("#FFFFFF");
     const [textColor, setTextColor] = useState("#000000");
@@ -104,6 +105,8 @@ export default function Container(){
                 margin={margin}
                 bgColor={bgColor}
                 textColor={textColor} 
+                zoom = {zoom}
+                setZoom = {setZoom}
                 album={album}
                 artist={artist} 
                 image = {image}

@@ -1,5 +1,6 @@
 import "./main.css";
 import Poster from "../poster";
+import ZoomButton from "../zoom";
 
 export default function Main(props){
     const { 
@@ -7,6 +8,8 @@ export default function Main(props){
             margin,
             bgColor,
             textColor,
+            zoom,
+            setZoom,
             album,
             artist, 
             image,
@@ -29,6 +32,7 @@ export default function Main(props){
                 posterMargin={posterMargin}
                 bgColor={bgColor}
                 textColor={textColor}
+                zoom={zoom}
                 album={album}
                 artist={artist}
                 image = {image}
@@ -45,6 +49,10 @@ export default function Main(props){
                 colorThree = {colorThree}
                 colorFour = {colorFour}
                 colorFive = {colorFive}
+            />
+            <ZoomButton 
+                zoom={zoom}
+                setZoom = {setZoom} 
             />
         </main>
     )

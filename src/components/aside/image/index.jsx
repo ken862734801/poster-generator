@@ -90,9 +90,11 @@ const ImageComponent = (props) => {
               ))
             )}
           </div>
-          <div className="refresh-btn-container">
-            <RefreshOutlined className="refresh-btn" onClick={handleReset} />
-          </div>
+          {imageList.length > 0 && (
+            <div className="refresh-btn-container">
+              <RefreshOutlined className="refresh-btn" onClick={handleReset} />
+            </div>
+          )}
         </div>
         
         <div className="label-container">
