@@ -24,9 +24,7 @@ const ImageComponent = (props) => {
 
   const handleReset = () => {
     if (isValidImageUrl(initialValue.defaultImage)) {
-      setImageList([]);
-      // setImage(initialValue.defaultImage);
-      localStorage.clear();
+      setImage(initialValue.defaultImage);
     } else {
       console.error("Default image is not a valid URL");
     }
@@ -92,16 +90,15 @@ const ImageComponent = (props) => {
               ))
             )}
           </div>
+          <div className="refresh-btn-container">
+            <RefreshOutlined className="refresh-btn" onClick={handleReset} />
+          </div>
         </div>
         
         <div className="label-container">
           <input type="file" id="file" className="hidden" onChange={handleImageUpload} />
             <label id="label" htmlFor="file">Upload</label>
         </div>
-
-        {/* <div className="refresh-btn-container">
-          <RefreshOutlined className="refresh-btn" onClick={handleReset} />
-        </div> */}
 
     </div>
   );
