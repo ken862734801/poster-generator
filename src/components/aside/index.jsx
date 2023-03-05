@@ -69,7 +69,7 @@ export default function Aside (props){
     };
 
     useEffect(()=> {
-        getData("Tame Impala", "Currents")
+        getData("SZA", "CTRL")
     }, []);
 
     function createPoster(response){
