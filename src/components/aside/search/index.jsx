@@ -5,9 +5,10 @@ import { divideTracklist } from "../../util";
 import { Close, Search } from "@material-ui/icons";
 
 const SearchComponent = (props) => {
-    const { setShowNav, setAlbum, setArtist, setImage, setDate, setYear, setDuration, setTracklist, setGenreTagOne, setGenreTagTwo, setGenreTagThree} = props;
-;
+    const { setAlbum, setArtist, setImage, setDate, setYear, setDuration, setTracklist, setGenreTagOne, setGenreTagTwo, setGenreTagThree} = props;
+
    const [inputValues, setInputValues] = useState({artist: "", album: ""});
+   const [formSubmitted, setFormSubmitted] = useState(false);
 
     const getData = async (artist, album) => {
         try{
@@ -117,6 +118,7 @@ const SearchComponent = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         getData(inputValues.artist, inputValues.album);
+        setFormSubmitted(true);
         resetForm();
     };
 
@@ -129,8 +131,8 @@ const SearchComponent = (props) => {
         
             <div className="nav-content-container">
                 <form className="search-container" onSubmit={handleSubmit}>
-                    <SearchBar inputValues={inputValues} setInputValues={setInputValues} nameText = "artist" placeholderText = "Search Artist"/>
-                    <SearchBar inputValues={inputValues} setInputValues={setInputValues}  nameText = "album" placeholderText = "Search Album"/>
+                    <SearchBar formSubmitted={formSubmitted}  inputValues={inputValues} setInputValues={setInputValues} nameText = "artist" placeholderText = "Search Artist"/>
+                    <SearchBar formSubmitted={formSubmitted}  inputValues={inputValues} setInputValues={setInputValues}  nameText = "album" placeholderText = "Search Album"/>
                     <button type="submit">SUBMIT</button>
                 </form>
             </div>

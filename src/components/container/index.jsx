@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { usePalette } from "react-palette";
 
 export default function Container(){
+    
     const [margin, setMargin] = useState(410);
     const [posterMargin, setPosterMargin] = useState(0);
     const [bgColor, setBgColor] = useState("#FFFFFF");

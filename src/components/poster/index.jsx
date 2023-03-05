@@ -1,6 +1,7 @@
 import "./poster.css";
 
 export default function Poster (props){
+    
     const  {
             posterMargin,
             bgColor,
@@ -30,7 +31,7 @@ export default function Poster (props){
                     <h1 className="poster-album-name">{album}</h1>
                 </div>
                 <div className="poster-image-container">
-                    <img className="poster-image" src={image}></img>
+                    <img className="poster-image" id="poster-image" src={image}></img>
                 </div>
                 <div className="poster-body">
                     <div className="poster-palette-container">
