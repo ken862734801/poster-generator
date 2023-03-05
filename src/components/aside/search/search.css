@@ -40,14 +40,15 @@
 }
 
 .search-container > button{
-    padding:12px 5px;
-    width:125px;
-    border-radius:12px;
+    padding:11px 50px;
+    /* width:125px; */
+    border-radius:16px;
     border:none;
     cursor: pointer;
     font-weight: bold;
     color:rgb(66, 66, 66);
     margin:10px 0px;
+    font-size:0.80rem;
 }
 .search-container > button:hover{
     background-color: rgb(230, 230, 230);

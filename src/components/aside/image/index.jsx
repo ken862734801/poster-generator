@@ -1,6 +1,7 @@
 import "./image.css";
 import { useEffect, useState } from "react";
-import { RefreshOutlined } from "@material-ui/icons";
+import uploadImage from "../../../images/upload-image.jpg";
+import { RefreshOutlined, RemoveCircleOutlineOutlined, HighlightOff } from "@material-ui/icons";
 
 const ImageComponent = (props) => {
   const { image, setImage } = props;
@@ -54,25 +55,54 @@ const ImageComponent = (props) => {
     posterImage.src = imageUrl;
   };
 
+  const handleImageDelete = (imageUrl) => {
+    const updatedImageList = imageList.filter((img) => img !== imageUrl);
+    setImageList(updatedImageList);
+    localStorage.setItem("imageList", JSON.stringify(updatedImageList));
+  };
   return (
     <div className="image-component">
-        <div className="image-container">
-          <p>Default</p>
+        <div className="gallery">
+          {/* <p>Original</p>
           <div className="default-container">
             <img src={initialValue.defaultImage} onClick={() => setImage(initialValue.defaultImage)}></img>
-          </div>
-          <p>Gallery</p>
+          </div> */}
           <div className="gallery-container">
-            {imageList.map((img, index) => (
-              <img key={index} src={img} onClick={() => {setImage(img); handleImageClick(img)}} />
-            ))}
+            {imageList.length === 0 ? (
+              <div className="empty-container">
+                <img src={uploadImage}/>
+                <p>Your uploaded images will appear here</p>
+              </div>
+            ) : (
+              imageList.map((img, index) => (
+                <div key={index} className="thumbnail-container">
+                  <HighlightOff
+                    fontSize="small"
+                    className="delete-btn"
+                    onClick={() => handleImageDelete(img)}
+                  />
+                  <img
+                    src={img}
+                    onClick={() => {
+                      setImage(img);
+                      handleImageClick(img);
+                    }}
+                  />
+                </div>
+              ))
+            )}
           </div>
         </div>
-        <input type="file" id="file" className="hidden" onChange={handleImageUpload} />
-        <label htmlFor="file">Click here</label>
-        <div className="refresh-btn-container">
-          <RefreshOutlined className="refresh-btn" onClick={handleReset} />
+        
+        <div className="label-container">
+          <input type="file" id="file" className="hidden" onChange={handleImageUpload} />
+            <label id="label" htmlFor="file">Upload</label>
         </div>
+
+        {/* <div className="refresh-btn-container">
+          <RefreshOutlined className="refresh-btn" onClick={handleReset} />
+        </div> */}
+
     </div>
   );
 };
