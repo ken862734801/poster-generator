@@ -80,13 +80,20 @@
     width:85px;
     margin:5px 3px;
     cursor:pointer;
+    position:relative;
 }
 .thumbnail-container:hover .delete-btn{
     visibility: visible;
 }
 .delete-btn{
+    position:absolute;
+    bottom:5px;
     visibility:hidden;
     cursor:pointer;
+    color:rgb(175, 175, 175);
+}
+.delete-btn:hover{
+    color:rgb(141, 141, 141);
 }
 .thumbnail-container > img{
     width:100%;

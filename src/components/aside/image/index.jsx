@@ -1,7 +1,7 @@
 import "./image.css";
 import { useEffect, useState } from "react";
 import uploadImage from "../../../images/upload-image.jpg";
-import { RefreshOutlined, RemoveCircleOutlineOutlined, HighlightOff } from "@material-ui/icons";
+import { RefreshOutlined, RemoveCircleOutlineOutlined, Delete, HighlightOff } from "@material-ui/icons";
 
 const ImageComponent = (props) => {
   const { image, setImage } = props;
@@ -74,10 +74,11 @@ const ImageComponent = (props) => {
             ) : (
               imageList.map((img, index) => (
                 <div key={index} className="thumbnail-container">
-                  <HighlightOff
+                  <Delete
                     fontSize="small"
                     className="delete-btn"
                     onClick={() => handleImageDelete(img)}
+                    title="Delete"
                   />
                   <img
                     src={img}
