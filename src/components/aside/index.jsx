@@ -69,7 +69,7 @@ export default function Aside (props){
     };
 
     useEffect(()=> {
-        getData("Drake", "Take Care")
+        getData("SZA", "CTRL")
     }, []);
 
     function createPoster(response){
