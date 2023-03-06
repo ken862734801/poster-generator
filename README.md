@@ -4,4 +4,4 @@ posters based on their favorite musical albums.
 
 https://ken862734801.github.io/poster-generator/
 
-<img src="assets/images/poster-generator.gif">
+<img src="E:\Documents\Odin Project\poster-generator\src\images\poster-generator.gif">
