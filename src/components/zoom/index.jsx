@@ -30,7 +30,7 @@ export default function ZoomButton (props){
         <div className="zoom-button-container">
             {/* <ZoomOut className="zoom-icon" onClick={handleDecrement}/> */}
             <img width="18px" alt="zoom out" src={zoomOutImage} onClick={handleDecrement}/>
-                <input type="text" value={`${zoom*100}%`} onChange={handleInputChange}></input>
+                <input type="text" readOnly value={`${zoom*100}%`} onChange={handleInputChange}></input>
             <img width="18px" alt="zoom in" src={zoomInImage} onClick={handleIncrement}/>
             {/* <ZoomIn className="zoom-icon" onClick={handleIncrement}/> */}
         </div>

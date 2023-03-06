@@ -181,7 +181,7 @@ export default function Aside (props){
 
     useEffect(() => {
         function handleResize(){
-            if(window.innerWidth < 1100){
+            if(window.innerWidth < 1000){
                 setShowNav(false);
                 setMargin(85);
                 setPosterMargin(0);
