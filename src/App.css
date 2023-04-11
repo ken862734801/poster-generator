@@ -34,7 +34,7 @@ main{
     overflow-y: auto;
     padding:20px;
     justify-content: center;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     /* 100 @.75 */
     /* 400 @ 1 */
 }
