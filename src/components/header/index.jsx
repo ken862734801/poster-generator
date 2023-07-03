@@ -1,5 +1,5 @@
 import "./header.css";
-import { useState } from "react";
+import { Config } from "../../utils/Config.js";
 import DomToImage from "dom-to-image";
 
 function savePng(name){
@@ -13,13 +13,11 @@ function savePng(name){
 };
 
 export default function Header(){
-    const [fileName, setFileName] = useState("my-image-name.png");
-
     return(
         <header>
             <div className="header-container">
                 <a href=""><h1>Poster Generator</h1></a>
-                <button onClick={()=> savePng(fileName)}>DOWNLOAD</button>
+                <button onClick={()=> savePng(Config.FILE_NAME)}>DOWNLOAD</button>
             </div>
         </header>
     )
