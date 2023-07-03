@@ -8,6 +8,7 @@ import { Search,
          TextFields, 
          AddPhotoAlternateOutlined } from "@material-ui/icons";
 import { useEffect } from "react";
+import { Config } from "../../utils/Config";
 
 export default function Aside (props){
     const { 
@@ -58,7 +59,7 @@ export default function Aside (props){
 
     async function getData (artist, album){
         try{
-            const response = await fetch("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=" + process.env.REACT_APP_API_KEY + "&artist=" + artist + "&album=" + album + "&format=json");
+            const response = await fetch(Config.API_URL + process.env.REACT_APP_API_KEY + "&artist=" + artist + "&album=" + album + "&format=json");
             if(!response.ok) throw console.log("Error!");
                 const data = await response.json();
                     console.log(data)
@@ -69,7 +70,7 @@ export default function Aside (props){
     };
 
     useEffect(()=> {
-        getData("SZA", "CTRL")
+        getData(Config.DEFAULT_ARTIST, Config.DEFAULT_ALBUM)
     }, []);
 
     function createPoster(response){
