@@ -2,7 +2,7 @@ import "./header.css";
 import { Config } from "../../utils/Config.js";
 import DomToImage from "dom-to-image";
 
-function savePng(name){
+function saveAsPng(name){
     DomToImage.toPng(document.getElementById("poster-container"), {quality:1})
         .then(function(dataUrl){
             let link = document.createElement("a");
@@ -17,7 +17,7 @@ export default function Header(){
         <header>
             <div className="header-container">
                 <a href=""><h1>Poster Generator</h1></a>
-                <button onClick={()=> savePng(Config.FILE_NAME)}>DOWNLOAD</button>
+                <button onClick={()=> saveAsPng(Config.FILE_NAME)}>DOWNLOAD</button>
             </div>
         </header>
     )
