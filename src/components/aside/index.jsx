@@ -62,8 +62,7 @@ export default function Aside (props){
             const response = await fetch(Config.API_URL + process.env.REACT_APP_API_KEY + "&artist=" + artist + "&album=" + album + "&format=json");
             if(!response.ok) throw console.log("Error!");
                 const data = await response.json();
-                    console.log(data)
-                    createPoster(data)
+                createPoster(data)
         } catch (err){
             console.error(err)
         }
