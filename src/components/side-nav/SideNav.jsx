@@ -1,12 +1,25 @@
 
 function SideNav(props){
-    const { navigationContent } = props;
+    const { navigationContent, setNavigationContent } = props;
+
+    function toggleSideNavigation(){
+        if(navigationContent['content'].hidden === false){
+            setNavigationContent({
+                content:{
+                    hidden: true
+                }
+            })
+        } else{
+            return null
+        };
+    };
 
     return (
         <div className="side-nav">
             <div className="side-nav--container">
                 <div className="side-nav--header">
                     <p>{navigationContent['content'].title}</p>
+                    <button onClick={() => toggleSideNavigation()}>Close Side Nav...</button>
                 </div>
                 <div className="side-nav-content">
                     { 
