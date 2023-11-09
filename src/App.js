@@ -154,12 +154,15 @@ const App = () => {
   return (
     <div className="App">
       <TabList
-      navigationContent={navigationContent}
-      setNavigationContent={setNavigationContent}
+        navigationContent={navigationContent}
+        setNavigationContent={setNavigationContent}
       />
-      <SideNav
-      navigationContent={navigationContent}
-      />
+   {navigationContent['content'].hidden ? null : (
+        <SideNav
+          navigationContent={navigationContent}
+          setNavigationContent={setNavigationContent}
+        />
+      )}
       <Poster 
         poster={poster}
         colorPalette={colorPalette}
