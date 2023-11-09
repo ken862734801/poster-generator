@@ -104,7 +104,6 @@ const App = () => {
     } else {
       console.log('Failed to retrieve wiki.');
     };
-
     setPoster(newPoster);
   };
 
