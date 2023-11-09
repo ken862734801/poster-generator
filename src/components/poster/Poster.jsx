@@ -6,23 +6,23 @@ function Poster (props) {
         <div className='poster'>
             <div className='poster--container'>
                 <div className='poster--header'>
-                    <h2>{poster.year}</h2>
-                    <h1>{poster.album}</h1>
+                    <h2>{poster['data'].year}</h2>
+                    <h1>{poster['data'].album}</h1>
                 </div>
                 <div className='poster-image--container'>
-                    <img className='poster--image' src={poster.image}></img>
+                    <img className='poster--image' src={poster['data'].image}></img>
                 </div>
                 <div className='poster--body'>
                     <div className='poster-palette--container'>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colorOne}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colorTwo}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colorThree}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colorFour}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colorFive}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorOne}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorTwo}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorThree}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorFour}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorFive}}></div>
                     </div>
                     <div className='poster--footer'>
                         <div className='poster-tracklist'>
-                        {(poster.tracklist).map((subArray, index) => {
+                        {(poster['data'].tracklist).map((subArray, index) => {
                             if (Array.isArray(subArray)) {
                                 return (
                                   <ul key={index}>
@@ -37,20 +37,20 @@ function Poster (props) {
                         <div className='poster-about'>
                             <div className='poster-about--container'>
                                 <div>
-                                    <h3 className='poster-artist'>{poster.artist}</h3>
+                                    <h3 className='poster-artist'>{poster['data'].artist}</h3>
                                 </div>
                                 <div>
                                     <h4>Out Now</h4>
-                                    <p>{poster.date}</p>
+                                    <p>{poster['data'].date}</p>
                                 </div>
                                 <div>
                                     <h4>Released By</h4>
-                                    <p>{poster.label}</p>
+                                    <p>{poster['data'].label}</p>
                                 </div>
                                 <div>
                                     <h4>Genre</h4>
                                     <p>
-                                        <span>{poster.genreTagOne}</span> · <span>{poster.genreTagTwo}</span> · <span>{poster.genreTagThree}</span>
+                                        <span>{poster['data'].genre[0]}</span> · <span>{poster['data'].genre[1]}</span> · <span>{poster['data'].genre[2]}</span>
                                     </p>
                                 </div>
                             </div>
