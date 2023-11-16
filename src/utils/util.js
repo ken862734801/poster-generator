@@ -14,7 +14,10 @@ function getCurrentYear (){
     return date.getFullYear();
 };
 
-function handleDateRegex(str, curr){
+const currentDate = getCurrentDate();
+const currentYear = getCurrentYear();
+
+function handleDateRegex(str){
     const dateRegex = /(\d{1,2}|[A-Za-z]+) (\d{1,2}|[A-Za-z]+),? (\d{4})/;
     const match = dateRegex.exec(str);
     if (match) {
@@ -27,7 +30,7 @@ function handleDateRegex(str, curr){
         }
         return { releaseDate: `${month} ${day}, ${year}`, releaseYear: year };
     } else {
-        return curr
+        return { releaseDate: currentDate, releaseYear: currentYear }
     }
 };
 
