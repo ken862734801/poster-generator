@@ -1,9 +1,10 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { divideTrackList, getCurrentDate, getCurrentYear, getRandomObject, handleDateRegex } from "./utils/util";
+import Header from "./components/header/Header";
+import Poster from "./components/poster/Poster";
 import TabList from "./components/tab-list/TabList";
 import SideNav from "./components/side-nav/SideNav";
-import Poster from "./components/poster/Poster";
 import { usePalette } from "react-palette";
 
 const dataObjects = [
@@ -23,6 +24,12 @@ const currentYear = getCurrentYear();
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState({ artist: '', album: '' });
+  const [settings, setSettings] = useState({
+    options: {
+      'Background Color': '#FFFFFF',
+      'Color': '#000000',
+    }
+  });
   const [navigationContent, setNavigationContent] = useState({
    content: {
     title: 'Search',
@@ -43,11 +50,11 @@ const App = () => {
   });
   const [colorPalette, setColorPalette] = useState({
     colors: {
-      colorOne: '',
-      colorTwo: '',
-      colorThree: '',
-      colorFour: '',
-      colorFive: ''
+      'Color One': '',
+      'Color Two': '',
+      'Color Three': '',
+      'Color Four': '',
+      'Color Five': ''
     }
   });
 
@@ -136,11 +143,11 @@ const App = () => {
     const newColorPalette = { ...colorPalette };
     try {
       if(data){
-        newColorPalette['colors'].colorOne = data.vibrant;
-        newColorPalette['colors'].colorTwo = data.lightVibrant;
-        newColorPalette['colors'].colorThree = data.darkVibrant;
-        newColorPalette['colors'].colorFour = data.muted;
-        newColorPalette['colors'].colorFive = data.darkMuted;
+        newColorPalette.colors['Color One'] = data.vibrant;
+        newColorPalette.colors['Color Two'] = data.lightVibrant;
+        newColorPalette.colors['Color Three'] = data.darkVibrant;
+        newColorPalette.colors['Color Four'] = data.muted;
+        newColorPalette.colors['Color Five'] = data.darkMuted;
       } else {
         console.log('Failed to retrieve data.')
       }
@@ -152,22 +159,43 @@ const App = () => {
   }, [data, error]);
 
   return (
-    <div className="App">
-      <TabList
-        navigationContent={navigationContent}
-        setNavigationContent={setNavigationContent}
-      />
-   {navigationContent['content'].hidden ? null : (
-        <SideNav
-          navigationContent={navigationContent}
-          setNavigationContent={setNavigationContent}
-        />
-      )}
-      <Poster 
-        poster={poster}
-        colorPalette={colorPalette}
-      />
-    </div>
+    <>
+      <Header/>
+      <div>
+        <aside>
+          <TabList
+            navigationContent={navigationContent}
+            setNavigationContent={setNavigationContent}
+          />
+          {navigationContent['content'].hidden ? null : (
+            <SideNav
+              colorPalette={colorPalette}
+              setColorPalette={setColorPalette}
+              fetchData={fetchData}
+              navigationContent={navigationContent}
+              poster={poster}
+              setNavigationContent={setNavigationContent}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              settings={settings}
+              setSettings={setSettings}
+            />
+          )}
+        </aside>
+        <main>
+          {isLoading ? 
+            (<div>
+              <p>Loading...</p>
+            </div>):
+            (<Poster 
+              colorPalette={colorPalette}
+              poster={poster}
+              settings={settings}
+            />)
+          }
+        </main>
+      </div>
+    </>
   );
 }
 
