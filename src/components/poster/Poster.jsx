@@ -1,10 +1,10 @@
 import './poster.css';
 
 function Poster (props) {
-    const { poster, colorPalette} = props;
+    const { colorPalette, poster, settings} = props;
     return (
         <div className='poster'>
-            <div className='poster--container'>
+            <div className='poster--container'style={{ backgroundColor: settings.options['Background Color'], color: settings.options['Color'] }}>
                 <div className='poster--header'>
                     <h2>{poster['data'].year}</h2>
                     <h1>{poster['data'].album}</h1>
@@ -14,11 +14,11 @@ function Poster (props) {
                 </div>
                 <div className='poster--body'>
                     <div className='poster-palette--container'>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorOne}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorTwo}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorThree}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorFour}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette['colors'].colorFive}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color One']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color Two']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color Three']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color Four']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color Five']}}></div>
                     </div>
                     <div className='poster--footer'>
                         <div className='poster-tracklist'>
