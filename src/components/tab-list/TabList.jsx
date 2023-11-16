@@ -1,6 +1,6 @@
 
 function TabList(props){
-    const { navigationContent, setNavigationContent } = props;
+    const { setNavigationContent } = props;
 
     function handleNavigationContent(category){
         setNavigationContent({
