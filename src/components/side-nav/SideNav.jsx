@@ -1,6 +1,19 @@
+import { X } from "@phosphor-icons/react";
+import ColorEditor from "../color-editor/ColorEditor";
+import SearchForm from "../search-form/SearchForm";
 
 function SideNav(props){
-    const { navigationContent, setNavigationContent } = props;
+    const { 
+            colorPalette,
+            setColorPalette,
+            fetchData,
+            navigationContent, 
+            setNavigationContent,
+            searchQuery,
+            setSearchQuery,
+            settings,
+            setSettings
+         } = props;
 
     function toggleSideNavigation(){
         if(navigationContent['content'].hidden === false){
@@ -19,13 +32,21 @@ function SideNav(props){
             <div className="side-nav--container">
                 <div className="side-nav--header">
                     <p>{navigationContent['content'].title}</p>
-                    <button onClick={() => toggleSideNavigation()}>Close Side Nav...</button>
+                    <button onClick={() => toggleSideNavigation()}>
+                        <span>
+                            <X size={20}/>
+                        </span>
+                    </button>
                 </div>
                 <div className="side-nav-content">
                     { 
                         navigationContent['content'].title === "Search" && 
                         <div>
-                            <p>Search Content...</p>
+                        {<SearchForm
+                            fetchData={fetchData}
+                            searchQuery={searchQuery}
+                            setSearchQuery={setSearchQuery}
+                        />}
                         </div>
                     }
                     {
@@ -43,7 +64,12 @@ function SideNav(props){
                     {
                         navigationContent['content'].title === 'Color' && 
                         <div>
-                            <p>Color Content...</p>
+                            {<ColorEditor 
+                                colorPalette={colorPalette}
+                                setColorPalette={setColorPalette}
+                                settings={settings}
+                                setSettings={setSettings}
+                            />}
                         </div>
                     }
                 </div>
