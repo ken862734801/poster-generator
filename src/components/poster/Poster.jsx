@@ -4,7 +4,7 @@ function Poster (props) {
     const { colorPalette, poster, settings} = props;
     return (
         <div className='poster'>
-            <div className='poster--container'style={{ backgroundColor: settings.options['Background Color'], color: settings.options['Color'] }}>
+            <div className='poster--container'style={{ backgroundColor: settings.colors['Background Color'], color: settings.colors['Color'] }}>
                 <div className='poster--header'>
                     <h2>{poster['data'].year}</h2>
                     <h1>{poster['data'].album}</h1>
@@ -42,6 +42,7 @@ function Poster (props) {
                                 <div>
                                     <h4>Out Now</h4>
                                     <p>{poster['data'].date}</p>
+                                    <p>{poster['data'].duration}</p>
                                 </div>
                                 <div>
                                     <h4>Released By</h4>

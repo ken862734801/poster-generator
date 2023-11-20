@@ -1,9 +1,12 @@
 import { X } from "@phosphor-icons/react";
 import ColorEditor from "../color-editor/ColorEditor";
 import SearchForm from "../search-form/SearchForm";
+import TextEditor from "../text-editor/TextEditor";
 
 function SideNav(props){
     const { 
+            poster,
+            setPoster,
             colorPalette,
             setColorPalette,
             fetchData,
@@ -52,7 +55,10 @@ function SideNav(props){
                     {
                         navigationContent['content'].title === 'Text' && 
                         <div>
-                            <p>Text Content...</p>
+                            {<TextEditor
+                                poster = {poster}
+                                setPoster = {setPoster}
+                            />}
                         </div>
                     }
                     {
@@ -65,6 +71,7 @@ function SideNav(props){
                         navigationContent['content'].title === 'Color' && 
                         <div>
                             {<ColorEditor 
+                                poster={poster}
                                 colorPalette={colorPalette}
                                 setColorPalette={setColorPalette}
                                 settings={settings}

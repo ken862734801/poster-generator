@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { divideTrackList, getCurrentDate, getCurrentYear, getRandomObject, handleDateRegex } from "./utils/util";
 import Header from "./components/header/Header";
 import Poster from "./components/poster/Poster";
@@ -25,7 +25,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState({ artist: '', album: '' });
   const [settings, setSettings] = useState({
-    options: {
+    colors: {
       'Background Color': '#FFFFFF',
       'Color': '#000000',
     }
@@ -40,12 +40,13 @@ const App = () => {
     data: {
       artist: '',
       album: '',
-      date: currentDate,
+      date: '',
+      duration: '00:00:00',
       genre: ['genre', 'genre', 'genre'],
       image: '',
       label: 'label',
       tracklist: [],
-      year: currentYear
+      year: ''
     }
   });
   const [colorPalette, setColorPalette] = useState({
@@ -103,6 +104,16 @@ const App = () => {
       console.log('Failed to retrieve tags.');
     };
 
+    if(response.album.tracks){
+      let total = 0;
+      for(let i = 0; i < response.album.tracks.track.length; i++){
+          total+=response.album.tracks.track[i].duration
+          newPoster['data'].duration = new Date(total * 1000).toISOString().substr(11,8);
+      };
+    } else {
+      console.log('Failed to retrieve tracks.');
+    }
+
     if(response.album.wiki){
       const content = response.album.wiki.summary;
       const dateRegex = handleDateRegex(content, currentDate);
@@ -149,7 +160,7 @@ const App = () => {
         newColorPalette.colors['Color Four'] = data.muted;
         newColorPalette.colors['Color Five'] = data.darkMuted;
       } else {
-        console.log('Failed to retrieve data.')
+        console.log('Failed to retrieve color data.')
       }
     } catch (error){
       console.error('An error occured:', error);
@@ -174,6 +185,7 @@ const App = () => {
               fetchData={fetchData}
               navigationContent={navigationContent}
               poster={poster}
+              setPoster={setPoster}
               setNavigationContent={setNavigationContent}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
