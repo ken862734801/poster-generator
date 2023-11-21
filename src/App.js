@@ -136,7 +136,8 @@ const App = () => {
           setTimeout(function(){
             resolve();
           }, 2000);
-        }).then(createPoster(data));
+        })
+        createPoster(data);
       } else {
         console.error('Request failed with status:', response.status);
       }
