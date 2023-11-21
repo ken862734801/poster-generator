@@ -1,10 +1,11 @@
 import "./App.css";
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import { divideTrackList, getCurrentDate, getCurrentYear, getRandomObject, handleDateRegex } from "./utils/util";
 import Header from "./components/header/Header";
 import Poster from "./components/poster/Poster";
 import TabList from "./components/tab-list/TabList";
 import SideNav from "./components/side-nav/SideNav";
+import Spinner from "./components/spinner/Spinner";
 import { usePalette } from "react-palette";
 
 const dataObjects = [
@@ -131,8 +132,11 @@ const App = () => {
       const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' + process.env.REACT_APP_API_KEY + '&artist=' + artist + '&album=' + album + '&format=json');
       if(response.ok){
         const data = await response.json();
-        createPoster(data);
-        console.log(data)
+        await new Promise(function(resolve){
+          setTimeout(function(){
+            resolve();
+          }, 2000);
+        }).then(createPoster(data));
       } else {
         console.error('Request failed with status:', response.status);
       }
@@ -197,7 +201,7 @@ const App = () => {
         <main>
           {isLoading ? 
             (<div>
-              <p>Loading...</p>
+              <Spinner/>
             </div>):
             (<Poster 
               colorPalette={colorPalette}
