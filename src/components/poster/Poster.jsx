@@ -2,26 +2,38 @@ import './poster.css';
 
 function Poster (props) {
     const { colorPalette, poster, settings} = props;
+
+    const posterSettings = {
+        backgroundColor: settings.colors['background color'],
+        color: settings.colors['color']
+    };
+
+    const hrSettings = {
+        backgroundColor: settings.colors['color'],
+        border: `1px solid ${settings.colors['color']}`
+    }
+
     return (
         <div className='poster'>
-            <div className='poster--container'style={{ backgroundColor: settings.colors['Background Color'], color: settings.colors['Color'] }}>
+            <div className='poster--container'style={ posterSettings }>
                 <div className='poster--header'>
-                    <h2>{poster['data'].year}</h2>
-                    <h1>{poster['data'].album}</h1>
+                    <hr style={ hrSettings }></hr>
+                    <h2 className='poster-release-year'>{poster['data'].year}</h2>
+                    <h1 className='poster-release-name'>{poster['data'].album}</h1>
                 </div>
                 <div className='poster-image--container'>
                     <img className='poster--image' src={poster['data'].image}></img>
                 </div>
                 <div className='poster--body'>
                     <div className='poster-palette--container'>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color One']}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color Two']}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color Three']}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color Four']}}></div>
-                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['Color Five']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['color one']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['color two']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['color three']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['color four']}}></div>
+                        <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['color five']}}></div>
                     </div>
                     <div className='poster--footer'>
-                        <div className='poster-tracklist'>
+                        <div className='poster--tracklist'>
                         {(poster['data'].tracklist).map((subArray, index) => {
                             if (Array.isArray(subArray)) {
                                 return (
