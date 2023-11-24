@@ -1,9 +1,12 @@
+import './header.css';
 
 function Header(){
     return (
         <header>
-            <p>This is the header...</p>
-            <button>Download</button>
+            <div className='header--container'>
+                <a>Poster Generator</a>
+                <button>Download</button>
+            </div>
         </header>
     )
 };

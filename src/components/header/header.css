@@ -1,0 +1,22 @@
+header{
+    position:fixed;
+    width:100%;
+    background-color: white;
+    z-index:200000000;
+}
+.header--container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height:50px;
+    padding:10px;
+}
+.header--container > button{
+    background-color: #EAEDEF;
+    border:none;
+    border-radius:16px;
+    cursor: pointer;
+    padding: 10px 4px;
+    width:125px;
+    text-transform: uppercase;
+}
