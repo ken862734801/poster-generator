@@ -6,3 +6,21 @@
 body{
     height:100vh;
 }
+.site--container{
+    display:flex;
+    height:inherit;
+    padding-top:45px;
+}
+aside{
+    display:flex;
+    position: relative;
+}
+main{
+    background-color: #EAEDEF;
+    display:flex;
+    justify-content: center;
+    flex:1;
+    overflow-y: auto;
+    padding:20px;
+    position: relative;
+}

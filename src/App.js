@@ -27,8 +27,15 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState({ artist: '', album: '' });
   const [settings, setSettings] = useState({
     colors: {
-      'Background Color': '#FFFFFF',
-      'Color': '#000000',
+      'background color': '#FFFFFF',
+      'color': '#000000',
+    },
+    dimensions: {
+      'height': '',
+      'width': ''
+    },
+    zoom: {
+      'level': 0
     }
   });
   const [navigationContent, setNavigationContent] = useState({
@@ -52,11 +59,11 @@ const App = () => {
   });
   const [colorPalette, setColorPalette] = useState({
     colors: {
-      'Color One': '',
-      'Color Two': '',
-      'Color Three': '',
-      'Color Four': '',
-      'Color Five': ''
+      'color one': '',
+      'color two': '',
+      'color three': '',
+      'color four': '',
+      'color five': ''
     }
   });
 
@@ -117,10 +124,12 @@ const App = () => {
 
     if(response.album.wiki){
       const content = response.album.wiki.summary;
-      const dateRegex = handleDateRegex(content, currentDate);
+      const dateRegex = handleDateRegex(content);
       newPoster['data'].date = dateRegex.releaseDate;
       newPoster['data'].year = dateRegex.releaseYear;
     } else {
+      newPoster['data'].year = currentYear;
+      newPoster['data'].date = currentDate;
       console.log('Failed to retrieve wiki.');
     };
     setPoster(newPoster);
@@ -135,7 +144,7 @@ const App = () => {
         await new Promise(function(resolve){
           setTimeout(function(){
             resolve();
-          }, 2000);
+          }, 1500);
         })
         createPoster(data);
       } else {
@@ -159,11 +168,11 @@ const App = () => {
     const newColorPalette = { ...colorPalette };
     try {
       if(data){
-        newColorPalette.colors['Color One'] = data.vibrant;
-        newColorPalette.colors['Color Two'] = data.lightVibrant;
-        newColorPalette.colors['Color Three'] = data.darkVibrant;
-        newColorPalette.colors['Color Four'] = data.muted;
-        newColorPalette.colors['Color Five'] = data.darkMuted;
+        newColorPalette.colors['color one'] = data.vibrant;
+        newColorPalette.colors['color two'] = data.lightVibrant;
+        newColorPalette.colors['color three'] = data.darkVibrant;
+        newColorPalette.colors['color four'] = data.muted;
+        newColorPalette.colors['color five'] = data.darkMuted;
       } else {
         console.log('Failed to retrieve color data.')
       }
@@ -177,7 +186,7 @@ const App = () => {
   return (
     <>
       <Header/>
-      <div>
+      <div className='site--container'>
         <aside>
           <TabList
             navigationContent={navigationContent}
@@ -201,9 +210,9 @@ const App = () => {
         </aside>
         <main>
           {isLoading ? 
-            (<div>
+            (
               <Spinner/>
-            </div>):
+            ):
             (<Poster 
               colorPalette={colorPalette}
               poster={poster}
