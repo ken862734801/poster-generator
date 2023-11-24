@@ -1,0 +1,20 @@
+label{
+    text-transform: capitalize;
+}
+.color-input--container{
+    display:flex;
+}
+.color-picker--box{
+    border:1px solid lightgray;
+    border-radius:8px;
+    width:25px;
+    height:25px;
+    overflow: hidden;
+}
+input[type="color"]{
+    border:0;
+    padding:0;
+    width: 200%;
+    height: 200%;
+    transform: translate(-25%, -25%)
+}

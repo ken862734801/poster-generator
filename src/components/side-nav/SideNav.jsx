@@ -1,3 +1,5 @@
+import './side-nav.css';
+
 import { X } from "@phosphor-icons/react";
 import ColorEditor from "../color-editor/ColorEditor";
 import SearchForm from "../search-form/SearchForm";
@@ -32,54 +34,52 @@ function SideNav(props){
 
     return (
         <div className="side-nav">
-            <div className="side-nav--container">
-                <div className="side-nav--header">
-                    <p>{navigationContent['content'].title}</p>
-                    <button onClick={() => toggleSideNavigation()}>
-                        <span>
-                            <X size={20}/>
-                        </span>
-                    </button>
-                </div>
-                <div className="side-nav-content">
-                    { 
-                        navigationContent['content'].title === "Search" && 
-                        <div>
-                        {<SearchForm
-                            fetchData={fetchData}
-                            searchQuery={searchQuery}
-                            setSearchQuery={setSearchQuery}
+            <div className="side-nav--header">
+                <p>{navigationContent['content'].title}</p>
+                <button className='side-nav-close--button' onClick={() => toggleSideNavigation()}>
+                    <div className='side-nav-close--div'>
+                        <X size={20}/>
+                    </div>
+                </button>
+            </div>
+            <div className="side-nav-content">
+                { 
+                    navigationContent['content'].title === "Search" && 
+                    <div>
+                    {<SearchForm
+                        fetchData={fetchData}
+                        searchQuery={searchQuery}
+                        setSearchQuery={setSearchQuery}
+                    />}
+                    </div>
+                }
+                {
+                    navigationContent['content'].title === 'Text' && 
+                    <div>
+                        {<TextEditor
+                            poster = {poster}
+                            setPoster = {setPoster}
                         />}
-                        </div>
-                    }
-                    {
-                        navigationContent['content'].title === 'Text' && 
-                        <div>
-                            {<TextEditor
-                                poster = {poster}
-                                setPoster = {setPoster}
-                            />}
-                        </div>
-                    }
-                    {
-                        navigationContent['content'].title === 'Image' && 
-                        <div>
-                            <p>Image Content...</p>
-                        </div>
-                    }
-                    {
-                        navigationContent['content'].title === 'Color' && 
-                        <div>
-                            {<ColorEditor 
-                                poster={poster}
-                                colorPalette={colorPalette}
-                                setColorPalette={setColorPalette}
-                                settings={settings}
-                                setSettings={setSettings}
-                            />}
-                        </div>
-                    }
-                </div>
+                    </div>
+                }
+                {
+                    navigationContent['content'].title === 'Image' && 
+                    <div>
+                        <p>Image Content...</p>
+                    </div>
+                }
+                {
+                    navigationContent['content'].title === 'Color' && 
+                    <div>
+                        {<ColorEditor 
+                            poster={poster}
+                            colorPalette={colorPalette}
+                            setColorPalette={setColorPalette}
+                            settings={settings}
+                            setSettings={setSettings}
+                        />}
+                    </div>
+                }
             </div>
         </div>
     )

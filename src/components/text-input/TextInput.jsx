@@ -11,7 +11,7 @@ function TextInput (props){
 
     return (
         <>
-        <label htmlFor=''></label>
+        <label htmlFor={inputName}>{inputName}</label>
         <div className='text-input'>
             <input onChange={handleTextInputChange} type='text' name={inputName} value={inputValue}></input>
         </div>

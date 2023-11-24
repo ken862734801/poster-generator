@@ -1,3 +1,4 @@
+import './tab-list.css';
 
 function TabList(props){
     const { setNavigationContent } = props;

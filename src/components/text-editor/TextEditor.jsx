@@ -9,6 +9,7 @@ function TextEditor(props){
     function renderTextInputFields(arr){
         return arr.map((field) => (
             <TextInput
+                key={field}
                 inputName={field}
                 inputValue={poster.data[field]}
                 poster={poster}

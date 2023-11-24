@@ -12,18 +12,18 @@ function ColorEditor(props){
         setSettings((prev) => ({
             ...prev,
             colors: {
-                'Background Color': '#FFFFFF',
-                'Color': '#000000',
+                'background color': '#FFFFFF',
+                'color': '#000000',
             }
         }));
         if(data){
             setColorPalette({
                 colors: {
-                    'Color One': data.vibrant,
-                    'Color Two': data.lightVibrant,
-                    'Color Three': data.darkVibrant,
-                    'Color Four': data.muted,
-                    'Color Five': data.darkMuted
+                    'color one': data.vibrant,
+                    'color two': data.lightVibrant,
+                    'color three': data.darkVibrant,
+                    'color four': data.muted,
+                    'color five': data.darkMuted
                   }
             })
         } else {
@@ -33,7 +33,7 @@ function ColorEditor(props){
 
     return (
         <div>
-            {Object.keys(settings.colors).map((key, index) => (
+            {Object.keys(settings.colors).map((key) => (
                 <ColorInput 
                     key={key} 
                     inputName={key} 
@@ -43,7 +43,7 @@ function ColorEditor(props){
                     setSettings={setSettings}
                 />
             ))}
-            {Object.keys(colorPalette.colors).map((key, index) => (
+            {Object.keys(colorPalette.colors).map((key) => (
                 <ColorInput
                     key={key}
                     inputName={key}

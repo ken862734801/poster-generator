@@ -1,0 +1,31 @@
+.side-nav{
+    width: 280px;
+    border:1px solid red;
+}
+.side-nav--header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width:90%;
+}
+.side-nav-close--button{
+    background-color: transparent;
+    border:none;
+    border-radius:50%;
+    cursor: pointer;
+    width:30px;
+    height:30px;
+}
+.side-nav-close--button:hover{
+    background-color: buttonface;
+}
+.side-nav-close--div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.side-nav-content{
+    margin: 0 auto;
+    width:90%;
+}

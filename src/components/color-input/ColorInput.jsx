@@ -22,12 +22,12 @@ function ColorInput (props){
         <>
         <label htmlFor={inputName}>{inputName}</label>
         <div className='color-input'>
-            <div>
+            <div className='color-input--container'>
                 <div>
                     <span>HEX</span>
                     <input onChange={(e)=> handleColorInputChange(e, type)} type='text' name={inputName} value={inputValue}></input>
                 </div>
-                <div>
+                <div className='color-picker--box'>
                     <input onChange={(e)=> handleColorInputChange(e, type)} type='color' name={inputName} value={inputValue}></input>
                 </div>
             </div>
