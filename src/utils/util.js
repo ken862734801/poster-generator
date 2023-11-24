@@ -6,6 +6,22 @@ const dateOptions = {
     day: 'numeric'
 };
 
+const monthOptions = {
+    January: "Jan",
+    February: "Feb",
+    March: "Mar",
+    April: "Apr",
+    May: "May",
+    June: "Jun",
+    July: "Jul",
+    August: "Aug",
+    September: "Sep",
+    October: "Oct",
+    November: "Nov",
+    December: "Dec"
+  };
+  
+
 function getCurrentDate () {
     return date.toLocaleDateString('en-US', dateOptions)
 };
@@ -27,6 +43,9 @@ function handleDateRegex(str){
         if(day.length > month.length){
             month = match[1];
             day = match[2];
+        }
+        if(monthOptions[month]){
+            month = monthOptions[month];
         }
         return { releaseDate: `${month} ${day}, ${year}`, releaseYear: year };
     } else {
