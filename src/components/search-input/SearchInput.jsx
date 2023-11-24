@@ -1,7 +1,7 @@
 import './search-input.css';
 
 import { MagnifyingGlass, X } from "@phosphor-icons/react/dist/ssr";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function SearchInput (props){
     const { nameText, placeholderText, searchQuery, setSearchQuery } = props;
@@ -12,8 +12,22 @@ function SearchInput (props){
             ...searchQuery,
             [nameText]: e.target.value
         });
-        console.log(searchQuery);
     };
+
+    function handleClearButtonClick(){
+        setSearchQuery({
+            ...searchQuery,
+            [nameText]: ''
+        });
+    }
+
+    useEffect(() => {
+        if(searchQuery[nameText] !== ""){
+            setIsDisplayed(true)
+        } else {
+            setIsDisplayed(false)
+        }
+    }, [searchQuery]);
 
     return (
         <div className='search-input'>
@@ -22,16 +36,19 @@ function SearchInput (props){
             </span>
             <input 
                 name={nameText} 
+                value={searchQuery[nameText]}
                 placeholder={placeholderText} 
                 type='text' 
                 onChange={handleSearchInputChange}
-                required>
-            </input>
-            <button type='button'>
-                <span className="search-input-clear--button">
-                    <X size={20}/>
-                </span>
-            </button>
+                required
+            />
+            {isDisplayed && (
+                <button className='search-input-clear--button' type='button' onClick={handleClearButtonClick}>
+                    <div className="search-input-clear--div">
+                        <X size={20}/>
+                    </div>
+                </button>
+            )}
         </div>
     )
 };

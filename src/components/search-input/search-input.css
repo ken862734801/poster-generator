@@ -1,0 +1,22 @@
+.search-input{
+    border-radius:8px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-input-clear--button{
+    background-color: transparent;
+    border:none;
+    border-radius:50%;
+    cursor: pointer;
+    width:30px;
+    height:30px;
+}
+.search-input-clear--button:hover{
+    background-color: buttonface;
+}
+.search-input-clear--div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

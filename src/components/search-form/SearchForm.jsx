@@ -3,13 +3,21 @@ import SearchInput from "../search-input/SearchInput";
 function SearchForm(props){
     const { fetchData, searchQuery, setSearchQuery } = props;
 
+    function clearForm(){
+        setSearchQuery({
+            artist: '',
+            album: ''
+        })
+    };
+
     function handleFormSubmit(e){
         e.preventDefault();
         fetchData(searchQuery.artist, searchQuery.album);
+        clearForm()
     };
 
     return (
-        <form>
+        <form onSubmit={handleFormSubmit}>
             <SearchInput
                 nameText={'artist'}
                 placeholderText={'Search Artist'}
@@ -22,11 +30,7 @@ function SearchForm(props){
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
             />
-            <input
-                type="submit" 
-                value='Submit'
-                onClick={handleFormSubmit}
-            />
+            <button type='submit'>Submit</button>
         </form>
     )
 };
