@@ -1,4 +1,6 @@
 import './tab-list.css';
+import Tab from '../tab/Tab';
+import { MagnifyingGlass, TextAa, Image, Palette } from '@phosphor-icons/react';
 
 function TabList(props){
     const { setNavigationContent } = props;
@@ -15,10 +17,10 @@ function TabList(props){
     return (
         <div className="tab-list">
             <div className="tab-list--container">
-                <button onClick={() => handleNavigationContent('Search')}>Search</button>
-                <button onClick={() => handleNavigationContent('Text')}>Text</button>
-                <button onClick={() => handleNavigationContent('Image')}>Image</button>
-                <button onClick={() => handleNavigationContent('Color')}>Color</button>
+                <Tab handleTabClick={()=> handleNavigationContent('Search')} icon={<MagnifyingGlass color='#555' size={24}/>} text={'Search'}/>
+                <Tab handleTabClick={()=> handleNavigationContent('Text')} icon={<TextAa color='#555' size={24}/>} text={'Text'}/>
+                <Tab handleTabClick={()=> handleNavigationContent('Image')} icon={<Image color='#555' size={24}/>} text={'Image'}/>
+                <Tab handleTabClick={()=> handleNavigationContent('Color')} icon={<Palette color='#555' size={24}/>} text={'Color'}/>
             </div>
         </div>
     )
