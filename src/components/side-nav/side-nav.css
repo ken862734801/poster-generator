@@ -1,6 +1,10 @@
 .side-nav{
-    width: 280px;
-    border:1px solid red;
+    background-color: white;
+    width: 300px;
+    left:80px;
+    position:fixed;
+    height:100vh;
+    z-index:2000000000;
 }
 .side-nav--header{
     display:flex;

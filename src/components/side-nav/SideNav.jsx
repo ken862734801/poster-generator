@@ -26,7 +26,7 @@ function SideNav(props){
                 content:{
                     hidden: true
                 }
-            })
+            });
         } else{
             return null
         };
