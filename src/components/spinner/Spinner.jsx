@@ -1,12 +1,10 @@
 import './spinner.css';
 
-function Spinner(){
+function Spinner(props){
+   const { settings } = props;
+
     return (
-       <div className='spinner-poster'>
-         <div className='spinner-poster--container'>
-            <div className='spinner'></div>
-         </div>
-       </div>
+      <div style={ settings } className='spinner'></div>
     )
 };
 
