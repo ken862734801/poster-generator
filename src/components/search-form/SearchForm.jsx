@@ -1,3 +1,4 @@
+import './search-form.css';
 import SearchInput from "../search-input/SearchInput";
 
 function SearchForm(props){

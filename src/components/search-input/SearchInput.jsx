@@ -1,6 +1,6 @@
 import './search-input.css';
 
-import { MagnifyingGlass, X } from "@phosphor-icons/react/dist/ssr";
+import { MagnifyingGlass, X, XCircle } from "@phosphor-icons/react/dist/ssr";
 import { useState, useEffect } from "react";
 
 function SearchInput (props){
@@ -31,7 +31,7 @@ function SearchInput (props){
 
     return (
         <div className='search-input'>
-            <span className="leading-icon">
+            <span className="leading-icon--span">
                 <MagnifyingGlass size={20}/>
             </span>
             <input 
@@ -42,13 +42,13 @@ function SearchInput (props){
                 onChange={handleSearchInputChange}
                 required
             />
-            {isDisplayed && (
-                <button className='search-input-clear--button' type='button' onClick={handleClearButtonClick}>
-                    <div className="search-input-clear--div">
-                        <X size={20}/>
+            {
+                <button type='button' onClick={handleClearButtonClick} className={`search-input-clear--button ${ isDisplayed ? '' : 'hidden' }`}>
+                    <div className='search-input-clear--div'>
+                        <XCircle size={20}/>
                     </div>
                 </button>
-            )}
+            }
         </div>
     )
 };
