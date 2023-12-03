@@ -1,20 +1,58 @@
-label{
+.color-input--label > p{
+    color:var(--font-color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.70rem;
+    font-weight: bold;
+    width: 85%;
+    margin: 0 auto;
     text-transform: capitalize;
 }
-.color-input--container{
+.color-input{
     display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:80%;
+    margin: 0 auto;
+}
+.color-text--box{
+    border-radius:8px;
+    background-color: var(--light-gray-color);
+    color:var(--font-color);
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:7px 6px 7px 8px;
+    margin: 5px 0px 10px -2px;
+    width:85%;
+}
+.color-text--box > span{
+    padding-left:3px;
+    font-size: 0.80rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.color-text--box > input{
+    border:none;
+    color:var(--font-color);
+    background-color: var(--light-gray-color);
+    outline: none;
+    width:80%;
+    font-size:0.85rem;
+    text-transform: uppercase;
+    text-indent: 2px;
 }
 .color-picker--box{
     border:1px solid lightgray;
     border-radius:8px;
-    width:25px;
-    height:25px;
+    width:29px;
+    height:29px;
     overflow: hidden;
+    margin-bottom:5px;
 }
 input[type="color"]{
     border:0;
+    cursor: pointer;
     padding:0;
     width: 200%;
     height: 200%;
-    transform: translate(-25%, -25%)
+    transform: translate(-25%, -25%);
 }

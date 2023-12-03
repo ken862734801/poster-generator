@@ -20,16 +20,16 @@ function ColorInput (props){
 
     return (
         <>
-        <label htmlFor={inputName}>{inputName}</label>
+        <label className='color-input--label' htmlFor={inputName}>
+            <p>{inputName}</p>
+        </label>
         <div className='color-input'>
-            <div className='color-input--container'>
-                <div>
-                    <span>HEX</span>
-                    <input onChange={(e)=> handleColorInputChange(e, type)} type='text' name={inputName} value={inputValue}></input>
-                </div>
-                <div className='color-picker--box'>
-                    <input onChange={(e)=> handleColorInputChange(e, type)} type='color' name={inputName} value={inputValue}></input>
-                </div>
+            <div className='color-text--box'>
+                <span>HEX</span>
+                <input onChange={(e)=> handleColorInputChange(e, type)} type='text' name={inputName} value={inputValue}></input>
+            </div>
+            <div className='color-picker--box'>
+                <input onChange={(e)=> handleColorInputChange(e, type)} type='color' name={inputName} value={inputValue}></input>
             </div>
         </div>
         </>

@@ -1,6 +1,7 @@
 import './color-editor.css';
 import ColorInput from '../color-input/ColorInput';
 import { RefreshOutlined } from '@material-ui/icons';
+import { ArrowsClockwise } from '@phosphor-icons/react';
 import { usePalette } from 'react-palette';
 
 function ColorEditor(props){
@@ -32,7 +33,7 @@ function ColorEditor(props){
     };
 
     return (
-        <div>
+        <div className='color-editor'>
             {Object.keys(settings.colors).map((key) => (
                 <ColorInput 
                     key={key} 
@@ -53,11 +54,13 @@ function ColorEditor(props){
                     setColorPalette={setColorPalette}
                 />
             ))}
-            <button onClick={handleColorReset}>
-                <span>
-                    <RefreshOutlined/>
-                </span>
-            </button>
+            <div className='color-editor-button--container'>
+                <button title='Reset Colors' className='color-reset--button' onClick={handleColorReset}>
+                    <span>
+                        <ArrowsClockwise size={24}/>
+                    </span>
+                </button>
+            </div>
         </div>
     )
 };
