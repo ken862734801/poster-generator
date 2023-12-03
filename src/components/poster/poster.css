@@ -4,9 +4,11 @@
     min-height:1480px;
     text-transform: uppercase;
     margin-top:30px;
+    position:relative;
+    /* transform: scale(0.5);
+    transform-origin: 50% 0%; */
 }
 .poster--container{
-    /* background-color: white; */
     padding:25px 30px 20px 30px;
     height:inherit;
 }
@@ -22,6 +24,13 @@
     height:960px;
     width:100%;
     margin: 0 auto;
+    position:relative;
+}
+.poster-image--container > .spinner{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
 }
 .poster--image{
     width:100%;

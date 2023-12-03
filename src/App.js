@@ -7,17 +7,23 @@ import TabList from "./components/tab-list/TabList";
 import SideNav from "./components/side-nav/SideNav";
 import Spinner from "./components/spinner/Spinner";
 import { usePalette } from "react-palette";
+import ZoomWidget from "./components/zoom-widget/ZoomWidget";
 
 const dataObjects = [
   {
     artist: 'Tame Impala',
     title: 'Currents'
-  },
-  {
-    artist: 'SZA',
-    title: 'CTRL'
   }
 ];
+
+
+const styleObject = {
+  width: '50px',
+  height: '50px',
+  border: '5px solid #f3f3f3',
+  borderTop: '5px solid #555'
+}
+
 
 const currentDate = getCurrentDate();
 const currentYear = getCurrentYear();
@@ -28,7 +34,7 @@ const App = () => {
   const [settings, setSettings] = useState({
     colors: {
       'background color': '#FFFFFF',
-      'color': '#000000',
+      'text color': '#000000',
     },
     dimensions: {
       'height': '',
@@ -107,7 +113,7 @@ const App = () => {
         let tag = response.album.tags.tag[i].name;
         tags.push(tag);
       };
-      newPoster['data'].genre = tags;
+      newPoster['data'].genre = tags.slice(0, 3);
     } else {
       console.log('Failed to retrieve tags.');
     };
@@ -189,7 +195,6 @@ const App = () => {
       <div className='site--container'>
         <aside>
           <TabList
-            navigationContent={navigationContent}
             setNavigationContent={setNavigationContent}
           />
           {navigationContent['content'].hidden ? null : (
@@ -208,17 +213,13 @@ const App = () => {
             />
           )}
         </aside>
-        <main>
-          {isLoading ? 
-            (
-              <Spinner/>
-            ):
-            (<Poster 
-              colorPalette={colorPalette}
-              poster={poster}
-              settings={settings}
-            />)
-          }
+        <main style={{ marginLeft: navigationContent['content'].hidden ? 75 : 400 }}>
+          <Poster 
+            colorPalette={colorPalette}
+            poster={poster}
+            isLoading={isLoading}
+            settings={settings}
+          />
         </main>
       </div>
     </>

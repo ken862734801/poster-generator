@@ -3,24 +3,33 @@
     padding:0;
     box-sizing: border-box;
 }
+:root{
+    --font-color: #555;
+    --light-gray-color: #EAEDEF;
+    --dark-gray-color: #E2E7E9;
+}
 body{
     height:100vh;
+}
+#root{
+    height:inherit;
 }
 .site--container{
     display:flex;
     height:inherit;
     padding-top:45px;
+    background-color: var(--light-gray-color);
 }
 aside{
     display:flex;
     position: relative;
 }
 main{
-    background-color: #EAEDEF;
     display:flex;
     justify-content: center;
     flex:1;
-    overflow-y: auto;
     padding:20px;
     position: relative;
+    overflow-y: auto;
 }
+

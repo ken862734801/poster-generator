@@ -1,30 +1,44 @@
 import './poster.css';
+import Spinner from '../spinner/Spinner';
 
 function Poster (props) {
-    const { colorPalette, poster, settings} = props;
+    const { colorPalette, isLoading, poster, settings} = props;
 
     const posterSettings = {
         backgroundColor: settings.colors['background color'],
-        color: settings.colors['color']
+        color: settings.colors['text color']
     };
 
     const hrSettings = {
-        backgroundColor: settings.colors['color'],
-        border: `1px solid ${settings.colors['color']}`
+        border: `1px solid ${settings.colors['text color']}`,
+        width: '100%'
     }
+
+    const styleObject = {
+        width: '50px',
+        height: '50px',
+        border: '5px solid #f3f3f3',
+        borderTop: '5px solid #555'
+      }
 
     return (
         <div className='poster'>
-            <div className='poster--container'style={ posterSettings }>
-                <div className='poster--header'>
-                    <hr style={ hrSettings }></hr>
+            <div className='poster--container' id='poster--container' style={ posterSettings }>
+                <div className={`poster--header ${ isLoading ? 'hidden' : ''}`}>
+                    <div className='hr' style={ hrSettings }></div>
                     <h2 className='poster-release-year'>{poster['data'].year}</h2>
                     <h1 className='poster-release-name'>{poster['data'].album}</h1>
                 </div>
                 <div className='poster-image--container'>
-                    <img className='poster--image' src={poster['data'].image}></img>
+                    { isLoading ? 
+                    (
+                        <Spinner settings={ styleObject }/>                    
+                    ):
+                    (
+                        <img className='poster--image' src={poster['data'].image}></img>
+                    )}
                 </div>
-                <div className='poster--body'>
+                <div className={`poster--body ${ isLoading ? 'hidden' : ''}`}>
                     <div className='poster-palette--container'>
                         <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['color one']}}></div>
                         <div className='poster-palette-color' style={{backgroundColor: colorPalette.colors['color two']}}></div>
