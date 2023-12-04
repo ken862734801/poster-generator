@@ -1,0 +1,29 @@
+.text-input--label > p {
+    color:var(--font-color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.70rem;
+    font-weight: bold;
+    width: 80%;
+    margin: 0 auto;
+    text-transform: capitalize;
+}
+.text-input{
+    margin: 0 auto;
+    width:80%;
+}
+.text-input--box{
+    border-radius: 8px;
+    background-color: var(--light-gray-color);
+    margin: 5px 0px 10px 0px;
+    padding:6px 6px;
+}
+.text-input--box > input{
+    border: none;
+    background-color: var(--light-gray-color);
+    color:var(--font-color);
+    font-size:0.85rem;
+    outline: none;
+    text-transform: capitalize;
+    text-indent: 4px;
+    width:100%;
+}
