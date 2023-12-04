@@ -5,7 +5,6 @@ import Header from "./components/header/Header";
 import Poster from "./components/poster/Poster";
 import TabList from "./components/tab-list/TabList";
 import SideNav from "./components/side-nav/SideNav";
-import Spinner from "./components/spinner/Spinner";
 import { usePalette } from "react-palette";
 import ZoomWidget from "./components/zoom-widget/ZoomWidget";
 
@@ -222,6 +221,7 @@ const App = () => {
           />
         </main>
       </div>
+      <p className="small-screen--warning">Switch to a larger screen to view this page!</p>
     </>
   );
 }

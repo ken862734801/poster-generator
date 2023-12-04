@@ -32,4 +32,15 @@ main{
     position: relative;
     overflow-y: auto;
 }
+.small-screen--warning{
+    display:none;
+}
 
+@media screen and (max-width:768px) {
+    header, .site--container{
+        display:none;
+    }
+    .small-screen--warning{
+        display:block;
+    }
+}
