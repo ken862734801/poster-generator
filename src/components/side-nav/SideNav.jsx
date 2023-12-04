@@ -2,6 +2,7 @@ import './side-nav.css';
 
 import { X } from "@phosphor-icons/react";
 import ColorEditor from "../color-editor/ColorEditor";
+import ImageEditor from '../image-editor/ImageEditor';
 import SearchForm from "../search-form/SearchForm";
 import TextEditor from "../text-editor/TextEditor";
 
@@ -43,43 +44,10 @@ function SideNav(props){
                 </button>
             </div>
             <div className="side-nav-content">
-                { 
-                    navigationContent['content'].title === "Search" && 
-                    <div>
-                    {<SearchForm
-                        fetchData={fetchData}
-                        searchQuery={searchQuery}
-                        setSearchQuery={setSearchQuery}
-                    />}
-                    </div>
-                }
-                {
-                    navigationContent['content'].title === 'Text' && 
-                    <div>
-                        {<TextEditor
-                            poster = {poster}
-                            setPoster = {setPoster}
-                        />}
-                    </div>
-                }
-                {
-                    navigationContent['content'].title === 'Image' && 
-                    <div>
-                        <p>Image Content...</p>
-                    </div>
-                }
-                {
-                    navigationContent['content'].title === 'Color' && 
-                    <div>
-                        {<ColorEditor 
-                            poster={poster}
-                            colorPalette={colorPalette}
-                            setColorPalette={setColorPalette}
-                            settings={settings}
-                            setSettings={setSettings}
-                        />}
-                    </div>
-                }
+                { navigationContent['content'].title === "Search" && <SearchForm fetchData={fetchData} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/> }
+                { navigationContent['content'].title === 'Text' && <TextEditor poster = {poster} setPoster = {setPoster}/> }
+                { navigationContent['content'].title === 'Image' && <ImageEditor/> }
+                { navigationContent['content'].title === 'Color' && <ColorEditor poster={poster} colorPalette={colorPalette} setColorPalette={setColorPalette} settings={settings} setSettings={setSettings} /> }
             </div>
         </div>
     )

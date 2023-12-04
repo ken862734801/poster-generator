@@ -1,17 +1,25 @@
 .side-nav{
     background-color: white;
-    width: 300px;
-    left:80px;
+    width: 325px;
+    left:75px;
     position:fixed;
     height:100vh;
-    z-index:2000000000;
+    z-index:1000000;
+    padding:20px 10px 0px 10px;
 }
 .side-nav--header{
     display:flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    width:90%;
+    width:95%;
+    padding-bottom:10px;
+}
+.side-nav--header > p {
+    font-family: Arial, Helvetica, sans-serif;
+    color:var(--font-color);
+    font-weight: normal;
+    font-size: large;
 }
 .side-nav-close--button{
     background-color: transparent;
@@ -20,6 +28,7 @@
     cursor: pointer;
     width:30px;
     height:30px;
+    color:var(--font-color);
 }
 .side-nav-close--button:hover{
     background-color: buttonface;
@@ -31,5 +40,5 @@
 }
 .side-nav-content{
     margin: 0 auto;
-    width:90%;
+    width:95%;
 }
