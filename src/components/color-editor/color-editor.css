@@ -12,7 +12,7 @@
     height:40px;
     color:var(--font-color);
     cursor: pointer;
-    margin: 10px 0px;
+    margin: 15px 0px;
 }
 .color-reset--button:hover{
     background-color: buttonface;

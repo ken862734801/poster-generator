@@ -3,7 +3,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.70rem;
     font-weight: bold;
-    width: 85%;
+    width: 80%;
     margin: 0 auto;
     text-transform: capitalize;
 }
@@ -21,7 +21,7 @@
     display:flex;
     align-items: center;
     justify-content: space-between;
-    padding:7px 6px 7px 8px;
+    padding:8px 6px 7px 8px;
     margin: 5px 0px 10px -2px;
     width:85%;
 }
@@ -43,8 +43,8 @@
 .color-picker--box{
     border:1px solid lightgray;
     border-radius:8px;
-    width:29px;
-    height:29px;
+    width:30px;
+    height:30px;
     overflow: hidden;
     margin-bottom:5px;
 }

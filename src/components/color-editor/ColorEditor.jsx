@@ -14,7 +14,7 @@ function ColorEditor(props){
             ...prev,
             colors: {
                 'background color': '#FFFFFF',
-                'color': '#000000',
+                'text color': '#000000',
             }
         }));
         if(data){
@@ -55,7 +55,7 @@ function ColorEditor(props){
                 />
             ))}
             <div className='color-editor-button--container'>
-                <button title='Reset Colors' className='color-reset--button' onClick={handleColorReset}>
+                <button title='Reset' className='color-reset--button' onClick={handleColorReset}>
                     <span>
                         <ArrowsClockwise size={24}/>
                     </span>
