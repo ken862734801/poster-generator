@@ -1,10 +1,32 @@
 import './image-editor.css';
 import uploadImage from '../../assets/icons/upload-image.jpg';
 import { Trash } from '@phosphor-icons/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function ImageEditor(){
-    const [images, setImages] = useState([uploadImage, uploadImage, uploadImage, uploadImage]);
+function ImageEditor(props){
+    const { poster, setPoster } = props;
+    const [images, setImages] = useState([]);
+
+    function handleFileUpload(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                setImages(prev => [...prev, reader.result]);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    function deleteImage(index) {
+        setImages(prev => prev.filter((_, i) => i !== index));
+    };
+
+    function updateImage(src){
+        const newPoster = {...poster};
+        newPoster.data.image = src;
+        setPoster(newPoster);
+    };
 
     return (
         <div className='image-editor'>
@@ -19,8 +41,8 @@ function ImageEditor(){
                 <div className='image-gallery'>
                     {images.map((image, index) => (
                         <div className='image--container' key={ index }>
-                            <img src={image}/>
-                            <div className='trash-icon--container' title='Delete'>
+                            <img onClick={() => updateImage(image)} src={image}/>
+                            <div onClick={() => deleteImage(index)} className='trash-icon--container' title='Delete'>
                                 <Trash className='trash-icon' size={16}/>
                             </div>
                         </div>
@@ -28,7 +50,7 @@ function ImageEditor(){
                 </div>
             ) }
             <div className='image-editor-button--container'>
-                <input id='image-input' className='hidden' type='file'></input>
+                <input onChange={(e) => handleFileUpload(e)} id='image-input' className='hidden' type='file'></input>
                 <label id='upload-button' className='upload-button' htmlFor='image-input'>Upload</label>
             </div>
         </div>

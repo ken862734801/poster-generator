@@ -32,7 +32,7 @@
     cursor: pointer;
     width:85px;
     height:85px;
-    margin:5px 2.5px;
+    margin:5px 5px;
     position:relative;
 }
 .image--container:hover .trash-icon--container{
@@ -41,6 +41,7 @@
 .image--container > img{
     width:100%;
     height:100%;
+    border-radius:8px;
 }
 .trash-icon--container{
     background-color: var(--light-gray-color);
