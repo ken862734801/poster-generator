@@ -12,21 +12,32 @@ function ImageEditor(props){
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
-                setImages(prev => [...prev, reader.result]);
+                const newImages = [...images, reader.result];
+                setImages(newImages);
+                localStorage.setItem('uploadedImages', JSON.stringify(newImages));
             };
             reader.readAsDataURL(file);
         }
-    };
+    }
 
     function deleteImage(index) {
-        setImages(prev => prev.filter((_, i) => i !== index));
-    };
+        const newImages = images.filter((_, i) => i !== index);
+        setImages(newImages);
+        localStorage.setItem('uploadedImages', JSON.stringify(newImages));
+    }
 
     function updateImage(src){
         const newPoster = {...poster};
         newPoster.data.image = src;
         setPoster(newPoster);
     };
+
+    useEffect(() => {
+        const storedImages = JSON.parse(localStorage.getItem('uploadedImages'));
+        if(storedImages){
+            setImages(storedImages);
+        }
+    }, []);
 
     return (
         <div className='image-editor'>
