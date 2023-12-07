@@ -46,7 +46,7 @@ function SideNav(props){
             <div className="side-nav-content">
                 { navigationContent['content'].title === "Search" && <SearchForm fetchData={fetchData} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/> }
                 { navigationContent['content'].title === 'Text' && <TextEditor poster = {poster} setPoster = {setPoster}/> }
-                { navigationContent['content'].title === 'Image' && <ImageEditor/> }
+                { navigationContent['content'].title === 'Image' && <ImageEditor poster= {poster} setPoster = {setPoster}/> }
                 { navigationContent['content'].title === 'Color' && <ColorEditor poster={poster} colorPalette={colorPalette} setColorPalette={setColorPalette} settings={settings} setSettings={setSettings} /> }
             </div>
         </div>
