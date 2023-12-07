@@ -59,6 +59,9 @@ li{
     list-style-type: none;
     margin: 2px 0px;
 }
+ul:nth-child(odd){
+    margin:0px 8px;
+}
 .poster-about{
     text-align: right;
     margin-top:-12px;
