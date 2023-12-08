@@ -6,7 +6,6 @@ import Poster from "./components/poster/Poster";
 import TabList from "./components/tab-list/TabList";
 import SideNav from "./components/side-nav/SideNav";
 import { usePalette } from "react-palette";
-import ZoomWidget from "./components/zoom-widget/ZoomWidget";
 
 const dataObjects = [
   {
@@ -14,15 +13,6 @@ const dataObjects = [
     title: 'Currents'
   }
 ];
-
-
-const styleObject = {
-  width: '50px',
-  height: '50px',
-  border: '5px solid #f3f3f3',
-  borderTop: '5px solid #555'
-}
-
 
 const currentDate = getCurrentDate();
 const currentYear = getCurrentYear();
@@ -212,7 +202,7 @@ const App = () => {
             />
           )}
         </aside>
-        <main style={{ marginLeft: navigationContent['content'].hidden ? 75 : 400 }}>
+        <main style={{ marginLeft: navigationContent['content'].hidden ? 125 : 400 }}>
           <Poster 
             colorPalette={colorPalette}
             poster={poster}
