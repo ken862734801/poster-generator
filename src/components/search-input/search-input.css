@@ -13,7 +13,7 @@
     background-color: var(--light-gray-color);
     border:none;
     color:var(--font-color);
-    font-size:0.90rem;
+    font-size:0.85rem;
     outline: none;
     width:70%;
 }
