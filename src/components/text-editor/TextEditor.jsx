@@ -1,58 +1,59 @@
 import './text-editor.css';
+import React from 'react';
+import { Accordion, AccordionItem } from '../accordion/Accordion';
 import TextInput from '../text-input/TextInput';
+import { ArrowsClockwise } from '@phosphor-icons/react';
 
 const fields = ['year', 'album', 'artist', 'date', 'duration', 'label'];
 
 function TextEditor(props){
     const { poster, setPoster } = props;
 
-    // function renderTextInputFields(arr){
-    //     return arr.map((field) => (
-    //         <TextInput
-    //             key={field}
-    //             inputName={field}
-    //             inputValue={poster.data[field]}
-    //             poster={poster}
-    //             setPoster={setPoster}
-    //         />
-    //     ))
-    // }
-    // function renderGenreTextInputFields(){
-    //     return (poster.data['genre']).map((data, index) => (
-    //         <TextInput key={index} inputName={`Genre #${index + 1}`} inputValue={data}/>       
-    //     ))
-    // }
-
-    function handleTextInputChange(e, key){
+    function handleTextInputChange(e, key, index = 0){
         const { value } = e.target;
+        const newPoster = { ...poster };
 
         if(Array.isArray(poster['data'][key])){
-
-            console.log('This is an array!');
+            newPoster.data[key][index] = value;
+            setPoster(newPoster);
         } else {
-            console.log('This is not an array!');
+            newPoster.data[key] = value;
+            setPoster(newPoster);
         };
     };
 
-
     return (
-        <div>
-            {fields.map((field) => (
-                <TextInput
-                    key={field}
-                    inputName={field}
-                    inputValue={poster['data'][field]}
-                    handleOnChange={(e) => handleTextInputChange(e, field)}
-                />
-            ))}
-            {(poster.data['genre']).map((data, index) => (
-                <TextInput
-                    key={`Genre + ${index + 1}`}
-                    inputName={`Genre # ${index + 1}`}
-                    inputValue={data}
-                    handleOnChange={(e) => handleTextInputChange(e, 'genre')}
-                />
-            ))}
+        <div className='text-editor'>
+            <Accordion>
+                <AccordionItem title={'general'}>
+                {fields.map((field) => (
+                    <TextInput
+                        key={field}
+                        inputName={field}
+                        inputValue={poster['data'][field]}
+                        handleOnChange={(e) => handleTextInputChange(e, field)}
+                    />
+                ))}
+                {(poster.data['genre']).map((data, index) => (
+                    <TextInput
+                        key={`Genre + ${index + 1}`}
+                        inputName={`Genre # ${index + 1}`}
+                        inputValue={data}
+                        handleOnChange={(e) => handleTextInputChange(e, 'genre', index)}
+                    />
+                ))}
+                </AccordionItem>
+                <AccordionItem title={'advanced'}>
+                    {(poster.data['tracklist']).map((data, index) => (
+                        <TextInput
+                            key={`Track ${index + 1}`}
+                            inputName={`Track ${index + 1}`}
+                            inputValue={data}
+                            handleOnChange={(e) => handleTextInputChange(e, 'tracklist', index)}
+                        />
+                    ))}
+                </AccordionItem>
+            </Accordion>
         </div>
     )
 };
