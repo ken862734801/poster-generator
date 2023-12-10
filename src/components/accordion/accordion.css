@@ -22,4 +22,6 @@
 }
 .accordion-item--content{
     padding-bottom:5px;
+    max-height:70vh;
+    overflow-y: auto;
 }
