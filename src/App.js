@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import { divideTrackList, getCurrentDate, getCurrentYear, getRandomObject, handleDateRegex } from "./utils/util";
+import { getCurrentDate, getCurrentYear, getRandomObject, handleDateRegex } from "./utils/util";
 import Header from "./components/header/Header";
 import Poster from "./components/poster/Poster";
 import TabList from "./components/tab-list/TabList";
@@ -68,35 +68,33 @@ const App = () => {
     if(response.album.name){
       newPoster['data'].album = response.album.name;
     } else {
-      console.log('Failed to retrieve album.');
+      console.warn('Failed to retrieve album.');
     };
     
     if(response.album.artist){
       newPoster['data'].artist = response.album.artist;
     } else {
-      console.log('Failed to retrieve artist.');
+      console.warn('Failed to retrieve artist.');
     };
 
     if(response.album.image){
       newPoster['data'].image = response.album.image[5]['#text'].replace('/300x300', '');
     } else {
-      console.log('Failed to retrieve image.');
+      console.warn('Failed to retrieve image.');
     };
 
     if(response.album.tracks){
-      let temp = [];
-      let curr = [];
+      let tracklist = [];
       for(let i = 0; i < response.album.tracks.track.length; i++){
         let track = response.album.tracks.track[i].name;
-        temp.push(`${i + 1}. ${track}`);
+        tracklist.push(`${i + 1}. ${track}`);
       };
-      const tracklist = divideTrackList(temp, curr);
       newPoster['data'].tracklist = tracklist;
     } else {
-      console.log('Failed to retrieve tracks.')
+      console.warn('Failed to retrieve tracks.');
     }
 
-    if(response.album.tags){
+    if(response.album.tags && (response.album.tags.tag).length > 0){
       let tags = [];
       for(let i = 0; i < response.album.tags.tag.length; i++){
         let tag = response.album.tags.tag[i].name;
@@ -104,7 +102,8 @@ const App = () => {
       };
       newPoster['data'].genre = tags.slice(0, 3);
     } else {
-      console.log('Failed to retrieve tags.');
+      newPoster['data'].genre = Array(3).fill('genre');
+      console.warn('Failed to retrieve tags.');
     };
 
     if(response.album.tracks){
@@ -114,7 +113,7 @@ const App = () => {
           newPoster['data'].duration = new Date(total * 1000).toISOString().substr(11,8);
       };
     } else {
-      console.log('Failed to retrieve tracks.');
+      console.warn('Failed to retrieve tracks.');
     }
 
     if(response.album.wiki){
@@ -125,9 +124,13 @@ const App = () => {
     } else {
       newPoster['data'].year = currentYear;
       newPoster['data'].date = currentDate;
-      console.log('Failed to retrieve wiki.');
+      console.warn('Failed to retrieve wiki.');
     };
     setPoster(newPoster);
+  };
+
+  function saveDataToLocalStorage (data){
+    localStorage.setItem('poster', JSON.stringify(data));
   };
 
   async function fetchData(artist, album){
@@ -142,6 +145,7 @@ const App = () => {
           }, 1500);
         })
         createPoster(data);
+        saveDataToLocalStorage(poster);
       } else {
         console.error('Request failed with status:', response.status);
       }
@@ -167,7 +171,7 @@ const App = () => {
         newColorPalette.colors['color two'] = data.lightVibrant;
         newColorPalette.colors['color three'] = data.darkVibrant;
         newColorPalette.colors['color four'] = data.muted;
-        newColorPalette.colors['color five'] = data.darkMuted;
+        newColorPalette.colors['color five'] = data.lightMuted;
       } else {
         console.log('Failed to retrieve color data.')
       }
