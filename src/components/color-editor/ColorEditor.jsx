@@ -24,7 +24,7 @@ function ColorEditor(props){
                     'color two': data.lightVibrant,
                     'color three': data.darkVibrant,
                     'color four': data.muted,
-                    'color five': data.darkMuted
+                    'color five': data.lightMuted
                   }
             })
         } else {
