@@ -1,72 +1,72 @@
 .poster{
-    font-family: Verdana, sans-serif;
-    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     width:1050px;
     min-height:1480px;
+    text-transform: uppercase;
     margin-top:30px;
-    /* margin-right:-85px; */
-    /* zoom:0.25; */
+    position:relative;
 }
-.poster-container{
+.poster--container{
     padding:25px 30px 20px 30px;
-    background-color: white;
     height:inherit;
 }
-.poster-release-year{
-    text-align:right;
-    font-size:2.35rem;
-    margin-bottom:5px;
-}
-.poster-album-name{
+.poster--header > h1{
     font-size:4.5rem;
 }
-.poster-image-container{
+.poster--header > h2{
+    font-size:2.35rem;
+    text-align: right;
+    margin-bottom:5px;
+}
+.poster-image--container{
     height:960px;
     width:100%;
     margin: 0 auto;
+    position:relative;
 }
-.poster-image{
+.poster-image--container > .spinner{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+.poster--image{
     width:100%;
     height:100%;
 }
-.poster-palette-container{
+.poster--body{
+    padding-top:0.75rem;
+}
+.poster-palette--container{
     display:flex;
-    margin-bottom:7px;
+    margin-bottom:0.5rem;
 }
 .poster-palette-color{
-    height:14px;
+    height:0.875rem;
     width:20%;
 }
-.poster-body{
-    padding-top:12px;
-    padding-bottom:-2px;
-}
-.poster-body-container{
+.poster--footer{
     display:flex;
     justify-content: space-between;
     align-items: flex-start;
 }
-.poster-tracklist-container{
+.poster--tracklist{
     display:flex;
 }
-ul{
-    min-width:125px;
+ul:nth-child(even){
+    margin:0px 10px;
 }
-ul:nth-of-type(2){
-    margin: 0px 8px;
-}
-
 li{
-    list-style-type:none;
-    margin:2px 0px;
+    list-style-type: none;
+    margin: 2px 0px;
 }
-.poster-text-container{
+.poster-about{
+    text-align: right;
     margin-top:-12px;
 }
-.poster-information-container > div{
-    text-align:right;
-    margin:5px 0px;
+.poster-about--container > div {
+    margin: 5px 0px;
 }
-.poster-artist{
+.poster-about--container > div > h3{
     font-size:2.75rem;
 }

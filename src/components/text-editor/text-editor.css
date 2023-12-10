@@ -1,0 +1,19 @@
+.text-editor-button--container{
+    width:80%;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+}
+.text-reset--button{
+    background-color: transparent;
+    border-radius: 50%;
+    border:none;
+    width:40px;
+    height:40px;
+    color:var(--font-color);
+    cursor: pointer;
+    margin: 15px 0px;
+}
+.text-reset--button:hover{
+    background-color: buttonface;
+}

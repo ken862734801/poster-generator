@@ -4,7 +4,8 @@ A web application using React that enables users to create, edit, and download c
 https://ken862734801.github.io/poster-generator/
 
 ## About The App
-<img src="assets/images/poster-generator.gif">
+<img src="src/assets/screenshots/poster-generator.gif">
+
 
 ## Getting Started
 
@@ -23,8 +24,6 @@ To run this application locally the user will have to have access to a Last.fm A
 3. Run The NPM Start Command:
 
         npm run start
-
-<!-- ## Built Using -->
 
 ## Future Development
 
