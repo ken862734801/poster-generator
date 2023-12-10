@@ -1,5 +1,6 @@
 import './poster.css';
 import Spinner from '../spinner/Spinner';
+import { divideTrackList } from '../../utils/util';
 
 function Poster (props) {
     const { colorPalette, isLoading, poster, settings} = props;
@@ -19,7 +20,10 @@ function Poster (props) {
         height: '50px',
         border: '5px solid #f3f3f3',
         borderTop: '5px solid #555'
-      }
+    }
+
+    let temp = [];
+    let tracklist = divideTrackList((poster['data'].tracklist), temp);
 
     return (
         <div className='poster'>
@@ -48,7 +52,7 @@ function Poster (props) {
                     </div>
                     <div className='poster--footer'>
                         <div className='poster--tracklist'>
-                        {(poster['data'].tracklist).map((subArray, index) => {
+                        {tracklist.map((subArray, index) => {
                             if (Array.isArray(subArray)) {
                                 return (
                                   <ul key={index}>
