@@ -44,7 +44,7 @@ function ImageEditor(props){
             { images.length === 0 ? (
                 <div className='image-gallery--empty'>
                     <div className='upload-image--container'>
-                        <img src={ uploadImage }/>
+                        <img src={ uploadImage } alt='uploading file image'/>
                         <p>Your uploaded images will appear here</p>
                     </div>
                 </div>
