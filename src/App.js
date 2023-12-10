@@ -83,7 +83,7 @@ const App = () => {
       console.warn('Failed to retrieve image.');
     };
 
-    if(response.album.tracks){
+    if(response.album.tracks && (response.album.tracks.track.length > 0)){
       let tracklist = [];
       for(let i = 0; i < response.album.tracks.track.length; i++){
         let track = response.album.tracks.track[i].name;
@@ -91,6 +91,7 @@ const App = () => {
       };
       newPoster['data'].tracklist = tracklist;
     } else {
+      newPoster['data'].tracklist = Array.from({ length: 9 }, (_, i) => `${i + 1}. Track Name`);
       console.warn('Failed to retrieve tracks.');
     }
 
@@ -113,6 +114,7 @@ const App = () => {
           newPoster['data'].duration = new Date(total * 1000).toISOString().substr(11,8);
       };
     } else {
+      newPoster['data'].duration = '00:00:00';
       console.warn('Failed to retrieve tracks.');
     }
 
