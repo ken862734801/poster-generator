@@ -1,5 +1,5 @@
 import './text-editor.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Accordion, AccordionItem } from '../accordion/Accordion';
 import TextInput from '../text-input/TextInput';
 import { ArrowsClockwise } from '@phosphor-icons/react';
@@ -20,6 +20,28 @@ function TextEditor(props){
             newPoster.data[key] = value;
             setPoster(newPoster);
         };
+    };
+
+    function handleTextReset(){
+        let storedData = localStorage.getItem('poster');
+        if(storedData){
+            const parsedData = JSON.parse(storedData);
+            const currentImage = poster.data.image;
+
+            setPoster({
+                data: {
+                    artist: parsedData.data.artist,
+                    album: parsedData.data.album,
+                    date: parsedData.data.date,
+                    duration: parsedData.data.duration,
+                    genre: [...parsedData.data.genre], 
+                    image: currentImage,
+                    label: parsedData.data.label,
+                    tracklist: [...parsedData.data.tracklist],
+                    year: parsedData.data.year
+                }
+            })
+        }
     };
 
     return (
@@ -54,6 +76,13 @@ function TextEditor(props){
                     ))}
                 </AccordionItem>
             </Accordion>
+            <div className='text-editor-button--container'>
+                <button onClick={handleTextReset} title='Reset' className='text-reset--button'>
+                    <span>
+                        <ArrowsClockwise size={24}/>
+                    </span>
+                </button>
+            </div>
         </div>
     )
 };
