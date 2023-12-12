@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Poster from "./components/poster/Poster";
 import TabList from "./components/tab-list/TabList";
 import SideNav from "./components/side-nav/SideNav";
+import ZoomWidget from "./components/zoom-widget/ZoomWidget";
 import { usePalette } from "react-palette";
 
 const dataObjects = [
@@ -30,7 +31,7 @@ const App = () => {
       'width': ''
     },
     zoom: {
-      'level': 0
+      'level': 1
     }
   });
   const [navigationContent, setNavigationContent] = useState({
@@ -216,6 +217,7 @@ const App = () => {
             settings={settings}
           />
         </main>
+        <ZoomWidget settings={settings} setSettings={setSettings}/>
       </div>
       <p className="small-screen--warning">Switch to a larger screen to view this page!</p>
     </>
