@@ -88,7 +88,7 @@ export const ColorContent: React.FC<ColorContentProps> = ({
                             size={24}
                         />
                     </Button>
-                </ToolTip>`
+                </ToolTip>
             </div> */}
         </div>
     );

@@ -18,6 +18,7 @@ export const Poster: React.FC<PosterProps> = ({
     palette,
     width = Config.DEFAULT_WIDTH * 96,
     height = Config.DEFAULT_HEIGHT * 96,
+
     settings,
     className,
 }) => {
