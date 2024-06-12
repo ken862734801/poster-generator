@@ -32,6 +32,12 @@ export default function Home() {
     const getData = async (artist: string, album: string) => {
         setIsLoading(true);
         try {
+            await new Promise<void>(function (resolve) {
+                setTimeout(function () {
+                    resolve();
+                }, 1500);
+            });
+
             const response = await fetch(
                 Config.URL +
                     Config.DEV_API_KEY +
@@ -41,6 +47,7 @@ export default function Home() {
                     album +
                     '&format=json'
             );
+
             if (response.status === 200) {
                 const data = await response.json();
                 const albumData = parseData(data);
@@ -88,9 +95,14 @@ export default function Home() {
             setPalette={setPalette}
             settings={settings}
             setSettings={setSettings}
+            isLoading={isLoading}
             getData={getData}
         >
-            <Poster album={album} palette={palette} settings={settings} />
+            <Poster
+                album={album}
+                palette={palette}
+                settings={settings}
+            />
         </SiteContainer>
     );
 }

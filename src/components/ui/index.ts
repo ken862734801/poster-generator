@@ -1,8 +1,7 @@
-export * from "./Accordion";
+
 export * from "./Button";
 export * from "./Modal";
 export * from "./Separator";
-export * from "./Loading";
 export * from "./Tab";
 export * from "./TabList";
 export * from "./Input";

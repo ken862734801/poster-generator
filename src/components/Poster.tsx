@@ -53,7 +53,7 @@ export const Poster: React.FC<PosterProps> = ({
                 })}
             </div>
         );
-    };
+    }
 
     const PaletteComponent: React.FC = () => {
         return (
@@ -111,7 +111,7 @@ export const Poster: React.FC<PosterProps> = ({
                             </div>
                             <div className="text-right">
                                 <h4 className="text-xl">Released By</h4>
-                                <p className="text-lg">Label</p>
+                                <p className="text-lg">{album?.label}</p>
                             </div>
                             <div className="text-right">
                                 <h4 className="text-xl">Genre</h4>

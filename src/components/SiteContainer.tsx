@@ -36,6 +36,7 @@ export interface SiteContainerProps {
     settings: Settings;
     setSettings: (settings: Settings) => void;
     getData: (artist: string, album: string) => void;
+    isLoading?: boolean;
     children: React.ReactNode;
 }
 
@@ -47,9 +48,9 @@ export const SiteContainer: React.FC<SiteContainerProps> = ({
     setPalette,
     settings,
     setSettings,
+    isLoading,
     children,
 }) => {
-
     const [activeTab, setActiveTab] = useState<TabOptions>('Search');
     const [showSideNav, setShowSideNav] = useState<boolean>(true);
     const [zoomLevel, setZoomLevel] = useState<number>(0.5);
@@ -70,7 +71,7 @@ export const SiteContainer: React.FC<SiteContainerProps> = ({
 
     return (
         <div>
-            <Header album={album}/>
+            <Header album={album} />
             <div className="flex bg-gray-100">
                 <aside className="flex bg-white">
                     <TabList>
@@ -133,34 +134,39 @@ export const SiteContainer: React.FC<SiteContainerProps> = ({
                                         setPalette={setPalette}
                                         settings={settings}
                                         setSettings={setSettings}
-
                                     />
                                 )}
                             </div>
                         </div>
                     )}
                 </aside>
-                <TransformWrapper
-                    centerOnInit
-                    minScale={0.25}
-                    initialScale={zoomLevel}
-                    maxScale={1}
-                    onTransformed={(e) => handleZoomLevel(e)}
-                >
-                    <TransformComponent
-                        wrapperStyle={{
-                            width: '100vw',
-                            height: '100vh',
-                        }}
+                {isLoading ? (
+                    <div className="flex items-center justify-center w-[100vw] h-[100vh]">
+                        <div className='daisy-loading daisy-loading-ring daisy-loading-lg'></div>
+                    </div>
+                ) : (
+                    <TransformWrapper
+                        centerOnInit
+                        minScale={0.25}
+                        initialScale={zoomLevel}
+                        maxScale={1}
+                        onTransformed={(e) => handleZoomLevel(e)}
                     >
-                        {children}
-                    </TransformComponent>
-                    <Zoom
-                        zoomLevel={zoomLevel}
-                        showSideNav={showSideNav}
-                        className="fixed bottom-4 right-6"
-                    />
-                </TransformWrapper>
+                        <TransformComponent
+                            wrapperStyle={{
+                                width: '100vw',
+                                height: '100vh',
+                            }}
+                        >
+                            {children}
+                        </TransformComponent>
+                        <Zoom
+                            zoomLevel={zoomLevel}
+                            showSideNav={showSideNav}
+                            className="fixed bottom-4 right-6"
+                        />
+                    </TransformWrapper>
+                )}
             </div>
         </div>
     );
