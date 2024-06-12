@@ -77,7 +77,7 @@ export const ColorContent: React.FC<ColorContentProps> = ({
                         />
                     ))}
             </div>
-            <div className="w-full flex justify-center my-4">
+            {/* <div className="w-full flex justify-center my-4">
                 <ToolTip hint="Reset" position="bottom">
                     <Button
                         className="daisy-btn daisy-btn-md daisy-btn-circle daisy-btn-ghost hover:bg-gray-100"
@@ -89,7 +89,7 @@ export const ColorContent: React.FC<ColorContentProps> = ({
                         />
                     </Button>
                 </ToolTip>
-            </div>
+            </div> */}
         </div>
     );
 };

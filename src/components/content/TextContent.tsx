@@ -13,6 +13,7 @@ export const TextContent: React.FC<TextContentProps> = ({
     album,
     setAlbum,
 }) => {
+    const [activeTab, setActiveTab] = useState(0);
     const [originalAlbumData, setOriginalAlbumData] =
         useState<AlbumData | null>(null);
 
@@ -76,32 +77,64 @@ export const TextContent: React.FC<TextContentProps> = ({
 
     return (
         <div>
-            <Accordion>
-                <Accordion.Item title="General" isChecked>
-                    {album &&
-                        textFields?.map((item: any) => (
+            <div className="w-10/12 mx-auto bg-gray-100 rounded-lg flex justify-around p-1 text-slate-600 mb-2">
+                <Button
+                    className={`text-xs flex justify-center rounded-lg mr-1 p-1 w-1/2 ${activeTab == 0 ? 'bg-white' : 'bg-gray-100'}`}
+                    onClick={() => setActiveTab(0)}
+                >
+                    General
+                </Button>
+                <Button
+                    className={`text-xs flex justify-center rounded-lg ml-1 p-1 w-1/2 ${activeTab == 1 ? 'bg-white' : 'bg-gray-100'}`}
+                    onClick={() => setActiveTab(1)}
+                >
+                    Advanced
+                </Button>
+            </div>
+            <div>
+                {activeTab === 0 ? (
+                    <div className='h-[70vh] overflow-scroll'>
+                        {album &&
+                            textFields?.map((item: any) => (
+                                <Input
+                                    key={item}
+                                    label={item}
+                                    value={album[item as keyof AlbumData]}
+                                    isClearable={false}
+                                    onChange={(e) =>
+                                        handleTextInputChange(e, item)
+                                    }
+                                />
+                            ))}
+                        {album?.tags?.map((item: any, index: number) => (
                             <Input
-                                key={item}
-                                label={item}
-                                value={album[item as keyof AlbumData]}
+                                key={`genre-${index + 1}`}
+                                label={`Genre # ${index + 1}`}
+                                value={item}
                                 isClearable={false}
-                                onChange={(e) => handleTextInputChange(e, item)}
+                                onChange={(e) =>
+                                    handleTextInputChange(e, 'tags', index)
+                                }
                             />
                         ))}
-                    {album?.tags?.map((item: any, index: number) => (
-                        <Input
-                            key={`genre-${index}`}
-                            label={`Genre # ${index + 1}`}
-                            value={item}
-                            isClearable={false}
-                            onChange={(e) =>
-                                handleTextInputChange(e, 'tags', index)
-                            }
-                        />
-                    ))}
-                </Accordion.Item>
-            </Accordion>
-            <div className="w-full flex justify-center my-4">
+                    </div>
+                ) : (
+                    <div className='h-[75vh] overflow-scroll'>
+                        {album?.tracklist?.map((item: any, index: number) => (
+                            <Input
+                                key={`track-${index}`}
+                                label={`Track ${index + 1}`}
+                                value={item}
+                                isClearable={false}
+                                onChange={(e) =>
+                                    handleTextInputChange(e, 'tracklist', index)
+                                }
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
+            {/* <div className="w-full flex justify-center my-2">
                 <ToolTip hint="Reset" position="bottom">
                     <Button
                         onClick={resetTextFields}
@@ -110,7 +143,7 @@ export const TextContent: React.FC<TextContentProps> = ({
                         <ArrowsCounterClockwise size={24} />
                     </Button>
                 </ToolTip>
-            </div>
+            </div> */}
         </div>
     );
 };

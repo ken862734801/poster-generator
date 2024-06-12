@@ -16,6 +16,7 @@ export class Config {
         'Track Name',
         'Track Name',
     ];
+    static DEFAULT_LABEL = "Label";
     static DEFAULT_TAGS = ['Genre', 'Genre', 'Genre'];
     static DEFAULT_HEIGHT = 17;
     static DEFAULT_WIDTH = 11;

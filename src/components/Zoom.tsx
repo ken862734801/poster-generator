@@ -25,7 +25,7 @@ export const Zoom: React.FC<ZoomProps> = ({
     useEffect(() => {
         resetTransform();
     }, [showSideNav]);
-
+ 
     return (
         <div className={classes}>
             <ToolTip hint="Zoom Out">

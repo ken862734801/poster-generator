@@ -2,8 +2,13 @@ import { Config } from '@/configs';
 import { Button } from './ui';
 import { useState } from 'react';
 import DomToImage from 'dom-to-image';
+import { AlbumData } from '@/utils';
 
-export const Header = () => {
+export interface HeaderProps {
+    album?: AlbumData;
+}
+
+export const Header: React.FC<HeaderProps> = ({ album }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const saveImage = async () => {
@@ -15,7 +20,12 @@ export const Header = () => {
                     quality: 1,
                 });
                 let link = document.createElement('a');
-                link.download = 'my-poster';
+
+                const albumName = album?.album?.replace(/\s+/g, '-');
+                const artistName = album?.artist?.replace(/\s+/g, '-');
+                const filename = `${albumName}-${artistName}`.toLocaleLowerCase();
+
+                link.download = filename;
                 link.href = dataUrl;
                 link.click();
             } else {

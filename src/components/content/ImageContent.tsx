@@ -66,6 +66,7 @@ export const ImageContent: React.FC<ImageContentProps> = ({
                             <img
                                 className="w-[8.25rem] h-[8.25rem]"
                                 src="./placeholder.jpg"
+                                alt='placeholder image'
                             />
                             <p className="uppercase text-gray-300 text-center text-[.70rem] leading-5 my-4">
                                 Your uploaded images will appear here

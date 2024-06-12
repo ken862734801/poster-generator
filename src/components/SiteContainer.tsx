@@ -20,6 +20,14 @@ import {
 
 export type TabOptions = 'Search' | 'Text' | 'Image' | 'Color' | '';
 
+const icon = {
+    close: <X size={18} />,
+    color: <Palette size={20} />,
+    image: <Image size={20} />,
+    search: <MagnifyingGlass size={20} />,
+    text: <TextAa size={20} />,
+};
+
 export interface SiteContainerProps {
     album?: AlbumData;
     setAlbum?: (album: AlbumData) => void;
@@ -31,14 +39,6 @@ export interface SiteContainerProps {
     children: React.ReactNode;
 }
 
-const icon = {
-    close: <X size={18} />,
-    color: <Palette size={20} />,
-    image: <Image size={20} />,
-    search: <MagnifyingGlass size={20} />,
-    text: <TextAa size={20} />,
-};
-
 export const SiteContainer: React.FC<SiteContainerProps> = ({
     album,
     setAlbum,
@@ -49,6 +49,7 @@ export const SiteContainer: React.FC<SiteContainerProps> = ({
     setSettings,
     children,
 }) => {
+
     const [activeTab, setActiveTab] = useState<TabOptions>('Search');
     const [showSideNav, setShowSideNav] = useState<boolean>(true);
     const [zoomLevel, setZoomLevel] = useState<number>(0.5);
@@ -69,7 +70,7 @@ export const SiteContainer: React.FC<SiteContainerProps> = ({
 
     return (
         <div>
-            <Header />
+            <Header album={album}/>
             <div className="flex bg-gray-100">
                 <aside className="flex bg-white">
                     <TabList>

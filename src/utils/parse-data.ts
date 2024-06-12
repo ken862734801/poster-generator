@@ -12,6 +12,7 @@ export type AlbumData = {
     image?: string;
     tracklist?: any;
     duration?: string;
+    label?: string;
     tags?: any;
     date?: string;
     year?: string | number;
@@ -87,6 +88,7 @@ export const parseData = (data: any) => {
 
         console.warn('Failed to retrieve album wiki content.');
     }
+    parsedData.label = Config.DEFAULT_LABEL;
 
     return parsedData;
 };
