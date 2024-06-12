@@ -1,9 +1,9 @@
 'use client';
 import { Poster, SiteContainer } from '@/components';
-import { Config } from '@/configs';
 import { AlbumData, parseData, saveToLocalStorage } from '@/utils';
 import { useEffect, useState } from 'react';
 import { usePalette } from 'react-palette';
+import { Config } from '@/configs';
 
 export interface PaletteColors {
     vibrant?: string;
@@ -48,9 +48,15 @@ export default function Home() {
                 saveToLocalStorage('album-data', albumData);
             } else {
                 console.error('Request failed with status:', response.status);
+                window.alert(
+                    `Oops! "${album}" by "${artist}" could not be found. Please try again later.`
+                );
             }
         } catch (e) {
             console.error(e);
+            window.alert(
+                `Oops! "${album}" by "${artist}" could not be found. Please try again later.`
+            );
         } finally {
             setIsLoading(false);
         }

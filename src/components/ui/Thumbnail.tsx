@@ -6,8 +6,8 @@ import { useState } from 'react';
 
 export interface ThumbnailProps {
     image?: string;
-    handleThumbnailClick?: () => void;
-    handleTrashClick?: () => void;
+    handleThumbnailClick: () => void;
+    handleTrashClick: () => void;
     className?: string;
 }
 export const Thumbnail: React.FC<ThumbnailProps> = ({
