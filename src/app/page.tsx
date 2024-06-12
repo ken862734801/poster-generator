@@ -40,7 +40,7 @@ export default function Home() {
 
             const response = await fetch(
                 Config.URL +
-                    process.env.NEXT_PUBLIC_API_KEY +
+                    process.env.API_KEY +
                     '&artist=' +
                     artist +
                     '&album=' +
