@@ -2,7 +2,7 @@ name: Unit Test
 run-name: Unit Test
 on: [push]
 jobs:
-  Unit Test:
+  Unit-Test:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 Unit test automatically triggered by a ${{ github.event_name }} event."
