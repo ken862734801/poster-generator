@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Thumbnail } from '../ui';
-import { AlbumData } from '@/utils';
+import { AlbumData, getFromLocalStorage, saveToLocalStorage } from '@/utils';
 
 export interface ImageContentProps {
     album?: AlbumData;
@@ -14,15 +14,11 @@ export const ImageContent: React.FC<ImageContentProps> = ({
     const [library, setLibrary] = useState<any[]>([]);
 
     useEffect(() => {
-        const storedLibrary = localStorage.getItem('imageLibrary');
-        if (storedLibrary) {
-            setLibrary(JSON.parse(storedLibrary));
+        const savedImages = getFromLocalStorage('image-library');
+        if (savedImages) {
+            setLibrary(JSON.parse(savedImages));
         }
     }, []);
-
-    const updateLocalStorage = (newLibrary: any[]) => {
-        localStorage.setItem('imageLibrary', JSON.stringify(newLibrary));
-    };
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         try {
@@ -32,7 +28,7 @@ export const ImageContent: React.FC<ImageContentProps> = ({
                 reader.onload = () => {
                     const newLibrary = [...library, reader.result];
                     setLibrary(newLibrary);
-                    updateLocalStorage(newLibrary);
+                    saveToLocalStorage('image-library', newLibrary);
                 };
                 reader.readAsDataURL(uploadedFile);
             }
@@ -51,7 +47,7 @@ export const ImageContent: React.FC<ImageContentProps> = ({
     const handleImageDelete = (index: number) => {
         const newLibrary = library.filter((_, i) => i !== index);
         setLibrary(newLibrary);
-        updateLocalStorage(newLibrary);
+        saveToLocalStorage('image-library', newLibrary);
     };
 
     return (
