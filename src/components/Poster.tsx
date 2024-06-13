@@ -95,7 +95,7 @@ export const Poster: React.FC<PosterProps> = ({
                     <h1 className="text-7xl my-3">{album?.album}</h1>
                 </div>
                 <div className="mt-4 w-full h-4/6">
-                    <img className="w-full h-full" src={album?.image} />
+                    <img className="w-full h-full" src={album?.image} alt={`${album?.album} cover art`} />
                 </div>
                 <div>
                     <PaletteComponent />
