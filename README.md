@@ -17,7 +17,7 @@ Before you can run the project, ensure you have the following installed:
 
 2. Yarn - https://yarnpkg.com/getting-started/install
 
-You also need to have a Music Discovery API key.
+You also need to have a Music Discovery API key. Follow these steps to set it up:
 
 1. Visit https://www.last.fm/api/account/create and register your application to receive an API key.
 
@@ -41,15 +41,16 @@ To install the necessary dependencies, run:
     
 ### Executing program
 
-To start the development server, use: 
+To start the development server, run: 
 
     yarn dev
 
 By default, the app will open in your web browser at [http://localhost:3000](http://localhost:3000)
 
-To run the unit tests, use:
+To run the unit tests, run:
 
     yarn test
+
 
 
 
