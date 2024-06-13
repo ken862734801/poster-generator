@@ -1,6 +1,5 @@
-import { Button, Input, ToolTip } from '../ui';
+import { Button, Input } from '../ui';
 import { AlbumData, getFromLocalStorage } from '@/utils';
-import { ArrowsCounterClockwise } from '@phosphor-icons/react';
 import { useEffect, useState } from 'react';
 
 export type TextContentProps = {
@@ -13,8 +12,6 @@ export const TextContent: React.FC<TextContentProps> = ({
     setAlbum,
 }) => {
     const [activeTab, setActiveTab] = useState(0);
-    const [originalAlbumData, setOriginalAlbumData] =
-        useState<AlbumData | null>(null);
 
     const getTextFields = () => {
         if (album) {
@@ -52,27 +49,6 @@ export const TextContent: React.FC<TextContentProps> = ({
             }
         }
     };
-
-    const resetTextFields = () => {
-        if (originalAlbumData && setAlbum) {
-            const newAlbum = { ...album };
-            Object.keys(originalAlbumData).forEach((key) => {
-                if (key !== 'image') {
-                    newAlbum[key as keyof AlbumData] =
-                        originalAlbumData[key as keyof AlbumData];
-                }
-            });
-            setAlbum(newAlbum);
-        }
-    };
-
-    useEffect(() => {
-        // Fetch the original album data from local storage when the component mounts
-        const storedAlbumData = getFromLocalStorage('album-data');
-        if (storedAlbumData) {
-            setOriginalAlbumData(JSON.parse(storedAlbumData));
-        }
-    }, []);
 
     return (
         <div>
@@ -133,16 +109,6 @@ export const TextContent: React.FC<TextContentProps> = ({
                     </div>
                 )}
             </div>
-            {/* <div className="w-full flex justify-center my-2">
-                <ToolTip hint="Reset" position="bottom">
-                    <Button
-                        onClick={resetTextFields}
-                        className="daisy-btn daisy-btn-md daisy-btn-circle daisy-btn-ghost hover:bg-gray-100"
-                    >
-                        <ArrowsCounterClockwise size={24} />
-                    </Button>
-                </ToolTip>
-            </div> */}
         </div>
     );
 };

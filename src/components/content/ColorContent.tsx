@@ -1,10 +1,7 @@
 import { PaletteColors, Settings } from '@/app/page';
-import { Button, Input, ToolTip } from '../ui';
+import { Input } from '../ui';
 import { useCallback } from 'react';
 import { AlbumData } from '@/utils';
-import { usePalette } from 'react-palette';
-import { Config } from '@/configs';
-import { ArrowsCounterClockwise } from '@phosphor-icons/react';
 
 export interface ColorContentProps {
     album?: AlbumData;
@@ -15,13 +12,11 @@ export interface ColorContentProps {
 }
 
 export const ColorContent: React.FC<ColorContentProps> = ({
-    album,
     palette,
     setPalette,
     settings,
     setSettings,
 }) => {
-    const { data } = usePalette(album?.image || '');
 
     const handleColorInputChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,27 +30,10 @@ export const ColorContent: React.FC<ColorContentProps> = ({
         [palette, setPalette, settings, setSettings]
     );
 
-    const resetPaletteColors = useCallback(() => {
-        setSettings({
-            backgroundColor: Config.DEFAULT_BACKGROUND,
-            textColor: Config.DEFAULT_COLOR,
-        });
-
-        if (setPalette && data) {
-            setPalette({
-                vibrant: data.vibrant,
-                lightVibrant: data.lightVibrant,
-                darkVibrant: data.darkVibrant,
-                muted: data.muted,
-                lightMuted: data.lightMuted,
-            });
-        }
-    }, [setSettings, setPalette, data]);
-
     return (
         <div>
             <div>
-                {Object.keys(settings).map((key, index) => (
+                {Object.keys(settings).map((key) => (
                     <Input
                         variant="color"
                         key={key}
@@ -77,19 +55,6 @@ export const ColorContent: React.FC<ColorContentProps> = ({
                         />
                     ))}
             </div>
-            {/* <div className="w-full flex justify-center my-4">
-                <ToolTip hint="Reset" position="bottom">
-                    <Button
-                        className="daisy-btn daisy-btn-md daisy-btn-circle daisy-btn-ghost hover:bg-gray-100"
-                        onClick={resetPaletteColors}
-                    >
-                        <ArrowsCounterClockwise
-                            className="text-slate-600"
-                            size={24}
-                        />
-                    </Button>
-                </ToolTip>
-            </div> */}
         </div>
     );
 };
