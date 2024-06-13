@@ -1,0 +1,14 @@
+name: unit-tests
+on: [push]
+jobs:
+  Unit Test:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Check out repository code
+    uses: actions/checkout@v4
+  - name: Install dependencies
+    uses: yarn 
+  - name: Run unit tests
+    uses: yarn test
+  - run: echo "${{ job.status }}"
+
