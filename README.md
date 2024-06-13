@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Poster Generator
+
+A web application using React, allowing music enthusiasts to design and download
+personalized posters inspired by their favorite albums.
+
+[Live Demo](https://poster-generator-eight.vercel.app/)
+
+<img src="assets/poster-generator-demo-image.png">
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Before you can run the project, ensure you have the following installed:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Node - https://nodejs.org/en/download/package-manager
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Yarn - https://yarnpkg.com/getting-started/install
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+You also need to have a Music Discovery API key.
 
-## Learn More
+1. Visit https://www.last.fm/api/account/create and register your application to receive an API key.
 
-To learn more about Next.js, take a look at the following resources:
+2. Copy the .env.local.example file to .env.local in the root directory of your project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+        cp .env.local.example .env.local
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Open the .env.local file and set the NEXT_PUBLIC_API_KEY variable to your newly aquired API key:
 
-## Deploy on Vercel
+        NEXT_PUBLIC_API_KEY=your_last_fm_api_key
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Installing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To clone the repository, run:
+
+    git@github.com:<USERNAME>/poster-generator.git
+
+To install the necessary dependencies, run:
+
+    yarn install
+    
+### Executing program
+
+To start the development server, use: 
+
+    yarn dev
+
+By default, the app will open in your web browser at [http://localhost:3000](http://localhost:3000)
+
+To run the unit tests, use:
+
+    yarn test
+
+
+
