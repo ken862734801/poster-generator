@@ -1,5 +1,6 @@
 export class Config {
-    static URL =
+    /* APP "VARIABLES" */
+    static API_URL =
         'https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=';
     static TITLE = 'Poster Generator';
     static DEFAULT_ARTIST = 'Tame Impala';
@@ -16,10 +17,15 @@ export class Config {
         'Track Name',
         'Track Name',
     ];
-    static DEFAULT_LABEL = "Label";
+    static DEFAULT_LABEL = 'Label';
     static DEFAULT_TAGS = ['Genre', 'Genre', 'Genre'];
     static DEFAULT_HEIGHT = 17;
     static DEFAULT_WIDTH = 11;
     static DEFAULT_BACKGROUND = '#ffffff';
     static DEFAULT_COLOR = '#000000';
+
+    /* TEST "VARIABLES" */
+    static TEST_ARTIST = 'Mac Miller';
+    static TEST_ALBUM = 'Swimming';
+    static PRODUCTION_URL = 'https://poster-generator-eight.vercel.app/'
 }

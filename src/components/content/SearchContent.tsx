@@ -37,6 +37,7 @@ export const SearchContent: React.FC<SearchFormProps> = ({ onSearch }) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Input
+                id="artist-input"
                 name="artist"
                 label="Artist"
                 placeholder="Enter artist..."
@@ -49,6 +50,7 @@ export const SearchContent: React.FC<SearchFormProps> = ({ onSearch }) => {
                 isRequired
             />
             <Input
+                id="album-input"
                 name="album"
                 label="Album"
                 placeholder="Enter album..."
@@ -61,7 +63,10 @@ export const SearchContent: React.FC<SearchFormProps> = ({ onSearch }) => {
                 isRequired
             />
             <div className="flex justify-center w-10/12 mx-auto my-6">
-                <Button className="text-sm text-slate-600 bg-gray-100 w-40 mx-auto rounded-lg py-1.5">
+                <Button
+                    id="search-btn"
+                    className="text-sm text-slate-600 bg-gray-100 w-40 mx-auto rounded-lg py-1.5"
+                >
                     Search
                 </Button>
             </div>

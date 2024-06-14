@@ -19,6 +19,7 @@ export interface InputProps {
 }
 
 export const Input: React.FC<InputProps> = ({
+    id,
     variant = 'text',
     label,
     name,
@@ -59,6 +60,7 @@ export const Input: React.FC<InputProps> = ({
                     {leadingIcon}
                     <input
                         ref={inputRef}
+                        id={id}
                         name={name}
                         type="text"
                         placeholder={placeholder}
