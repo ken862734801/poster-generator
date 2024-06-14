@@ -47,9 +47,21 @@ To start the development server, run:
 
 By default, the app will open in your web browser at [http://localhost:3000](http://localhost:3000)
 
+## Running Tests
+
+### Unit Test
+
 To run the unit tests, run:
 
     yarn test
+
+### End-to-End Test
+
+To run the end-to-end (E2E) test, run:
+
+    yarn playwright test
+
+
 
 
 
