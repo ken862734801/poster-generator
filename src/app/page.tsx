@@ -39,7 +39,7 @@ export default function Home() {
             });
 
             const response = await fetch(
-                Config.URL +
+                Config.API_URL +
                     process.env.NEXT_PUBLIC_API_KEY +
                     '&artist=' +
                     artist +
