@@ -1,14 +1,8 @@
 import { Config } from '@/configs';
 import './globals.css';
 import type { Metadata } from 'next';
-import { Bagel_Fat_One, Varela_Round } from 'next/font/google';
-
-const bagelFatOne = Bagel_Fat_One({
-    subsets: ['latin'],
-    weight: '400',
-    display: 'swap',
-    variable: '--bagel-fat-one',
-});
+import { Varela_Round } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 
 const valeraRound = Varela_Round({
     subsets: ['latin'],
@@ -29,6 +23,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={valeraRound.variable}>
             <body>{children}</body>
+            <Analytics/>
         </html>
     );
 }

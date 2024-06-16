@@ -11,6 +11,23 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ album }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+    const updateTotalDownloads = async () => {
+        try {
+            const response = await fetch('/api/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: process.env.NEXT_PUBLIC_ID }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to record new download.');
+            }
+        } catch (error) {
+            console.error();
+        }
+    };
+
     const saveImage = async () => {
         setIsLoading(true);
         try {
@@ -23,11 +40,14 @@ export const Header: React.FC<HeaderProps> = ({ album }) => {
 
                 const albumName = album?.album?.replace(/\s+/g, '-');
                 const artistName = album?.artist?.replace(/\s+/g, '-');
-                const filename = `${albumName}-${artistName}`.toLocaleLowerCase();
+                const filename =
+                    `${albumName}-${artistName}`.toLocaleLowerCase();
 
                 link.download = filename;
                 link.href = dataUrl;
                 link.click();
+
+                await updateTotalDownloads();
             } else {
                 console.error('Poster element not found.');
             }
