@@ -7,12 +7,13 @@ import { Analytics } from '@vercel/analytics/next';
 const valeraRound = Varela_Round({
     subsets: ['latin'],
     weight: '400',
-    variable: '--varela-round'
-})
+    variable: '--varela-round',
+});
 
 export const metadata: Metadata = {
     title: Config.TITLE,
-    description: 'Create, edit, and download posters of your favorite albums.',
+    description: 'Create, edit, and download your own album cover posters.',
+    keywords: ['album cover poster', 'album posters', 'music posters'],
 };
 
 export default function RootLayout({
@@ -23,7 +24,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={valeraRound.variable}>
             <body>{children}</body>
-            <Analytics/>
+            <Analytics />
         </html>
     );
 }
