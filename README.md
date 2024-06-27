@@ -1,7 +1,6 @@
 # Poster Generator
 
-A web application using React, allowing music enthusiasts to design and download
-personalized posters inspired by their favorite albums.
+A web application built in React, allowing music enthusiasts to design and download album cover posters.
 
 [Live Demo](https://poster-generator-eight.vercel.app/)
 
