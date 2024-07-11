@@ -31,7 +31,7 @@ export const Zoom: React.FC<ZoomProps> = ({
             <ToolTip hint="Zoom Out">
                 <Button
                     onClick={() => zoomOut(0.5)}
-                    className="rounded daisy-btn-sm daisy-btn-square daisy-btn-ghost hover:bg-gray-100"
+                    className="rounded daisy-btn-sm daisy-btn-square daisy-btn-ghost mt-1 hover:bg-gray-100"
                 >
                     <Minus className="mx-auto" size={20} />
                 </Button>
@@ -46,7 +46,7 @@ export const Zoom: React.FC<ZoomProps> = ({
             <ToolTip hint="Zoom In">
                 <Button
                     onClick={() => zoomIn(0.5)}
-                    className="rounded daisy-btn-sm daisy-btn-square daisy-btn-ghost hover:bg-gray-100"
+                    className="rounded daisy-btn-sm daisy-btn-square daisy-btn-ghost mt-1 hover:bg-gray-100"
                 >
                     <Plus className="mx-auto" size={20} />
                 </Button>
