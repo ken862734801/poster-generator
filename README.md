@@ -32,7 +32,7 @@ You also need to have a Music Discovery API key. Follow these steps to set it up
 
 To clone the repository, run:
 
-    git@github.com:<USERNAME>/poster-generator.git
+    git clone git@github.com:<USERNAME>/poster-generator.git
 
 To install the necessary dependencies, run:
 
