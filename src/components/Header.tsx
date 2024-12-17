@@ -11,14 +11,14 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ album }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const updateTotalDownloads = async () => {
+    const updateTotalDownloads = async (albumName: string, artistName: string) => {
         try {
             const response = await fetch('/api/download', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: process.env.NEXT_PUBLIC_ID }),
+                body: JSON.stringify({ album: albumName, artist: artistName }),
             });
             if (!response.ok) {
                 throw new Error('Failed to record new download.');
@@ -38,16 +38,22 @@ export const Header: React.FC<HeaderProps> = ({ album }) => {
                 });
                 let link = document.createElement('a');
 
-                const albumName = album?.album?.replace(/\s+/g, '-');
-                const artistName = album?.artist?.replace(/\s+/g, '-');
-                const filename =
-                    `${albumName}-${artistName}`.toLocaleLowerCase();
+                const albumName = album?.album;
+                const artistName = album?.artist;
 
-                link.download = filename;
+                const fileAlbumName = albumName?.replace(/\s+/g, '-');
+                const fileArtistName = artistName?.replace(/\s+/g, '-');
+
+                const fileName = `${fileAlbumName}-${fileArtistName}`.toLocaleLowerCase()
+
+                link.download = fileName;
                 link.href = dataUrl;
                 link.click();
 
-                await updateTotalDownloads();
+                if (albumName && artistName) {
+                    await updateTotalDownloads(albumName, artistName);
+                }
+
             } else {
                 console.error('Poster element not found.');
             }
