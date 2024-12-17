@@ -11,14 +11,14 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ album }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const updateTotalDownloads = async () => {
+    const updateTotalDownloads = async (albumName: string, artistName: string) => {
         try {
             const response = await fetch('/api/download', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ id: process.env.NEXT_PUBLIC_ID }),
+                body: JSON.stringify({ album: albumName, artist: artistName }),
             });
             if (!response.ok) {
                 throw new Error('Failed to record new download.');
@@ -47,7 +47,10 @@ export const Header: React.FC<HeaderProps> = ({ album }) => {
                 link.href = dataUrl;
                 link.click();
 
-                await updateTotalDownloads();
+                if (albumName && artistName) {
+                    await updateTotalDownloads(albumName, artistName);
+                }
+
             } else {
                 console.error('Poster element not found.');
             }
