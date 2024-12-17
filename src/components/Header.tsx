@@ -38,12 +38,15 @@ export const Header: React.FC<HeaderProps> = ({ album }) => {
                 });
                 let link = document.createElement('a');
 
-                const albumName = album?.album?.replace(/\s+/g, '-');
-                const artistName = album?.artist?.replace(/\s+/g, '-');
-                const filename =
-                    `${albumName}-${artistName}`.toLocaleLowerCase();
+                const albumName = album?.album;
+                const artistName = album?.artist;
 
-                link.download = filename;
+                const fileAlbumName = albumName?.replace(/\s+/g, '-');
+                const fileArtistName = artistName?.replace(/\s+/g, '-');
+
+                const fileName = `${fileAlbumName}-${fileArtistName}`.toLocaleLowerCase()
+
+                link.download = fileName;
                 link.href = dataUrl;
                 link.click();
 

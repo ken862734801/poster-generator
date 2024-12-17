@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
 
         if (!album || !artist) {
             return NextResponse.json(
-                { error: "Album and artist are required." },
+                { error: 'Album and artist are required.' },
                 { status: 400 }
             )
         }
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
             `
             await sql`COMMIT`;
 
-            return NextResponse.json({ message: "Download count and log successfully updated!" }, { status: 200 })
+            return NextResponse.json({ message: 'Download count and log successfully updated!' }, { status: 200 })
 
         } catch (error) {
             await sql`ROLLBACK`;
