@@ -13,6 +13,12 @@ export interface PosterProps {
     className?: string;
 }
 
+export interface Track {
+    duration_ms: number;
+    name: string;
+    track_number: number;
+  }
+
 export const Poster: React.FC<PosterProps> = ({
     album,
     palette,
@@ -32,29 +38,25 @@ export const Poster: React.FC<PosterProps> = ({
         color: settings.textColor,
     };
 
-    let TracklistComponent;
-
-    if (album) {
-        const tracklist = divideTracklist(album.tracklist);
-
-        TracklistComponent = (
-            <div className="flex">
-                {tracklist.map((subArray, index) => {
-                    if (Array.isArray(subArray)) {
-                        return (
-                            <ul className="even:mx-4" key={index}>
-                                {subArray.map((item, innerIndex) => (
-                                    <li className="text-lg" key={innerIndex}>
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        );
-                    }
-                })}
-            </div>
-        );
+    if (!album?.tracks) {
+        return null;
     }
+
+    const tracklist = divideTracklist<Track>(album.tracks);
+
+    const TracklistComponent = (
+    <div className="flex">
+        {tracklist.map((column, colIndex) => (
+        <ul className="even:mx-4" key={colIndex}>
+            {column.map((track: any, rowIndex) => (
+            <li className="text-lg" key={rowIndex}>
+                {track.track_number}. {track.name}
+            </li>
+            ))}
+        </ul>
+        ))}
+    </div>
+);
 
     const PaletteComponent: React.FC = () => {
         return (
@@ -74,10 +76,10 @@ export const Poster: React.FC<PosterProps> = ({
     const GenreComponent: React.FC = () => {
         return (
             <>
-                {album?.tags.map((tag: string, index: number) => (
-                    <span key={index} className="text-lg">
-                        {tag}
-                        {index < album.tags.length - 1 && ' · '}
+                {album?.genres.map((genre: string, index: number) => (
+                    <span key={index} className='text-lg'>
+                        {genre}
+                        {index < album.genres.length - 1 && ' · '}
                     </span>
                 ))}
             </>
@@ -91,11 +93,11 @@ export const Poster: React.FC<PosterProps> = ({
             <div id="poster" className="h-fit p-7" style={innerStyle}>
                 <div>
                     <Separator color={settings.textColor} className="my-2" />
-                    <h3 className="text-4xl text-right my-2">{album?.year}</h3>
+                    <h3 className="text-4xl text-right my-2">{album?.['release year']}</h3>
                     <h1 className="text-7xl my-3">{album?.album}</h1>
                 </div>
                 <div className="mt-4 w-full h-4/6">
-                    <img className="w-full h-full" src={album?.image} alt={`${album?.album} cover art`} />
+                    <img className="w-full h-full" src={album?.image_url} alt={`${album?.album} cover art`} />
                 </div>
                 <div>
                     <PaletteComponent />
@@ -107,12 +109,12 @@ export const Poster: React.FC<PosterProps> = ({
                             </div>
                             <div className="text-right">
                                 <h4 className="text-xl">Out Now</h4>
-                                <p className="text-lg">{album?.date}</p>
+                                <p className="text-lg">{album?.['release date']}</p>
                                 <p className="text-lg">{album?.duration}</p>
                             </div>
                             <div className="text-right">
                                 <h4 className="text-xl">Released By</h4>
-                                <p className="text-lg">{album?.label}</p>
+                                <p className="text-lg">{album?.['record label']}</p>
                             </div>
                             <div className="text-right">
                                 <h4 className="text-xl">Genre</h4>

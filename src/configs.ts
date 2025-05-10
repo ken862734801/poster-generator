@@ -1,7 +1,7 @@
 export class Config {
     /* APP "VARIABLES" */
     static API_URL =
-        'https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=';
+        'https://ken862734801.pythonanywhere.com/search?';
     static TITLE = 'Poster Generator';
     static DEFAULT_ARTIST = 'Tame Impala';
     static DEFAULT_ALBUM = 'Currents';

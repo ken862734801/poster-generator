@@ -39,7 +39,7 @@ export const ImageContent: React.FC<ImageContentProps> = ({
 
     const handleImageUpdate = (image: string) => {
         if (album && setAlbum) {
-            const newAlbum = { ...album, image };
+            const newAlbum = { ...album, image_url: image };
             setAlbum(newAlbum);
         }
     };

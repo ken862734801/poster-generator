@@ -1,6 +1,6 @@
 'use client';
 import { Poster, SiteContainer } from '@/components';
-import { AlbumData, parseData, saveToLocalStorage } from '@/utils';
+import { AlbumData, saveToLocalStorage } from '@/utils';
 import { useEffect, useState } from 'react';
 import { usePalette } from 'react-palette';
 import { Config } from '@/configs';
@@ -19,7 +19,7 @@ export interface Settings {
 }
 
 export default function Home() {
-    const [album, setAlbum] = useState<AlbumData>();
+    const [album, setAlbum] = useState<any>();
     const [palette, setPalette] = useState<PaletteColors>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [settings, setSettings] = useState<Settings>({
@@ -27,7 +27,7 @@ export default function Home() {
         textColor: Config.DEFAULT_COLOR,
     });
 
-    const { data, error } = usePalette(`${album && album.image}`);
+    const { data, error } = usePalette(`${album && album.image_url}`);
 
     const getData = async (artist: string, album: string) => {
         setIsLoading(true);
@@ -39,20 +39,13 @@ export default function Home() {
             });
 
             const response = await fetch(
-                Config.API_URL +
-                    process.env.NEXT_PUBLIC_API_KEY +
-                    '&artist=' +
-                    artist +
-                    '&album=' +
-                    album +
-                    '&format=json'
-            );
+                Config.API_URL + 'artist=' + artist + '&album=' + album
+            )
 
             if (response.status === 200) {
                 const data = await response.json();
-                const albumData = parseData(data);
-                setAlbum(albumData);
-                saveToLocalStorage('album-data', albumData);
+                setAlbum(data);
+                saveToLocalStorage('album-data', data);
             } else {
                 console.error('Request failed with status:', response.status);
                 window.alert(
