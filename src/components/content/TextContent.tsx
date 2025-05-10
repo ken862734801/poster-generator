@@ -17,7 +17,7 @@ export const TextContent: React.FC<TextContentProps> = ({
         if (album) {
             return Object.keys(album).filter(
                 (key) =>
-                    key !== 'image' && key !== 'tracklist' && key !== 'tags'
+                    key !== 'image_url' && key !== 'tracks' && key !== 'genres'
             );
         }
     };
@@ -26,29 +26,40 @@ export const TextContent: React.FC<TextContentProps> = ({
 
     const handleTextInputChange = (
         e: React.ChangeEvent<HTMLInputElement>,
-        key: any,
+        key: keyof AlbumData,
         index = 0
-    ) => {
+      ) => {
         const { value } = e.target;
-
-        if (album && setAlbum) {
-            const newAlbum = { ...album };
-            if (Array.isArray(album[key as keyof AlbumData])) {
-                const newArray = [
-                    ...(newAlbum[
-                        key as keyof AlbumData
-                    ] as unknown as string[]),
-                ];
-                newArray[index] = value;
-                newAlbum[key as keyof AlbumData] =
-                    newArray as unknown as AlbumData[keyof AlbumData];
-                setAlbum(newAlbum);
-            } else {
-                newAlbum[key as keyof AlbumData] = value as any;
-                setAlbum(newAlbum);
-            }
+        if (!album || !setAlbum) return;
+      
+        // shallow‐copy album
+        const newAlbum = { ...album };
+      
+        if (key === 'tracks') {
+          // newAlbum.tracks is Track[] | undefined
+          const old = newAlbum.tracks ?? [];
+          const updated = old.map((t:any, i:any) =>
+            i === index
+              ? { ...t, name: value }   // update only the name
+              : t
+          );
+          newAlbum.tracks = updated;
+        } else if (
+          Array.isArray(newAlbum[key]) &&
+          typeof newAlbum[key]?.[index] === 'string'
+        ) {
+          // e.g. genres: string[]
+          const old = [...(newAlbum[key] as unknown as string[])];
+          old[index] = value;
+          newAlbum[key] = old as any;
+        } else {
+          // any other scalar field
+          (newAlbum as any)[key] = value;
         }
-    };
+      
+        setAlbum(newAlbum);
+      };
+      
 
     return (
         <div>
@@ -81,28 +92,28 @@ export const TextContent: React.FC<TextContentProps> = ({
                                     }
                                 />
                             ))}
-                        {album?.tags?.map((item: any, index: number) => (
+                        {album?.genres?.map((item: any, index: number) => (
                             <Input
                                 key={`genre-${index + 1}`}
                                 label={`Genre # ${index + 1}`}
                                 value={item}
                                 isClearable={false}
                                 onChange={(e) =>
-                                    handleTextInputChange(e, 'tags', index)
+                                    handleTextInputChange(e, 'genres', index)
                                 }
                             />
                         ))}
                     </div>
                 ) : (
                     <div className='h-[75vh] overflow-scroll'>
-                        {album?.tracklist?.map((item: any, index: number) => (
+                        {album?.tracks?.map((track: any, index: number) => (
                             <Input
-                                key={`track-${index}`}
-                                label={`Track ${index + 1}`}
-                                value={item}
+                                key={`track-${track.track_number}`}
+                                label={`Track ${track.track_number}`}
+                                value={track.name}
                                 isClearable={false}
                                 onChange={(e) =>
-                                    handleTextInputChange(e, 'tracklist', index)
+                                    handleTextInputChange(e, 'tracks', index)
                                 }
                             />
                         ))}

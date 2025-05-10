@@ -1,9 +1,12 @@
-export const divideTracklist = (list: string[]): string[][] => {
-    if (list.length <= 9) {
-        return [list];
+export const divideTracklist = <T>(
+    list: T[],
+    maxPerColumn = 9
+  ): T[][] => {
+    if (list.length <= maxPerColumn) {
+      return [list];
     }
-
-    const left = list.slice(0, 9);
-    const right = list.slice(9);
-    return [left, ...divideTracklist(right)];
-};
+  
+    const head = list.slice(0, maxPerColumn);
+    const tail = list.slice(maxPerColumn);
+    return [head, ...divideTracklist<T>(tail, maxPerColumn)];
+  };

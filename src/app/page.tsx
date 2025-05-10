@@ -1,6 +1,6 @@
 'use client';
 import { Poster, SiteContainer } from '@/components';
-import { AlbumData, parseData, saveToLocalStorage } from '@/utils';
+import { AlbumData, saveToLocalStorage } from '@/utils';
 import { useEffect, useState } from 'react';
 import { usePalette } from 'react-palette';
 import { Config } from '@/configs';
@@ -38,27 +38,14 @@ export default function Home() {
                 }, 1500);
             });
 
-            // const response = await fetch(
-            //     Config.API_URL +
-            //         process.env.NEXT_PUBLIC_API_KEY +
-            //         '&artist=' +
-            //         artist +
-            //         '&album=' +
-            //         album +
-            //         '&format=json'
-            // );
             const response = await fetch(
-                `http://127.0.0.1:5000/search?artist=${artist}&album=${album}`
+                Config.API_URL + 'artist=' + artist + '&album=' + album
             )
-            console.log(response)
 
             if (response.status === 200) {
                 const data = await response.json();
                 setAlbum(data);
-                console.log(data)
-                // const albumData = parseData(data);
-                // setAlbum(albumData);
-                // saveToLocalStorage('album-data', albumData);
+                saveToLocalStorage('album-data', data);
             } else {
                 console.error('Request failed with status:', response.status);
                 window.alert(

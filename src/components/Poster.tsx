@@ -13,6 +13,12 @@ export interface PosterProps {
     className?: string;
 }
 
+export interface Track {
+    duration_ms: number;
+    name: string;
+    track_number: number;
+  }
+
 export const Poster: React.FC<PosterProps> = ({
     album,
     palette,
@@ -32,29 +38,25 @@ export const Poster: React.FC<PosterProps> = ({
         color: settings.textColor,
     };
 
-    // let TracklistComponent;
+    if (!album?.tracks) {
+        return null;
+      }
 
-    // if (album) {
-    //     const tracklist = divideTracklist(album.tracklist);
+    const tracklist = divideTracklist<Track>(album.tracks);
 
-    //     TracklistComponent = (
-    //         <div className="flex">
-    //             {tracklist.map((subArray, index) => {
-    //                 if (Array.isArray(subArray)) {
-    //                     return (
-    //                         <ul className="even:mx-4" key={index}>
-    //                             {subArray.map((item, innerIndex) => (
-    //                                 <li className="text-lg" key={innerIndex}>
-    //                                     {item}
-    //                                 </li>
-    //                             ))}
-    //                         </ul>
-    //                     );
-    //                 }
-    //             })}
-    //         </div>
-    //     );
-    // }
+    const TracklistComponent = (
+    <div className="flex">
+        {tracklist.map((column, colIndex) => (
+        <ul className="even:mx-4" key={colIndex}>
+            {column.map((track: any, rowIndex) => (
+            <li className="text-lg" key={rowIndex}>
+                {track.track_number}. {track.name}
+            </li>
+            ))}
+        </ul>
+        ))}
+    </div>
+);
 
     const PaletteComponent: React.FC = () => {
         return (
@@ -100,7 +102,7 @@ export const Poster: React.FC<PosterProps> = ({
                 <div>
                     <PaletteComponent />
                     <div className="flex justify-between">
-                        {/* {TracklistComponent} */}
+                        {TracklistComponent}
                         <div>
                             <div className="text-right">
                                 <h2 className="text-5xl">{album?.artist}</h2>
