@@ -1,11 +1,3 @@
-import { Config } from '@/configs';
-import {
-    currentDate,
-    currentYear,
-    formatDuration,
-    formatReleaseDate,
-} from './date-functions';
-
 export type AlbumData = {
     artist?: string;
     album?: string;

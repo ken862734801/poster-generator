@@ -40,7 +40,7 @@ export const Poster: React.FC<PosterProps> = ({
 
     if (!album?.tracks) {
         return null;
-      }
+    }
 
     const tracklist = divideTracklist<Track>(album.tracks);
 
@@ -93,7 +93,7 @@ export const Poster: React.FC<PosterProps> = ({
             <div id="poster" className="h-fit p-7" style={innerStyle}>
                 <div>
                     <Separator color={settings.textColor} className="my-2" />
-                    <h3 className="text-4xl text-right my-2">{album?.release_year}</h3>
+                    <h3 className="text-4xl text-right my-2">{album?.['release year']}</h3>
                     <h1 className="text-7xl my-3">{album?.album}</h1>
                 </div>
                 <div className="mt-4 w-full h-4/6">
@@ -109,12 +109,12 @@ export const Poster: React.FC<PosterProps> = ({
                             </div>
                             <div className="text-right">
                                 <h4 className="text-xl">Out Now</h4>
-                                <p className="text-lg">{album?.release_date}</p>
+                                <p className="text-lg">{album?.['release date']}</p>
                                 <p className="text-lg">{album?.duration}</p>
                             </div>
                             <div className="text-right">
                                 <h4 className="text-xl">Released By</h4>
-                                <p className="text-lg">{album?.record_label}</p>
+                                <p className="text-lg">{album?.['record label']}</p>
                             </div>
                             <div className="text-right">
                                 <h4 className="text-xl">Genre</h4>
