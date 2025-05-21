@@ -1,15 +1,7 @@
 'use client';
-import SearchForm from '@/components/SearchForm';
-import { getData } from '@/lib/api';
-import Image from 'next/image';
 
-import { useEffect } from 'react';
-
+import Editor from '@/components/editor/Editor';
 
 export default function Home() {
-  return (
-    <div>
-      <SearchForm></SearchForm>
-    </div>
-  );
+  return <Editor />;
 }

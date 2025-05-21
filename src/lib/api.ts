@@ -1,14 +1,10 @@
-import { Data, Payload } from '@/types';
-
-export async function getData(payload: Payload): Promise<Data> {
-  const { artist, album } = payload;
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(album)}`;
-
-  const response = await fetch(url);
+export const fetchData = async ({ album, artist }: Query) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}artist=${artist}&album=${album}`
+  );
   if (!response.ok) {
-    throw new Error(`Response status: ${response.statusText}`);
+    throw new Error(response.statusText);
   }
-
-  const data = await response.json();
+  const data = response.json();
   return data;
-}
+};
