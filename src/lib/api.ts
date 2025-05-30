@@ -1,4 +1,4 @@
-export const fetchData = async ({ album, artist }: Query) => {
+export const fetchData = async ({ artist, album }: Query) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}artist=${artist}&album=${album}`
   );
