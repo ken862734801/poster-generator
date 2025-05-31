@@ -14,9 +14,15 @@ export const useSearch = () => {
     onSuccess: (data) => {
       setData(data);
     },
+    onError: (error, variables) => {
+      console.error('Error fetching data:', error);
+      window.alert(
+        `Oops! ${variables.album} by ${variables.artist} could not found. Please try again later.`
+      );
+    },
     onSettled: () => {
       setIsLoading(false);
-    }
+    },
   });
 };
 
