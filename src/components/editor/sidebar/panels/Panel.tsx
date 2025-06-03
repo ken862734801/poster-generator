@@ -2,17 +2,18 @@ import { SearchPanel, TextPanel, ImagePanel, ColorPanel } from './index';
 
 interface PanelProps {
   activeTab: string;
-  isOpen: boolean;
 }
 
 export const Panel = (props: PanelProps) => {
-  const { activeTab, isOpen } = props;
+  const { activeTab } = props;
   return (
     <div>
-      {activeTab == 'Search' && <SearchPanel />}
-      {activeTab == 'Text' && <TextPanel />}
-      {activeTab == 'Image' && <ImagePanel />}
-      {activeTab == 'Color' && <ColorPanel />}
+      {activeTab == 'search' && <SearchPanel />}
+      {activeTab == 'text' && <TextPanel />}
+      {activeTab == 'image' && <ImagePanel />}
+      {activeTab == 'color' && <ColorPanel />}
     </div>
   );
 };
+
+export default Panel;
