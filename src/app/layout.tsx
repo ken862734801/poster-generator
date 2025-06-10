@@ -1,5 +1,6 @@
+import { AuthProvider } from '@/providers/AuthProvider';
 import './globals.css';
-import { Providers } from '@/components/Providers';
+import { QueryProvider } from '@/providers/QueryProvider';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,9 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Providers>
-        <body>{children}</body>
-      </Providers>
+      <QueryProvider>
+        <AuthProvider>
+          <body>{children}</body>
+        </AuthProvider>
+      </QueryProvider>
     </html>
   );
 }
