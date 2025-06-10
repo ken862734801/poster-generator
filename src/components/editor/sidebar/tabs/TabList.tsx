@@ -1,5 +1,5 @@
 import { JSX, SetStateAction } from 'react';
-import { Tab, tabItems} from './index';
+import { Tab, tabItems } from './index';
 
 interface TabListProps {
   activeTab: string;
@@ -10,13 +10,12 @@ interface TabListProps {
 export const TabList = (props: TabListProps): JSX.Element => {
   const { activeTab, setActiveTab, setIsOpen } = props;
   return (
-    <ul>
+    <ul className="flex flex-col items-center p-1 border-r border-r-[var(--border-color)]">
       {tabItems.map((items) => {
         return (
           <Tab
             key={items.name}
             name={items.name}
-            label={items.label}
             icon={items.icon}
             activeTab={activeTab}
             setActiveTab={setActiveTab}

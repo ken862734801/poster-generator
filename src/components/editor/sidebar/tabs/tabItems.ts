@@ -7,23 +7,23 @@ import {
 
 export const tabItems = [
   {
-    name: 'Search',
-    label: 'Search',
+    name: 'search',
+    label: 'search',
     icon: MagnifyingGlassIcon,
   },
   {
-    name: 'Text',
-    label: 'Text',
+    name: 'text',
+    label: 'text',
     icon: TextAaIcon,
   },
   {
-    name: 'Image',
-    label: 'Image',
+    name: 'image',
+    label: 'image',
     icon: ImageIcon,
   },
   {
-    name: 'Color',
-    label: 'Color',
+    name: 'color',
+    label: 'color',
     icon: PaletteIcon
   }
 ];
