@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { ImageThumbnail, Modal } from './index';
-import { Button, Skeleton } from '@/components/common';
+import { Button } from '@/components/common';
 import { getAuth } from '@/hooks/useAuth';
 import { supabase } from '@/lib';
 
@@ -21,13 +21,15 @@ export const ImagePanel = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
+  const BUCKET = process.env.NEXT_PUBLIC_SUPABASE_BUCKET!;
+
   useEffect(() => {
     if (!user) return;
 
     (async () => {
       try {
         const { data: list, error: listError } = await supabase.storage
-          .from('user-media')
+          .from(BUCKET)
           .list(user.id, {
             limit: 50,
             sortBy: { column: 'created_at', order: 'desc' },
@@ -37,7 +39,7 @@ export const ImagePanel = () => {
         const loaded = await Promise.all(
           list.map(async (file) => {
             const { data: urlData, error: urlError } = await supabase.storage
-              .from('user-media')
+              .from(BUCKET)
               .createSignedUrl(`${user.id}/${file.name}`, 3600);
             if (urlError) throw urlError;
             return {
@@ -71,7 +73,7 @@ export const ImagePanel = () => {
 
         try {
           const { error: uploadError } = await supabase.storage
-            .from('user-media')
+            .from(BUCKET)
             .upload(id, file, { upsert: false });
           if (uploadError) throw uploadError;
 
@@ -90,6 +92,8 @@ export const ImagePanel = () => {
         } catch (error) {
           console.error('Error creating signed URL:', error);
           setFiles((prevFiles) => prevFiles.filter((file) => file.id !== id));
+        } finally {
+          console.log('File uploaded successfully.');
         }
       }
     },
