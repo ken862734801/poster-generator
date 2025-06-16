@@ -4,13 +4,37 @@
 }
 
 :root {
-  --text-primary: #222529;
-  --text-secondary: #7F8792;
+  /* BASE COLORS */
+  --base-gray-100: #F1F2F4;
+  --base-gray-200: #E8EAEC;
+  --base-gray-300: #F6F7F9;
+  --base-gray-400: #7F8792;
+  --base-gray-600: #222529;
 
-  --background-active: #E8EAEC;
-  --background-hover: #F1F2F4;
+  /* FONT VARIABLES */
+  --text-primary: var(--base-gray-600);
+  --text-secondary: var(--base-gray-400);
 
-  --background-canvas: #F6F7F9;
+  /* CANVAS VARIABLES */
+  --canvas-default: var(--base-gray-300);
 
-  --border-default: var(--background-hover);
+  /* BORDER VARIABLES */
+  --border-default: var(--base-gray-300);
+
+  /* BUTTON VARIABLES */
+  --button-hover: var(--base-gray-100);
+  --button-default: var(--base-gray-200);
+
+  /* THUMBNAIL VARIABLES */
+  --thumbnail-default: var(--base-gray-100)
+}
+
+button {
+  box-shadow: none;
+  border: none
+}
+
+label {
+  text-transform: capitalize;
+  font-size: 0.75rem;
 }

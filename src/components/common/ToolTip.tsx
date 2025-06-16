@@ -2,25 +2,20 @@ import React from 'react';
 import { cn } from '@/lib';
 
 export interface ToolTipProps {
-  hint: string;
   children: React.ReactNode;
+  hint: string;
   position: 'top' | 'bottom' | 'left' | 'right';
   className?: string;
 }
 
-export const ToolTip = ({
-  hint,
-  children,
-  position,
-  className,
-}: ToolTipProps) => {
-  const classes = cn('tooltip', `tooltip-${position}`, className);
+export const ToolTip: React.FC<ToolTipProps> = (props) => {
+  const classes = cn('tooltip', `tooltip-${props.position}`, props.className);
   return (
     <div className={classes}>
       <div className="tooltip-content">
-        <div className="text-xs capitalize">{hint}</div>
+        <div>{props.hint}</div>
       </div>
-      {children}
+      {props.children}
     </div>
   );
 };
