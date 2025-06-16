@@ -1,26 +1,28 @@
+import { Button } from '@/components/common';
+
 interface ModalProps {
-  ref?: React.RefObject<HTMLDialogElement | null>;
-  onConfirm?: () => void;
-  onCancel?: () => void;
+  ref: React.RefObject<HTMLDialogElement | null>;
+  onConfirm: () => void;
+  onCancel: () => void;
 }
 
-export const Modal = ({ ref, onConfirm, onCancel }: ModalProps) => {
+export const Modal: React.FC<ModalProps> = (props) => {
   return (
-    <dialog ref={ref} className="modal">
+    <dialog className="modal" ref={props.ref}>
       <div className="modal-box">
         <h3 className="text-lg font-bold">Confirmation</h3>
-        <p>Are you sure you want to delete this image?</p>
+        <p>Are you sure want to delete this image?</p>
         <div className="modal-action">
-          <button className="border-none shadow-none btn btn-soft" onClick={onCancel}>
+          <Button className="btn btn-soft" onClick={props.onCancel}>
             Cancel
-          </button>
-          <button className="border-none shadow-none btn btn-soft btn-error" onClick={onConfirm}>
+          </Button>
+          <Button className="btn btn-soft btn-error" onClick={props.onConfirm}>
             Delete
-          </button>
+          </Button>
         </div>
       </div>
-      <form method="dialog" className="modal-backdrop">
-        <button />
+      <form className="modal-backdrop" method="dialog">
+        <Button />
       </form>
     </dialog>
   );
