@@ -17,17 +17,17 @@ export const ColorPicker: React.FC<ColorPickerProps> = (props) => {
     setColor(props.target, hex);
 
     if (props.target === 0) {
-      workarea.set({ fill: hex });
-      canvas.renderAll();
+      workarea?.set({ fill: hex });
+      canvas?.renderAll();
     }
 
     if (props.target === 1) {
-      canvas.getObjects().forEach((object: any) => {
-        if (object.type === 'textbox' || object.name === 'hr') {
+      canvas?.getObjects().forEach((object: any) => {
+        if (object.type === 'textbox') {
           object.set({ fill: hex });
         }
       });
-      canvas.renderAll();
+      canvas?.renderAll();
     }
   };
 
@@ -37,12 +37,12 @@ export const ColorPicker: React.FC<ColorPickerProps> = (props) => {
 
   return (
     <>
-      <p className='text-xs capitalize'>{props.label}</p>
+      <p className="text-xs capitalize">{props.label}</p>
       <div className="flex mt-1 mb-2 space-x-3">
-        <div className="border-none input input-sm bg-[var(--input-default)]">
-          <HashIcon size={20} />
+        <div className="border-none input input-sm bg-[var(--input-default)] focus-within:outline-none !shadow-none">
+          <HashIcon size={16} />
           <input
-            className="text-sm uppercase"
+            className="uppercase"
             type="text"
             value={color.replace('#', '')}
             onChange={handleColorChange}

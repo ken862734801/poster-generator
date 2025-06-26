@@ -19,7 +19,7 @@ export const SearchBar: React.FC<SearchBarProps> = (props) => {
         {props.label} <span className="text-error">*</span>
       </p>
       <div className='mt-1 mb-2'>
-        <div className="border-none input input-sm bg-[var(--input-default)]">
+        <div className="border-none input input-sm bg-[var(--input-default)] focus-within:outline-none !shadow-none">
           <MagnifyingGlassIcon size={18} />
           <input placeholder={props.placeholder} {...props.register} />
           <Button
