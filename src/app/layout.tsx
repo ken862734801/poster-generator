@@ -23,6 +23,14 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={valeraRound.variable}>
+            <head>
+                {/* Google AdSense script */}
+                <script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4688997363929700"
+                    crossOrigin="anonymous"
+                ></script>
+            </head>
             <body>{children}</body>
             <Analytics />
         </html>
